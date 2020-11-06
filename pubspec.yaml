@@ -51,6 +51,8 @@ flutter:
     - images/citylights.jpg
     - images/town.jpg
     - images/24hrs.jpg
+    - images/wtour.jpeg
+    - images/places.jpeg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
