@@ -11,6 +11,7 @@ class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //debugShowCheckedModeBanner: false,
       title: 'Login Page',
       home: Container(
         constraints: BoxConstraints.expand(),
