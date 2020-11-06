@@ -63,7 +63,7 @@ class _BuildFormState extends State<BuildForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(left: 25, top: 20, right: 25),
+        padding: EdgeInsets.only(left: 25, top: 40, right: 25),
         child: (Column(
           children: <Widget>[
             Container(
@@ -72,9 +72,21 @@ class _BuildFormState extends State<BuildForm> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Components().buildTexField(Icons.person, 'Username', false),
-                    Components().buildTexField(Icons.email, 'email', false),
-                    Components().buildTexField(Icons.vpn_key, 'Password', true),
+                    Padding(
+                      padding: EdgeInsets.all(5),
+                      child: Components()
+                          .buildTexField(Icons.email, 'Email', false),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(5),
+                      child: Components()
+                          .buildTexField(Icons.person, 'Username', false),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(5),
+                      child: Components()
+                          .buildTexField(Icons.vpn_key, 'Password', true),
+                    ),
                     Components()
                         .buildTexField(Icons.vpn_key, 'Confirm Password', true),
                   ],
