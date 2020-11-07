@@ -7,8 +7,8 @@ Widget buildTexField(IconData icon, String hint, bool obscure) {
     decoration: InputDecoration(
       icon: Icon(
         icon,
-        size: 30,
-        color: Colors.lightBlue,
+        size: 25,
+        color: Colors.black,
       ),
       hintText: hint,
       //labelText: ''
@@ -25,12 +25,26 @@ Widget buildTexField(IconData icon, String hint, bool obscure) {
   );
 }
 
-Widget buildButton(String text, IconData icon) {
+Widget buildButton(String text, IconData icon, onPress) {
   return SignInButtonBuilder(
-    text: text,
+    text: (text),
+    fontSize: 14,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     icon: icon,
+    textColor: Colors.grey[600],
+    iconColor: Colors.black,
+    onPressed: onPress,
+    backgroundColor: Colors.white,
+  );
+}
+
+Widget googleButton(String text) {
+  return SignInButton(
+    Buttons.Google,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
+    //shape:BeveledRectangleBorder,
+    text: text,
     onPressed: () {},
-    backgroundColor: Colors.lightBlue,
   );
 }
 
@@ -39,22 +53,25 @@ Widget buildAPIButtons() {
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
       SignInButton(
-        Buttons.Facebook,
-        mini: true,
-        onPressed: () {},
-      ),
-      SignInButton(
         Buttons.Twitter,
         mini: true,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
         onPressed: () {},
       ),
       SignInButton(
-        Buttons.Apple,
+        Buttons.Facebook,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
         mini: true,
         onPressed: () {},
       ),
-      /*
-                SignInButtonBuilder(
+      SignInButton(
+        Buttons.Tumblr,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
+        mini: true,
+        onPressed: () {},
+      ),
+
+      /* SignInButtonBuilder(
                   icon: Icons.email,
                   text: "Ignored for mini button",
                   mini: true,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
+//import 'package:flutter_signin_button/flutter_signin_button.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:tour_guide/components.dart';
+import 'package:tour_guide/signin_UI.dart';
+import 'package:tour_guide/main.dart';
 
 void main() {
   runApp(SignUp());
@@ -27,6 +29,7 @@ class SignUp extends StatelessWidget {
           appBar: AppBar(
             elevation: 5,
             backgroundColor: Colors.transparent,
+            /*
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back,
@@ -36,6 +39,7 @@ class SignUp extends StatelessWidget {
               //  tooltip: '',
               onPressed: () {},
             ),
+            */
             title: Text(
               'Sign up',
               style: TextStyle(
@@ -64,7 +68,7 @@ class _BuildFormState extends State<BuildForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(left: 25, top: 90, right: 25),
+        margin: EdgeInsets.only(left: 35, top: 90, right: 35),
         child: (Column(
           children: <Widget>[
             Container(
@@ -81,13 +85,12 @@ class _BuildFormState extends State<BuildForm> {
                 )),
             Padding(
               padding: EdgeInsets.only(top: 40),
-              child: buildButton('Continue', Icons.email),
+              child: buildButton('Continue', Icons.email, () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
+              }),
             ),
-            SignInButton(
-              Buttons.Google,
-              text: 'Continue with Google',
-              onPressed: () {},
-            ),
+            googleButton('Continue with Google'),
             buildAPIButtons(),
             Padding(
                 padding: EdgeInsets.only(top: 50, bottom: 10),
@@ -95,8 +98,14 @@ class _BuildFormState extends State<BuildForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     buildFooterText(
-                        "Already have an account?", Colors.white, 18),
-                    buildFooterText('Sign In', Colors.white, 16),
+                        "Already have an account?", Colors.white, 16),
+                    new GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignIn()));
+                      },
+                      child: buildFooterText('Sign In', Colors.white, 16),
+                    ),
                   ],
                 )),
           ],
