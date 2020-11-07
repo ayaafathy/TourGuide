@@ -73,28 +73,26 @@ class _BuildFormState extends State<BuildForm> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Components().buildTexField(Icons.person, 'Username', false),
-                    Components().buildTexField(Icons.vpn_key, 'Password', true),
+                    buildTexField(Icons.person, 'Username', false),
+                    buildTexField(Icons.vpn_key, 'Password', true),
                   ],
                 )),
             Padding(
               padding: EdgeInsets.only(top: 40),
-              child: Components().buildButton('Continue', Icons.email),
+              child: buildButton('Continue', Icons.email),
             ),
             SignInButton(
               Buttons.Google,
               onPressed: () {},
             ),
-            Components().buildAPIButtons(),
+            buildAPIButtons(),
             Padding(
                 padding: EdgeInsets.only(top: 70, bottom: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Components().buildFooterText(
-                        "Don't have an account?", Colors.white, 16),
-                    Components()
-                        .buildFooterText('Create One!', Colors.white, 14),
+                    buildFooterText("Don't have an account?", Colors.white, 16),
+                    buildFooterText('Create One!', Colors.white, 14),
                   ],
                 )),
           ],
