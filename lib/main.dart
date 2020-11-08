@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:tour_guide/dash_UI.dart';
-
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -41,4 +38,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-
+}

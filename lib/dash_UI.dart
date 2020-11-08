@@ -32,12 +32,12 @@ class _DashNavState extends State<DashNav> {
             ),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: ExactAssetImage('images/citylights.jpg'),
+                image: ExactAssetImage('assets/images/citylights.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
-            currentAccountPicture:
-                CircleAvatar(backgroundImage: AssetImage('images/dog.jpg')),
+            currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/dog.jpg')),
           ),
           Container(
             child: buildList(),

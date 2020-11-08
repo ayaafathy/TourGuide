@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
+void main() => runApp(LocProfile());
 
-
-class MyApp extends StatelessWidget {
+class LocProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class LocationProfilePage extends StatelessWidget {
-  final String _Name = "Cairo Tower";
+  final String _name = "Cairo Tower";
   final String _status = "Tallest Tower in Egypt and Africa";
   final String _bio =
       "\"The Cairo Tower - commonly known to locals as Nasser's Pineapple - is a free-standing concrete tower in Cairo, Egypt. At 187 m, it has been the tallest structure in Egypt and North Africa for about 50 years.\"";
@@ -33,7 +34,6 @@ class LocationProfilePage extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildProfileImage() {
     return Center(
@@ -64,7 +64,7 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      _Name,
+      _name,
       style: _nameTextStyle,
     );
   }
@@ -88,7 +88,7 @@ class LocationProfilePage extends StatelessWidget {
     );
   }
 
-
+  // ignore: unused_element
   Widget _buildStatItem(String label, String count) {
     TextStyle _statLabelTextStyle = TextStyle(
       fontFamily: 'Roboto',
@@ -139,8 +139,7 @@ class LocationProfilePage extends StatelessWidget {
               size: 40.0,
               color: Colors.blueAccent,
               borderColor: Colors.blue,
-              spacing:0.0
-          ),
+              spacing: 0.0),
         ],
       ),
     );
@@ -149,7 +148,7 @@ class LocationProfilePage extends StatelessWidget {
   Widget _buildBio(BuildContext context) {
     TextStyle bioTextStyle = TextStyle(
       fontFamily: 'Spectral',
-      fontWeight: FontWeight.w400,//try changing weight to w500 if not thin
+      fontWeight: FontWeight.w400, //try changing weight to w500 if not thin
       fontStyle: FontStyle.italic,
       color: Color(0xFF799497),
       fontSize: 16.0,

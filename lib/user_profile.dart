@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
+void main() => runApp(UserProfile());
+
+class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Location Profile",
       debugShowCheckedModeBanner: false,
-      home: LocationProfilePage(),
+      home: UserProfilePage(),
     );
   }
 }
 
-class LocationProfilePage extends StatelessWidget {
-  final String _Name = "Omar Attia";
+class UserProfilePage extends StatelessWidget {
+  final String _name = "Omar Attia";
   final String _status = "Aspiring Traveller";
   final String _bio = "\"Hoping to travel the world\"";
   final String _followers = "173";
@@ -60,7 +62,7 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      _Name,
+      _name,
       style: _nameTextStyle,
     );
   }

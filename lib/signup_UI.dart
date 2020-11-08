@@ -19,7 +19,7 @@ class SignUp extends StatelessWidget {
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/24hrs.jpg'),
+            image: AssetImage('assets/images/24hrs.jpg'),
             fit: BoxFit.cover,
           ),
         ),

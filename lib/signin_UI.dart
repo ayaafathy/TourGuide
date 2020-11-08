@@ -19,7 +19,7 @@ class SignIn extends StatelessWidget {
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/24hrs.jpg'),
+            image: AssetImage('assests/images/24hrs.jpg'),
             fit: BoxFit.cover,
           ),
         ),
