@@ -1,4 +1,4 @@
-import 'package:homepage/models/activity_model.dart';
+import 'package:tour_guide/models/activity_model.dart';
 
 class Destination {
   String imageUrl;
