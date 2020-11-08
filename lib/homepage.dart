@@ -4,9 +4,41 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tour_guide/widgets/destination_carousel.dart';
 import 'package:tour_guide/widgets/hotel_carousel.dart';
 
+import 'appBar.dart';
+import 'dash_UI.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
+
+  Widget build(BuildContext context) {
+    /*return MaterialApp(
+      title: "Location Profile",
+      debugShowCheckedModeBanner: false,
+      home: LocationProfilePage(),*/
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+    new GlobalKey<ScaffoldState>();
+    HomeScreen cairoTower = new HomeScreen();
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Location Profile",
+      home: Container(
+        constraints: BoxConstraints.expand(),
+        child: Scaffold(
+          appBar: buildAppBar(() {
+            _scaffoldKey.currentState.openDrawer();
+          }, 'Home'),
+          key: _scaffoldKey,
+          drawer: DashNav(),
+          body: SafeArea(
+            child: HomeScreen(),
+          ),
+        ),
+      ),
+    );
+  }
+
 }
 
 class _HomeScreenState extends State<HomeScreen> {

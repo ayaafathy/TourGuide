@@ -116,7 +116,7 @@ class DestinationCarousel extends StatelessWidget {
                                 bottom: 10.0,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
+                                   children: <Widget>[
                                     Text(
                                       destination.city,
                                       style: TextStyle(
