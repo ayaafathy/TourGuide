@@ -143,7 +143,7 @@ class LocationProfilePage extends StatelessWidget {
 
   Widget _buildStatContainer() {
     return Container(
-      height: 50.0,
+      height: 45.0,
       margin: EdgeInsets.only(top: 8.0),
       decoration: BoxDecoration(
         color: Colors.indigo[50],
@@ -170,16 +170,18 @@ class LocationProfilePage extends StatelessWidget {
 
   Widget _buildBio(BuildContext context) {
     TextStyle bioTextStyle = TextStyle(
-      fontFamily: 'Spectral',
+      fontFamily: 'Roboto',
       fontWeight: FontWeight.w400, //try changing weight to w500 if not thin
-      fontStyle: FontStyle.italic,
-      color: Color(0xFF799497),
+      fontStyle: FontStyle.normal,
+      color: Colors.black,
       fontSize: 16.0,
     );
 
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       padding: EdgeInsets.all(8.0),
+      alignment: Alignment.center,
+      margin: EdgeInsets.all(8),
       child: Text(
         _bio,
         textAlign: TextAlign.center,
