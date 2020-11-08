@@ -73,7 +73,9 @@ class _BuildFormState extends State<BuildForm> {
           children: <Widget>[
             Container(
                 padding: EdgeInsets.only(left: 5, top: 2, right: 5, bottom: 10),
-                color: Colors.white70,
+                decoration: BoxDecoration(
+                    color: Colors.white70,
+                    borderRadius: BorderRadius.all(Radius.circular(11))),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

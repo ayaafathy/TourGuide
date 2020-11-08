@@ -5,20 +5,20 @@ import 'package:google_fonts/google_fonts.dart';
 Widget buildTexField(IconData icon, String hint, bool obscure) {
   return TextFormField(
     decoration: InputDecoration(
-      icon: Icon(
-        icon,
-        size: 25,
-        color: Colors.black,
-      ),
-      hintText: hint,
-      //labelText: ''
-    ),
+        icon: Icon(
+          icon,
+          size: 25,
+          color: Colors.black,
+        ),
+        hintText: hint,
+        contentPadding: const EdgeInsets.all(5.0)),
     style: GoogleFonts.roboto(
       color: Colors.black,
       fontSize: 17,
       fontWeight: FontWeight.w500,
     ),
     obscureText: obscure,
+
     //onSaved: (value){},
     //validator: (value){},
     //autocorrect: ,
