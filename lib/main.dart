@@ -13,34 +13,20 @@ class MyApp extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: AppBar(
-            elevation: 5,
-            backgroundColor: Colors.white,
-            leading: IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.indigo[300],
-                size: 35,
-              ),
-              tooltip: 'Drawer',
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
-            ),
-            title: Text(
-              'Home',
-              style: TextStyle(
-                color: Colors.indigo[300],
-              ),
-            ),
-            centerTitle: true,
-          ),
+          appBar: AppBar(title: Text('News Feed',style: TextStyle(color: Colors.black,),),),
           key: _scaffoldKey,
           drawer: DashNav(),
           body: SafeArea(
             child: HomeScreen(),
           ),
+
+
+
         ),
+
       ),
 
     );
+
   }
 }
