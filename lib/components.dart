@@ -12,6 +12,7 @@ Widget buildTexField(IconData icon, String hint, bool obscure) {
         ),
         hintText: hint,
         contentPadding: const EdgeInsets.all(5.0)),
+        
     style: GoogleFonts.roboto(
       color: Colors.black,
       fontSize: 17,
