@@ -15,7 +15,7 @@ class _DashNavState extends State<DashNav> {
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: Text(
-              'Anne Adams',
+              'Marc Ashraf',
               style: GoogleFonts.roboto(
                 color: Colors.white,
                 fontSize: 20,
@@ -23,7 +23,7 @@ class _DashNavState extends State<DashNav> {
               ),
             ),
             accountEmail: Text(
-              'anne_adams@gmail.com',
+              'marc_ashraf@gmail.com',
               style: GoogleFonts.roboto(
                 color: Colors.white,
                 fontSize: 15,
@@ -60,33 +60,25 @@ class _DashNavState extends State<DashNav> {
             leading: Icon(Icons.notifications),
             title: Text('Feed'),
             onTap: () {}),
-
         ListTile(
             leading: Icon(Icons.message),
             title: Text('Messages'),
             onTap: () {}),
-
         ListTile(
             leading: Icon(Icons.recommend),
             title: Text('Recommendations'),
             onTap: () {}),
-
         ListTile(
             leading: Icon(Icons.favorite), title: Text('Saved'), onTap: () {}),
-
-
-
         ListTile(
-            leading: Icon(Icons.where_to_vote), title: Text('Visited places'), onTap: () {}),
+            leading: Icon(Icons.where_to_vote),
+            title: Text('Visited places'),
+            onTap: () {}),
         Divider(),
-
-
         ListTile(
             leading: Icon(Icons.settings),
             title: Text("Settings"),
             onTap: () {}),
-
-
         ListTile(
             leading: Icon(Icons.power_settings_new),
             title: Text("Logout"),

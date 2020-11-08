@@ -191,6 +191,7 @@ class LocationProfilePage extends StatelessWidget {
   }
   // ignore: unused_element
 
+  // ignore: unused_element
   Widget _buildSeparator(Size screenSize) {
     return Container(
       width: screenSize.width / 1.6,

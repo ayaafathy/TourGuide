@@ -16,7 +16,8 @@ Widget buildAppBar(onPress, String title) {
     title: Text(
       title,
       style: TextStyle(
-        color: Colors.indigo[300],
+        color: Colors.indigo[400],
+        fontSize: 22,
       ),
     ),
     centerTitle: true,

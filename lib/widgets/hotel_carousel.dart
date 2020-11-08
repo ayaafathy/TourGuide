@@ -26,7 +26,7 @@ class HotelCarousel extends StatelessWidget {
                 child: Text(
                   'See All',
                   style: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.indigo[300],
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 1.0,
