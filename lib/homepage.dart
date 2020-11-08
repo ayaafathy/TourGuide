@@ -22,7 +22,7 @@ class HomeScreen extends StatefulWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Location Profile",
+      title: "Home Page",
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
@@ -44,43 +44,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   int _currentTab = 0;
-  List<IconData> _icons = [
-    //countries to travel to
-    FontAwesomeIcons.plane,
-    //near by hotels
-    FontAwesomeIcons.bed,
-    //activities that can be made
-    FontAwesomeIcons.walking,
-    //transportation methods
-    FontAwesomeIcons.biking,
-  ];
-
-  Widget _buildIcon(int index) {
-    return GestureDetector(
-        onTap: () {
-          setState(() {
-            _selectedIndex = index;
-          });
-          print(_selectedIndex);
-        },
-        child: Container(
-          height: 60.0,
-          width: 60.0,
-          decoration: BoxDecoration(
-            color: _selectedIndex == index
-                ? Theme.of(context).accentColor
-                : Color(0xFFE7EBEE),
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          child: Icon(
-            _icons[index],
-            size: 25.0,
-            color: _selectedIndex == index
-                ? Theme.of(context).primaryColor
-                : Color(0XFFB4C1C4),
-          ),
-        ));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,17 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            SizedBox(height: 20.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: _icons
-                  .asMap()
-                  .entries
-                  .map(
-                    (MapEntry map) => _buildIcon(map.key),
-                  )
-                  .toList(),
             ),
             SizedBox(
               height: 20.0,
@@ -139,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.local_restaurant,
+              Icons.public,
               size: 30,
             ),
             // ignore: deprecated_member_use

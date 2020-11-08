@@ -37,7 +37,7 @@ class _DashNavState extends State<DashNav> {
               ),
             ),
             currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/dog.jpg')),
+                backgroundImage: AssetImage('assets/images/marc.jpg')),
           ),
           Container(
             child: buildList(),
@@ -60,23 +60,33 @@ class _DashNavState extends State<DashNav> {
             leading: Icon(Icons.notifications),
             title: Text('Feed'),
             onTap: () {}),
-        ListTile(
-            leading: Icon(Icons.favorite), title: Text('Saved'), onTap: () {}),
+
         ListTile(
             leading: Icon(Icons.message),
             title: Text('Messages'),
             onTap: () {}),
+
         ListTile(
             leading: Icon(Icons.recommend),
             title: Text('Recommendations'),
             onTap: () {}),
+
         ListTile(
-            leading: Icon(Icons.public), title: Text('Tours'), onTap: () {}),
+            leading: Icon(Icons.favorite), title: Text('Saved'), onTap: () {}),
+
+
+
+        ListTile(
+            leading: Icon(Icons.where_to_vote), title: Text('Visited places'), onTap: () {}),
         Divider(),
+
+
         ListTile(
             leading: Icon(Icons.settings),
             title: Text("Settings"),
             onTap: () {}),
+
+
         ListTile(
             leading: Icon(Icons.power_settings_new),
             title: Text("Logout"),
