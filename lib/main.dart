@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/dash_UI.dart';
+import 'package:tour_guide/homepage.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,8 +35,12 @@ class MyApp extends StatelessWidget {
           ),
           key: _scaffoldKey,
           drawer: DashNav(),
+          body: SafeArea(
+            child: HomeScreen(),
+          ),
         ),
       ),
+
     );
   }
 }
