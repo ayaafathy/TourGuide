@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
-
-
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,25 +14,22 @@ class MyApp extends StatelessWidget {
 class LocationProfilePage extends StatelessWidget {
   final String _Name = "Omar Attia";
   final String _status = "Aspiring Traveller";
-  final String _bio =
-      "\"Hoping to travel the world\"";
+  final String _bio = "\"Hoping to travel the world\"";
   final String _followers = "173";
   final String _posts = "24";
   final String _scores = "450";
-
 
   Widget _buildCoverImage(Size screenSize) {
     return Container(
       height: screenSize.height / 2.6,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/cover.jpg'),
+          image: AssetImage('assets/images/usercover.jpg'),
           fit: BoxFit.cover,
         ),
       ),
     );
   }
-
 
   Widget _buildProfileImage() {
     return Center(
@@ -44,7 +38,7 @@ class LocationProfilePage extends StatelessWidget {
         height: 140.0,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/tower.jpg'),
+            image: AssetImage('assets/images/omar.jpg'),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
@@ -89,7 +83,6 @@ class LocationProfilePage extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildStatItem(String label, String count) {
     TextStyle _statLabelTextStyle = TextStyle(
@@ -141,7 +134,7 @@ class LocationProfilePage extends StatelessWidget {
   Widget _buildBio(BuildContext context) {
     TextStyle bioTextStyle = TextStyle(
       fontFamily: 'Spectral',
-      fontWeight: FontWeight.w400,//try changing weight to w500 if not thin
+      fontWeight: FontWeight.w400, //try changing weight to w500 if not thin
       fontStyle: FontStyle.italic,
       color: Color(0xFF799497),
       fontSize: 16.0,
