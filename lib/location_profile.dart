@@ -48,7 +48,7 @@ class LocationProfilePage extends StatelessWidget {
 
   Widget _buildCoverImage(Size screenSize) {
     return Container(
-      height: screenSize.height / 2.8,
+      height: screenSize.height / 3.3,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/cover.jpg'),
@@ -69,10 +69,10 @@ class LocationProfilePage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 2.0,
-          ),
+          //border: Border.all(
+          //color: Colors.white,
+          //width: 2.0,
+          //),
         ),
       ),
     );
@@ -83,7 +83,7 @@ class LocationProfilePage extends StatelessWidget {
       fontFamily: 'Roboto',
       color: Colors.black,
       fontSize: 25.0,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w400,
     );
 
     return Text(
@@ -143,7 +143,7 @@ class LocationProfilePage extends StatelessWidget {
 
   Widget _buildStatContainer() {
     return Container(
-      height: 45.0,
+      height: 40.0,
       margin: EdgeInsets.only(top: 8.0),
       decoration: BoxDecoration(
         color: Colors.indigo[50],
@@ -159,7 +159,7 @@ class LocationProfilePage extends StatelessWidget {
               starCount: 5,
               isReadOnly: false,
               rating: rating,
-              size: 35.0,
+              size: 30.0,
               color: Colors.indigo[400],
               borderColor: Colors.indigo,
               spacing: 0.0),
@@ -174,14 +174,14 @@ class LocationProfilePage extends StatelessWidget {
       fontWeight: FontWeight.w400, //try changing weight to w500 if not thin
       fontStyle: FontStyle.normal,
       color: Colors.black,
-      fontSize: 16.0,
+      fontSize: 17.0,
     );
 
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(10.0),
       alignment: Alignment.center,
-      margin: EdgeInsets.all(8),
+      margin: EdgeInsets.only(top: 16, bottom: 6, left: 18, right: 18),
       child: Text(
         _bio,
         textAlign: TextAlign.center,
@@ -189,16 +189,18 @@ class LocationProfilePage extends StatelessWidget {
       ),
     );
   }
+  // ignore: unused_element
 
   Widget _buildSeparator(Size screenSize) {
     return Container(
       width: screenSize.width / 1.6,
       height: 2.0,
       color: Colors.black54,
-      margin: EdgeInsets.only(top: 4.0),
+      //margin: EdgeInsets.only(top: 4.0),
     );
   }
 
+  // ignore: unused_element
   Widget _buildGetInTouch(BuildContext context) {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -210,6 +212,26 @@ class LocationProfilePage extends StatelessWidget {
     );
   }
 
+  Widget buildButton(String text, onPress) {
+    return RaisedButton(
+      //disabledColor: Colors.indigo[300],
+      padding: const EdgeInsets.all(13),
+      textColor: Colors.indigo[400],
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      onPressed: () {},
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+
+/*
   Widget _buildButtons() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -261,7 +283,7 @@ class LocationProfilePage extends StatelessWidget {
       ),
     );
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -273,20 +295,26 @@ class LocationProfilePage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: screenSize.height / 6.4),
+                  SizedBox(height: screenSize.height / 4.9),
                   _buildProfileImage(),
                   Container(
-                    margin: EdgeInsets.only(top: 15),
+                    margin: EdgeInsets.only(top: 11),
                     child: _buildName(),
                   ),
                   _buildStatus(context),
                   _buildStatContainer(),
                   _buildBio(context),
-                  _buildSeparator(screenSize),
-                  SizedBox(height: 10.0),
-                  _buildGetInTouch(context),
+                  //_buildSeparator(screenSize),
+                  //SizedBox(height: 10.0),
+                  //_buildGetInTouch(context),
                   SizedBox(height: 8.0),
-                  _buildButtons(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      buildButton('popular Times', () {}),
+                      buildButton('Mark as Visited', () {}),
+                    ],
+                  ),
                 ],
               ),
             ),
