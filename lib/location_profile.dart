@@ -1,15 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:tour_guide/dash_UI.dart';
+import 'package:tour_guide/appBar.dart';
+//import 'package:tour_guide/main.dart';
 
 void main() => runApp(LocProfile());
 
 class LocProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    /*return MaterialApp(
       title: "Location Profile",
       debugShowCheckedModeBanner: false,
-      home: LocationProfilePage(),
+      home: LocationProfilePage(),*/
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
+    LocationProfilePage cairoTower = new LocationProfilePage();
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Location Profile",
+      home: Container(
+        constraints: BoxConstraints.expand(),
+        child: Scaffold(
+          appBar: buildAppBar(() {
+            _scaffoldKey.currentState.openDrawer();
+          }, cairoTower._name),
+          key: _scaffoldKey,
+          drawer: DashNav(),
+          body: SafeArea(
+            child: LocationProfilePage(),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -25,7 +48,7 @@ class LocationProfilePage extends StatelessWidget {
 
   Widget _buildCoverImage(Size screenSize) {
     return Container(
-      height: screenSize.height / 2.6,
+      height: screenSize.height / 2.8,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/cover.jpg'),
@@ -38,8 +61,8 @@ class LocationProfilePage extends StatelessWidget {
   Widget _buildProfileImage() {
     return Center(
       child: Container(
-        width: 140.0,
-        height: 140.0,
+        width: 130.0,
+        height: 130.0,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/tower.jpg'),
@@ -48,7 +71,7 @@ class LocationProfilePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(80.0),
           border: Border.all(
             color: Colors.white,
-            width: 10.0,
+            width: 2.0,
           ),
         ),
       ),
@@ -59,8 +82,8 @@ class LocationProfilePage extends StatelessWidget {
     TextStyle _nameTextStyle = TextStyle(
       fontFamily: 'Roboto',
       color: Colors.black,
-      fontSize: 28.0,
-      fontWeight: FontWeight.w700,
+      fontSize: 25.0,
+      fontWeight: FontWeight.w500,
     );
 
     return Text(
@@ -79,10 +102,10 @@ class LocationProfilePage extends StatelessWidget {
       child: Text(
         _status,
         style: TextStyle(
-          fontFamily: 'Spectral',
-          color: Colors.black,
-          fontSize: 20.0,
-          fontWeight: FontWeight.w300,
+          fontFamily: 'Roboto',
+          color: Colors.grey[700],
+          fontSize: 18.0,
+          fontWeight: FontWeight.w400,
         ),
       ),
     );
@@ -120,10 +143,10 @@ class LocationProfilePage extends StatelessWidget {
 
   Widget _buildStatContainer() {
     return Container(
-      height: 60.0,
+      height: 50.0,
       margin: EdgeInsets.only(top: 8.0),
       decoration: BoxDecoration(
-        color: Color(0xFFEFF4F7),
+        color: Colors.indigo[50],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -136,9 +159,9 @@ class LocationProfilePage extends StatelessWidget {
               starCount: 5,
               isReadOnly: false,
               rating: rating,
-              size: 40.0,
-              color: Colors.blueAccent,
-              borderColor: Colors.blue,
+              size: 35.0,
+              color: Colors.indigo[400],
+              borderColor: Colors.indigo,
               spacing: 0.0),
         ],
       ),
@@ -250,7 +273,10 @@ class LocationProfilePage extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(height: screenSize.height / 6.4),
                   _buildProfileImage(),
-                  _buildName(),
+                  Container(
+                    margin: EdgeInsets.only(top: 15),
+                    child: _buildName(),
+                  ),
                   _buildStatus(context),
                   _buildStatContainer(),
                   _buildBio(context),
