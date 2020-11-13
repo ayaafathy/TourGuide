@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'package:tour_guide/account.dart';
+import 'package:tour_guide/screens/settings_UI.dart';
+import 'package:tour_guide/screens/signin_UI.dart';
+import 'package:tour_guide/main.dart';
 
 class DashNav extends StatefulWidget {
   @override
@@ -57,12 +59,16 @@ class _DashNavState extends State<DashNav> {
             onTap: () {}),
         Divider(),
         ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Feed'),
-            onTap: () {}),
+          leading: Icon(Icons.home),
+          title: Text('Feed'),
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MyApp()));
+          },
+        ),
         ListTile(
-            leading: Icon(Icons.message),
-            title: Text('Messages'),
+            leading: Icon(Icons.notifications),
+            title: Text('Notifications'),
             onTap: () {}),
         ListTile(
             leading: Icon(Icons.recommend),
@@ -78,11 +84,18 @@ class _DashNavState extends State<DashNav> {
         ListTile(
             leading: Icon(Icons.settings),
             title: Text("Settings"),
-            onTap: () {}),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()));
+            }),
         ListTile(
-            leading: Icon(Icons.power_settings_new),
-            title: Text("Logout"),
-            onTap: () {}),
+          leading: Icon(Icons.power_settings_new),
+          title: Text("Logout"),
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SignIn()));
+          },
+        ),
       ],
     );
   }

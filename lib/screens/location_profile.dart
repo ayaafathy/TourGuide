@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-import 'package:tour_guide/dash_UI.dart';
-import 'package:tour_guide/appBar.dart';
+import 'package:tour_guide/widgets/dash_UI.dart';
+import 'package:tour_guide/widgets/appBar.dart';
 //import 'package:tour_guide/main.dart';
 
 void main() => runApp(LocProfile());
@@ -146,7 +146,7 @@ class LocationProfilePage extends StatelessWidget {
       height: 40.0,
       margin: EdgeInsets.only(top: 8.0),
       decoration: BoxDecoration(
-        color: Colors.indigo[50],
+        color: Colors.lightBlue[50],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -160,8 +160,8 @@ class LocationProfilePage extends StatelessWidget {
               isReadOnly: false,
               rating: rating,
               size: 30.0,
-              color: Colors.indigo[400],
-              borderColor: Colors.indigo,
+              color: Colors.lightBlue[300],
+              borderColor: Colors.lightBlue[300],
               spacing: 0.0),
         ],
       ),
@@ -215,9 +215,9 @@ class LocationProfilePage extends StatelessWidget {
 
   Widget buildButton(String text, onPress) {
     return RaisedButton(
-      //disabledColor: Colors.indigo[300],
+      //disabledColor: Colors.lightBlue[300],
       padding: const EdgeInsets.all(13),
-      textColor: Colors.indigo[400],
+      textColor: Colors.lightBlue[400],
       color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       onPressed: () {},

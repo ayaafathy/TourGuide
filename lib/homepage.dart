@@ -4,26 +4,11 @@ import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tour_guide/widgets/destination_carousel.dart';
 import 'package:tour_guide/widgets/hotel_carousel.dart';
-import 'dash_UI.dart';
+//import 'dash_UI.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
-
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Container(
-        constraints: BoxConstraints.expand(),
-        child: Scaffold(
-          drawer: DashNav(),
-          body: SafeArea(
-            child: HomeScreen(),
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 class _HomeScreenState extends State<HomeScreen> {
