@@ -7,7 +7,7 @@ Widget buildAppBar(onPress, String title) {
     leading: IconButton(
       icon: Icon(
         Icons.menu,
-        color: Colors.indigo[400],
+        color: Colors.lightBlue[300],
         size: 35,
       ),
       tooltip: 'Drawer',
@@ -16,7 +16,7 @@ Widget buildAppBar(onPress, String title) {
     title: Text(
       title,
       style: TextStyle(
-        color: Colors.indigo[400],
+        color: Colors.lightBlue[300],
         fontSize: 22,
       ),
     ),

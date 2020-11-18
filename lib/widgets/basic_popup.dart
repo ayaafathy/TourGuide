@@ -6,12 +6,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter',
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('Flutter'),
-          ),
-          body: MyLayout()),
+      home: Scaffold(body: MyLayout()),
     );
   }
 }
@@ -24,36 +19,32 @@ class MyLayout extends StatelessWidget {
       child: RaisedButton(
         child: Text('Show alert'),
         onPressed: () {
-          showAlertDialog(context);
+          recommendationPopUp(context);
         },
       ),
     );
   }
 }
 
-showAlertDialog(BuildContext context) {
-  // set up the buttons
-  Widget cancelButton = FlatButton(
-    child: Text("Cancel"),
+recommendationPopUp(BuildContext context) {
+  Widget viewButton = FlatButton(
+    child: Text('View'),
     onPressed: () {},
   );
-  Widget continueButton = FlatButton(
-    child: Text("Continue"),
+  Widget saveButton = FlatButton(
+    child: Text('Later'),
     onPressed: () {},
   );
 
-  // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Text("AlertDialog"),
-    content:
-        Text("Would you like to continue learning how to use Flutter alerts?"),
+    title: Text(''),
+    content: Text('Your daily recommendation is here!'),
     actions: [
-      cancelButton,
-      continueButton,
+      viewButton,
+      saveButton,
     ],
   );
 
-  // show the dialog
   showDialog(
     context: context,
     builder: (BuildContext context) {

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_signin_button/flutter_signin_button.dart';
 //import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_guide/components.dart';
-import 'package:tour_guide/signin_UI.dart';
+import 'package:tour_guide/widgets/components.dart';
+import 'package:tour_guide/screens/signup_UI.dart';
 import 'package:tour_guide/main.dart';
 
 void main() {
-  runApp(SignUp());
+  runApp(SignIn());
 }
 
-class SignUp extends StatelessWidget {
+class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       //debugShowCheckedModeBanner: false,
-      title: 'SignUp Page',
+      title: 'Login Page',
       home: Container(
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
@@ -29,19 +29,8 @@ class SignUp extends StatelessWidget {
           appBar: AppBar(
             elevation: 5,
             backgroundColor: Colors.transparent,
-            /*
-            leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: 35,
-              ),
-              //  tooltip: '',
-              onPressed: () {},
-            ),
-            */
             title: Text(
-              'Sign up',
+              'Sign in',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -50,7 +39,7 @@ class SignUp extends StatelessWidget {
           ),
           body: SafeArea(
             child: SingleChildScrollView(
-              child: BuildForm(),
+              child: BuildSignIn(),
             ),
           ),
         ),
@@ -59,12 +48,12 @@ class SignUp extends StatelessWidget {
   }
 }
 
-class BuildForm extends StatefulWidget {
+class BuildSignIn extends StatefulWidget {
   @override
-  _BuildFormState createState() => _BuildFormState();
+  _BuildSignInState createState() => _BuildSignInState();
 }
 
-class _BuildFormState extends State<BuildForm> {
+class _BuildSignInState extends State<BuildSignIn> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,10 +68,8 @@ class _BuildFormState extends State<BuildForm> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    buildTexField(Icons.email, 'Email', false),
                     buildTexField(Icons.person, 'Username', false),
                     buildTexField(Icons.vpn_key, 'Password', true),
-                    buildTexField(Icons.vpn_key, 'Confirm Password', true),
                   ],
                 )),
             Padding(
@@ -95,18 +82,19 @@ class _BuildFormState extends State<BuildForm> {
             googleButton('Continue with Google'),
             buildAPIButtons(),
             Padding(
-                padding: EdgeInsets.only(top: 50, bottom: 10),
+                padding: EdgeInsets.only(top: 80, bottom: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    buildFooterText(
-                        "Already have an account?", Colors.white, 16),
+                    buildFooterText("Don't have an account?", Colors.white, 16),
                     new GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignIn()));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUp()),
+                        );
                       },
-                      child: buildFooterText('Sign In', Colors.white, 16),
+                      child: buildFooterText('Create One!', Colors.white, 14),
                     ),
                   ],
                 )),

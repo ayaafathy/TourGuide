@@ -27,7 +27,7 @@ class DestinationCarousel extends StatelessWidget {
                 child: Text(
                   'See All',
                   style: TextStyle(
-                    color: Colors.indigo[300],
+                    color: Colors.lightBlue[400],
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 1.0,

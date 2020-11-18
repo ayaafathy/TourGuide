@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_signin_button/flutter_signin_button.dart';
 //import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_guide/components.dart';
-import 'package:tour_guide/signup_UI.dart';
+import 'package:tour_guide/widgets/components.dart';
+import 'package:tour_guide/screens/signin_UI.dart';
 import 'package:tour_guide/main.dart';
 
 void main() {
-  runApp(SignIn());
+  runApp(SignUp());
 }
 
-class SignIn extends StatelessWidget {
+class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       //debugShowCheckedModeBanner: false,
-      title: 'Login Page',
+      title: 'SignUp Page',
       home: Container(
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assests/images/24hrs.jpg'),
+            image: AssetImage('assets/images/24hrs.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -29,19 +29,8 @@ class SignIn extends StatelessWidget {
           appBar: AppBar(
             elevation: 5,
             backgroundColor: Colors.transparent,
-            /*
-            leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: 35,
-              ),
-              //  tooltip: '',
-              onPressed: () {},
-            ),
-            */
             title: Text(
-              'Sign in',
+              'Sign up',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -50,7 +39,7 @@ class SignIn extends StatelessWidget {
           ),
           body: SafeArea(
             child: SingleChildScrollView(
-              child: BuildForm(),
+              child: BuildSignUp(),
             ),
           ),
         ),
@@ -59,12 +48,12 @@ class SignIn extends StatelessWidget {
   }
 }
 
-class BuildForm extends StatefulWidget {
+class BuildSignUp extends StatefulWidget {
   @override
-  _BuildFormState createState() => _BuildFormState();
+  _BuildSignUpState createState() => _BuildSignUpState();
 }
 
-class _BuildFormState extends State<BuildForm> {
+class _BuildSignUpState extends State<BuildSignUp> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,8 +68,10 @@ class _BuildFormState extends State<BuildForm> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    buildTexField(Icons.email, 'Email', false),
                     buildTexField(Icons.person, 'Username', false),
                     buildTexField(Icons.vpn_key, 'Password', true),
+                    buildTexField(Icons.vpn_key, 'Confirm Password', true),
                   ],
                 )),
             Padding(
@@ -93,19 +84,20 @@ class _BuildFormState extends State<BuildForm> {
             googleButton('Continue with Google'),
             buildAPIButtons(),
             Padding(
-                padding: EdgeInsets.only(top: 80, bottom: 10),
+                padding: EdgeInsets.only(top: 50, bottom: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    buildFooterText("Don't have an account?", Colors.white, 16),
+                    buildFooterText(
+                        "Already have an account?", Colors.white, 16),
                     new GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUp()),
+                          MaterialPageRoute(builder: (context) => SignIn()),
                         );
                       },
-                      child: buildFooterText('Create One!', Colors.white, 14),
+                      child: buildFooterText('Sign In', Colors.white, 16),
                     ),
                   ],
                 )),
