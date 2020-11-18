@@ -10,6 +10,21 @@ import 'map.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
+
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Container(
+        constraints: BoxConstraints.expand(),
+        child: Scaffold(
+          drawer: DashNav(),
+          body: SafeArea(
+            child: HomeScreen(),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class _HomeScreenState extends State<HomeScreen> {

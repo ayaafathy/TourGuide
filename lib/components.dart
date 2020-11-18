@@ -12,19 +12,16 @@ Widget buildTexField(IconData icon, String hint, bool obscure) {
         ),
         hintText: hint,
         contentPadding: const EdgeInsets.all(5.0)),
+        
     style: GoogleFonts.roboto(
       color: Colors.black,
       fontSize: 17,
       fontWeight: FontWeight.w500,
     ),
     obscureText: obscure,
-    /*validator: (value) {
-        if (value.isEmpty) {
-          return ('Please enter some text');
-        }
-      }*/
 
     //onSaved: (value){},
+    //validator: (value){},
     //autocorrect: ,
   );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tour_guide/widgets/dash_UI.dart';
+import 'package:tour_guide/dash_UI.dart';
 import 'package:tour_guide/homepage.dart';
-import 'package:tour_guide/widgets/appBar.dart';
+import 'package:tour_guide/appBar.dart';
 
 void main() => runApp(MyApp());
 
