@@ -9,12 +9,14 @@ void main() => runApp(LocProfile());
 class LocProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    /*return MaterialApp(
-      title: "Location Profile",
-      debugShowCheckedModeBanner: false,
-      home: LocationProfilePage(),*/
+    //return MaterialApp(
+    //  title: "Location Profile",
+    //  home: LocationProfilePage(),
+    //debugShowCheckedModeBanner : false;
+
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
+
     LocationProfilePage cairoTower = new LocationProfilePage();
 
     return MaterialApp(

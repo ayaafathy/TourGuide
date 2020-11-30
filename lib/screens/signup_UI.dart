@@ -87,7 +87,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                       ),
                     );
                     Future.delayed(
-                        Duration(seconds: 2),
+                        Duration(seconds: 1),
                         () => Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => MyApp()),

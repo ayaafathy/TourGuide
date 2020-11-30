@@ -16,3 +16,11 @@ TextStyle hintStyle() {
     fontWeight: FontWeight.w400,
   );
 }
+
+TextStyle tilesStyle() {
+  return GoogleFonts.roboto(
+    color: Colors.grey[700],
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+}

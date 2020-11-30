@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/forms_widgets.dart';
 import 'package:tour_guide/widgets/signIn_passField.dart';
 import 'package:tour_guide/screens/signup_UI.dart';
-import 'package:tour_guide/main.dart';
 
 void main() {
   runApp(SignIn());
@@ -69,10 +69,7 @@ class _BuildSignInState extends State<BuildSignIn> {
                     borderRadius: BorderRadius.all(Radius.circular(11))),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    usernameField(),
-                    SignInPassField(),
-                  ],
+                  children: <Widget>[usernameField(), SignInPassField()],
                 )),
             Padding(
               padding: EdgeInsets.only(top: 40),
@@ -85,10 +82,11 @@ class _BuildSignInState extends State<BuildSignIn> {
                       ),
                     );
                     Future.delayed(
-                        Duration(seconds: 2),
+                        Duration(seconds: 1),
                         () => Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => MyApp()),
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()),
                             ));
                   }
                 });

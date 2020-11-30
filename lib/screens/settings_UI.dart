@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/widgets/dash_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:tour_guide/widgets/fonts_style.dart';
 
 void main() => runApp(SettingsPage());
 
@@ -42,7 +42,7 @@ Widget settings() {
       Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Colors.indigo[50],
+          color: Color.fromRGBO(102, 165, 255, 0.2),
           borderRadius: BorderRadius.all(Radius.circular(11)),
         ),
         child: GestureDetector(
@@ -56,11 +56,7 @@ Widget settings() {
                 leading: Text(
                   'Edit Profile',
                   textAlign: TextAlign.left,
-                  style: GoogleFonts.roboto(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: tilesStyle(),
                 ),
               ),
             ],
@@ -80,7 +76,7 @@ Widget settingTile(onTap, IconData icon, String title) {
   return Container(
     padding: EdgeInsets.all(10),
     decoration: BoxDecoration(
-      color: Colors.indigo[50],
+      color: Color.fromRGBO(102, 165, 255, 0.2),
       borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
     child: GestureDetector(
@@ -98,11 +94,7 @@ Widget settingTile(onTap, IconData icon, String title) {
             leading: Text(
               title,
               textAlign: TextAlign.left,
-              style: GoogleFonts.roboto(
-                color: Colors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              style: tilesStyle(),
             ),
           ),
         ],
