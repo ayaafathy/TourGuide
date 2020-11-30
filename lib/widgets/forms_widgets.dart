@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:tour_guide/widgets/fonts_style.dart';
 
-Widget buildTexField(IconData icon, String hint, bool obscure, String emptyMsg,
-    String lengthMsg) {
+Widget usernameField() {
   return TextFormField(
-      decoration: InputDecoration(
-          icon: Icon(
-            icon,
-            size: 25,
-            color: Colors.grey[900],
-          ),
-          hintText: hint,
-          contentPadding: const EdgeInsets.all(5.0)),
-      style: GoogleFonts.roboto(
-        color: Colors.grey[900],
-        fontSize: 17,
-        fontWeight: FontWeight.w500,
-      ),
-      obscureText: obscure,
-      validator: (value) {
-        if (value.isEmpty) {
-          return (emptyMsg);
-        } else if (value.length > 10) {
-          return (lengthMsg);
-        }
-        return null;
+    obscureText: false,
+    decoration: InputDecoration(
+        prefixIcon: Icon(
+          Icons.person,
+          size: 25,
+          color: Colors.grey[900],
+        ),
+        hintText: 'Username',
+        hintStyle: hintStyle(),
+        contentPadding: const EdgeInsets.all(5.0)),
+    style: textStyle(),
+    validator: (value) {
+      if (value.isEmpty) {
+        return ('Username is required');
+      } else if (value.length > 10) {
+        return ('Invalid username');
       }
-      //autofocus: true,
-      //onSaved: (value){},
-      //autocorrect: ,
-      );
+      return null;
+    },
+  );
+}
+
+Widget buildFooterText(String tex, Color color, double size) {
+  return Text(
+    tex,
+    textAlign: TextAlign.center,
+    style: GoogleFonts.roboto(
+      color: color,
+      fontSize: size,
+      fontWeight: FontWeight.w500,
+    ),
+  );
 }
 
 Widget buildButton(String text, IconData icon, onPress) {
@@ -79,26 +85,14 @@ Widget buildAPIButtons() {
         onPressed: () {},
       ),
 
-      /* SignInButtonBuilder(
-                  icon: Icons.email,
-                  text: "Ignored for mini button",
-                  mini: true,
-                  onPressed: () {},
-                  backgroundColor: Colors.cyan,
-                ),
-                */
+      // SignInButtonBuilder(
+      //            icon: Icons.email,
+      //            text: "Ignored for mini button",
+      //            mini: true,
+      //            onPressed: () {},
+      //            backgroundColor: Colors.cyan,
+      //          ),
+      //
     ],
-  );
-}
-
-Widget buildFooterText(String tex, Color color, double size) {
-  return Text(
-    tex,
-    textAlign: TextAlign.center,
-    style: GoogleFonts.roboto(
-      color: color,
-      fontSize: size,
-      fontWeight: FontWeight.w500,
-    ),
   );
 }
