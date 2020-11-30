@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tour_guide/widgets/fonts_style.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
 import 'package:tour_guide/screens/signin_UI.dart';
 import 'package:tour_guide/main.dart';
@@ -50,47 +51,51 @@ class _DashNavState extends State<DashNav> {
   }
 
   Column buildList() {
+    ///ICON COLOR: GREY
+    Color iconColor = Colors.grey[700];
     return Column(
       children: [
         ListTile(
-            leading: Icon(Icons.explore),
-            tileColor: Colors.indigo[100],
-            title: Text("LET'S DO SOMETHING!"),
+            leading: Icon(Icons.explore, color: iconColor),
+            tileColor: Color.fromRGBO(102, 165, 255, 0.2),
+            title: Text("LET'S DO SOMETHING!", style: tilesStyle()),
             onTap: () {}),
         Divider(),
         ListTile(
           leading: Icon(Icons.home),
-          title: Text('Feed'),
+          title: Text('Feed', style: tilesStyle()),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => MyApp()));
           },
         ),
         ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Notifications'),
+            leading: Icon(Icons.notifications, color: iconColor),
+            title: Text('Notifications', style: tilesStyle()),
             onTap: () {}),
         ListTile(
-            leading: Icon(Icons.recommend),
-            title: Text('Recommendations'),
+            leading: Icon(Icons.recommend, color: iconColor),
+            title: Text('Recommendations', style: tilesStyle()),
             onTap: () {}),
         ListTile(
-            leading: Icon(Icons.favorite), title: Text('Saved'), onTap: () {}),
+            leading: Icon(Icons.favorite, color: iconColor),
+            title: Text('Saved', style: tilesStyle()),
+            onTap: () {}),
         ListTile(
-            leading: Icon(Icons.where_to_vote),
-            title: Text('Visited places'),
+            leading: Icon(Icons.where_to_vote, color: iconColor),
+            title: Text('Visited places', style: tilesStyle()),
             onTap: () {}),
         Divider(),
         ListTile(
-            leading: Icon(Icons.settings),
-            title: Text("Settings"),
+            leading: Icon(Icons.settings, color: iconColor),
+            title: Text('Settings', style: tilesStyle()),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SettingsPage()));
             }),
         ListTile(
-          leading: Icon(Icons.power_settings_new),
-          title: Text("Logout"),
+          leading: Icon(Icons.power_settings_new, color: iconColor),
+          title: Text('Logout', style: tilesStyle()),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => SignIn()));
