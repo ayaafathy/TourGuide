@@ -2,31 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget buildTexField(IconData icon, String hint, bool obscure) {
+Widget buildTexField(IconData icon, String hint, bool obscure, String emptyMsg,
+    String lengthMsg) {
   return TextFormField(
-    decoration: InputDecoration(
-        icon: Icon(
-          icon,
-          size: 25,
-          color: Colors.black,
-        ),
-        hintText: hint,
-        contentPadding: const EdgeInsets.all(5.0)),
-    style: GoogleFonts.roboto(
-      color: Colors.black,
-      fontSize: 17,
-      fontWeight: FontWeight.w500,
-    ),
-    obscureText: obscure,
-    /*validator: (value) {
+      decoration: InputDecoration(
+          icon: Icon(
+            icon,
+            size: 25,
+            color: Colors.grey[900],
+          ),
+          hintText: hint,
+          contentPadding: const EdgeInsets.all(5.0)),
+      style: GoogleFonts.roboto(
+        color: Colors.grey[900],
+        fontSize: 17,
+        fontWeight: FontWeight.w500,
+      ),
+      obscureText: obscure,
+      validator: (value) {
         if (value.isEmpty) {
-          return ('Please enter some text');
+          return (emptyMsg);
+        } else if (value.length > 10) {
+          return (lengthMsg);
         }
-      }*/
-
-    //onSaved: (value){},
-    //autocorrect: ,
-  );
+        return null;
+      }
+      //autofocus: true,
+      //onSaved: (value){},
+      //autocorrect: ,
+      );
 }
 
 Widget buildButton(String text, IconData icon, onPress) {
@@ -36,7 +40,7 @@ Widget buildButton(String text, IconData icon, onPress) {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     icon: icon,
     textColor: Colors.grey[600],
-    iconColor: Colors.black,
+    iconColor: Colors.grey[900],
     onPressed: onPress,
     backgroundColor: Colors.white,
   );

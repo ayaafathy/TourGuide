@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      //remove container and put scaffold directly
+      //put material in runapp and return scaffold instead
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(

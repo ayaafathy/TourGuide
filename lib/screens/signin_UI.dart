@@ -54,51 +54,73 @@ class BuildSignIn extends StatefulWidget {
 }
 
 class _BuildSignInState extends State<BuildSignIn> {
+  final _signInKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(left: 35, top: 90, right: 35),
-        child: (Column(
-          children: <Widget>[
-            Container(
-                padding: EdgeInsets.only(left: 5, top: 2, right: 5, bottom: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white70,
-                    borderRadius: BorderRadius.all(Radius.circular(11))),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    buildTexField(Icons.person, 'Username', false),
-                    buildTexField(Icons.vpn_key, 'Password', true),
-                  ],
-                )),
-            Padding(
-              padding: EdgeInsets.only(top: 40),
-              child: buildButton('Continue', Icons.email, () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyApp()));
-              }),
-            ),
-            googleButton('Continue with Google'),
-            buildAPIButtons(),
-            Padding(
-                padding: EdgeInsets.only(top: 80, bottom: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    buildFooterText("Don't have an account?", Colors.white, 16),
-                    new GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUp()),
+    return Form(
+        key: _signInKey,
+        child: Container(
+            margin: EdgeInsets.only(left: 35, top: 90, right: 35),
+            child: (Column(
+              children: <Widget>[
+                Container(
+                    padding:
+                        EdgeInsets.only(left: 5, top: 2, right: 5, bottom: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white70,
+                        borderRadius: BorderRadius.all(Radius.circular(11))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        buildTexField(Icons.person, 'Username', false,
+                            'Enter a Username', 'Invalid Username'),
+                        buildTexField(Icons.lock, 'Password', true,
+                            'Enter a password', 'Invalid Password'),
+                      ],
+                    )),
+                Padding(
+                  padding: EdgeInsets.only(top: 40),
+                  child: Builder(builder: (BuildContext context) {
+                    return buildButton('Continue', Icons.email, () {
+                      if (_signInKey.currentState.validate()) {
+                        Scaffold.of(context).showSnackBar(
+                          new SnackBar(
+                            content: Text('Logged In!'),
+                          ),
                         );
-                      },
-                      child: buildFooterText('Create One!', Colors.white, 14),
-                    ),
-                  ],
-                )),
-          ],
-        )));
+                        Future.delayed(
+                            Duration(seconds: 2),
+                            () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyApp()),
+                                ));
+                      }
+                    });
+                  }),
+                ),
+                googleButton('Continue with Google'),
+                buildAPIButtons(),
+                Padding(
+                    padding: EdgeInsets.only(top: 80, bottom: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        buildFooterText(
+                            "Don't have an account?", Colors.white, 16),
+                        new GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SignUp()),
+                            );
+                          },
+                          child:
+                              buildFooterText('Create One!', Colors.white, 14),
+                        ),
+                      ],
+                    )),
+              ],
+            ))));
   }
 }
