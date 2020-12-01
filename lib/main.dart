@@ -15,7 +15,7 @@ void main() => runApp(
         routes: {
           '/signin': (context) => MyApp(),
           '/signup': (context) => SignUp(),
-          '/settings': (context) => SettingsPage(),
+          '/settings': (context) => SettingsScreen(),
           '/home': (context) => HomeScreen(),
           '/dest': (context) => DestinationScreen(),
           '/loc': (context) => LocProfile(),

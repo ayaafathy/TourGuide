@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
+import 'package:tour_guide/screens/faq_UI.dart';
 
-void main() => runApp(SettingsPage());
+void main() => runApp(SettingsScreen());
 
-class SettingsPage extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +17,7 @@ class SettingsPage extends StatelessWidget {
           body: SafeArea(
             child: Container(
               margin: EdgeInsets.all(20),
-              child: settings(),
+              child: settings(context),
             ),
           ),
         ),
@@ -25,7 +26,7 @@ class SettingsPage extends StatelessWidget {
   }
 }
 
-Widget settings() {
+Widget settings(BuildContext context) {
   return GridView.count(
     crossAxisCount: 2,
     padding: EdgeInsets.all(4.0),
@@ -57,11 +58,13 @@ Widget settings() {
           ),
         ),
       ),
-      settingTile(() {}, Icons.palette, 'Appearance'),
       settingTile(() {}, Icons.lock, 'Privacy'),
-      settingTile(() {}, Icons.person, 'Linked Accounts'),
+      settingTile(() {}, Icons.palette, 'Appearance'),
       settingTile(() {}, Icons.notifications, 'Notifications'),
-      settingTile(() {}, Icons.help_center_rounded, 'Help'),
+      settingTile(() {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HelpCenter()));
+      }, Icons.help_rounded, 'Help Center'),
     ],
   );
 }

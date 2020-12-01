@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_guide/homepage.dart';
+//import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
 //import 'package:tour_guide/screens/signin_UI.dart';
@@ -102,7 +102,7 @@ class _DashNavState extends State<DashNav> {
             onTap: () {
               Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()));
+                  MaterialPageRoute(builder: (context) => SettingsScreen()));
             }),
         ListTile(
           leading: Icon(Icons.power_settings_new, color: iconColor),
