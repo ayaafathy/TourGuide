@@ -41,7 +41,7 @@ class LocationProfilePage extends StatelessWidget {
       height: screenSize.height / 3.3,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(locations[0].coverImageUrl),
+          image: AssetImage(locations[2].coverImageUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -55,7 +55,7 @@ class LocationProfilePage extends StatelessWidget {
         height: 130.0,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(locations[0].imageUrl),
+            image: AssetImage(locations[2].imageUrl),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
@@ -77,7 +77,7 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      locations[0].name,
+      locations[2].name,
       style: _nameTextStyle,
     );
   }
@@ -90,7 +90,7 @@ class LocationProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Text(
-        locations[0].shortInfo,
+        locations[2].shortInfo,
         style: TextStyle(
           fontFamily: 'Roboto',
           color: Colors.grey[700],
@@ -148,7 +148,7 @@ class LocationProfilePage extends StatelessWidget {
               },
               starCount: 5,
               isReadOnly: false,
-              rating: locations[0].rating,
+              rating: locations[2].rating,
               size: 30.0,
               color: Colors.lightBlue[300],
               borderColor: Colors.lightBlue[300],
@@ -173,7 +173,7 @@ class LocationProfilePage extends StatelessWidget {
       alignment: Alignment.center,
       margin: EdgeInsets.only(top: 16, bottom: 6, left: 18, right: 18),
       child: Text(
-        locations[0].bio,
+        locations[2].bio,
         textAlign: TextAlign.center,
         style: bioTextStyle,
       ),
