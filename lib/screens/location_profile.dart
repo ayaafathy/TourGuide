@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tour_guide/models/location_model.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
@@ -13,7 +14,6 @@ class LocProfile extends StatelessWidget {
     //  title: "Location Profile",
     //  home: LocationProfilePage(),
     //debugShowCheckedModeBanner : false;
-    LocationProfilePage cairoTower = new LocationProfilePage();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -21,7 +21,7 @@ class LocProfile extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, cairoTower._name),
+          appBar: buildAppBar(null, () {}, locations[1].name),
           drawer: DashNav(),
           body: SafeArea(
             child: LocationProfilePage(),
@@ -34,19 +34,14 @@ class LocProfile extends StatelessWidget {
 
 // ignore: must_be_immutable
 class LocationProfilePage extends StatelessWidget {
-  final String _name = "Cairo Tower";
-  final String _status = "Tallest Tower in Egypt and Africa";
-  final String _bio =
-      "\"The Cairo Tower - commonly known to locals as Nasser's Pineapple - is a free-standing concrete tower in Cairo, Egypt. At 187 m, it has been the tallest structure in Egypt and North Africa for about 50 years.\"";
 
-  var rating = 5.0;
 
   Widget _buildCoverImage(Size screenSize) {
     return Container(
       height: screenSize.height / 3.3,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/cover.jpg'),
+          image: AssetImage(locations[0].coverImageUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -60,7 +55,7 @@ class LocationProfilePage extends StatelessWidget {
         height: 130.0,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/tower.jpg'),
+            image: AssetImage(locations[0].imageUrl),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
@@ -82,7 +77,7 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      _name,
+      locations[0].name,
       style: _nameTextStyle,
     );
   }
@@ -95,7 +90,7 @@ class LocationProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Text(
-        _status,
+        locations[0].shortInfo,
         style: TextStyle(
           fontFamily: 'Roboto',
           color: Colors.grey[700],
@@ -153,7 +148,7 @@ class LocationProfilePage extends StatelessWidget {
               },
               starCount: 5,
               isReadOnly: false,
-              rating: rating,
+              rating: locations[0].rating,
               size: 30.0,
               color: Colors.lightBlue[300],
               borderColor: Colors.lightBlue[300],
@@ -178,7 +173,7 @@ class LocationProfilePage extends StatelessWidget {
       alignment: Alignment.center,
       margin: EdgeInsets.only(top: 16, bottom: 6, left: 18, right: 18),
       child: Text(
-        _bio,
+        locations[0].bio,
         textAlign: TextAlign.center,
         style: bioTextStyle,
       ),
