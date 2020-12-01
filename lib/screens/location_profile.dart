@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-import 'package:tour_guide/widgets/dash_UI.dart';
+import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 //import 'package:tour_guide/main.dart';
 
@@ -13,10 +13,6 @@ class LocProfile extends StatelessWidget {
     //  title: "Location Profile",
     //  home: LocationProfilePage(),
     //debugShowCheckedModeBanner : false;
-
-    final GlobalKey<ScaffoldState> _scaffoldKey =
-        new GlobalKey<ScaffoldState>();
-
     LocationProfilePage cairoTower = new LocationProfilePage();
 
     return MaterialApp(
@@ -25,10 +21,7 @@ class LocProfile extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(() {
-            _scaffoldKey.currentState.openDrawer();
-          }, cairoTower._name),
-          key: _scaffoldKey,
+          appBar: buildAppBar(null, () {}, cairoTower._name),
           drawer: DashNav(),
           body: SafeArea(
             child: LocationProfilePage(),

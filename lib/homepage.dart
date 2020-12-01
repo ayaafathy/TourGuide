@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:tour_guide/widgets/drawer_UI.dart';
+import 'package:tour_guide/widgets/appBar.dart';
 // ignore: unused_import
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tour_guide/widgets/destination_carousel.dart';
@@ -18,7 +20,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
+
     return Scaffold(
+      appBar: buildAppBar(Icons.menu, () {
+        _scaffoldKey.currentState.openDrawer();
+      }, 'Feed'),
+      key: _scaffoldKey,
+      drawer: DashNav(),
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 30.0),

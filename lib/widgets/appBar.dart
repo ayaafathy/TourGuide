@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-Widget buildAppBar(onPress, String title) {
+Widget buildAppBar(IconData icon, onPress, String title) {
   return AppBar(
     elevation: 5,
     backgroundColor: Colors.white,
     leading: IconButton(
       icon: Icon(
-        Icons.menu,
+        icon,
         color: Colors.lightBlue[300],
         size: 35,
       ),
@@ -17,7 +17,7 @@ Widget buildAppBar(onPress, String title) {
       title,
       style: TextStyle(
         color: Colors.lightBlue[300],
-        fontSize: 22,
+        fontSize: 20,
       ),
     ),
     centerTitle: true,

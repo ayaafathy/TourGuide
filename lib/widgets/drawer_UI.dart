@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
-import 'package:tour_guide/screens/signin_UI.dart';
+//import 'package:tour_guide/screens/signin_UI.dart';
 import 'package:tour_guide/main.dart';
 
 class DashNav extends StatefulWidget {
@@ -66,7 +67,7 @@ class _DashNavState extends State<DashNav> {
           title: Text('Feed', style: tilesStyle()),
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MyApp()));
+                context, MaterialPageRoute(builder: (context) => HomeScreen()));
           },
         ),
         ListTile(
@@ -98,7 +99,7 @@ class _DashNavState extends State<DashNav> {
           title: Text('Logout', style: tilesStyle()),
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => SignIn()));
+                context, MaterialPageRoute(builder: (context) => MyApp()));
           },
         ),
       ],
