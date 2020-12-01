@@ -60,37 +60,47 @@ class _DashNavState extends State<DashNav> {
             leading: Icon(Icons.explore, color: iconColor),
             tileColor: Color.fromRGBO(102, 165, 255, 0.2),
             title: Text("LET'S DO SOMETHING!", style: tilesStyle()),
-            onTap: () {}),
+            onTap: () {
+              Navigator.pop(context);
+            }),
         Divider(),
         ListTile(
           leading: Icon(Icons.home),
           title: Text('Feed', style: tilesStyle()),
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            Navigator.pop(context);
           },
         ),
         ListTile(
             leading: Icon(Icons.notifications, color: iconColor),
             title: Text('Notifications', style: tilesStyle()),
-            onTap: () {}),
+            onTap: () {
+              Navigator.pop(context);
+            }),
         ListTile(
             leading: Icon(Icons.recommend, color: iconColor),
             title: Text('Recommendations', style: tilesStyle()),
-            onTap: () {}),
+            onTap: () {
+              Navigator.pop(context);
+            }),
         ListTile(
             leading: Icon(Icons.favorite, color: iconColor),
             title: Text('Saved', style: tilesStyle()),
-            onTap: () {}),
+            onTap: () {
+              Navigator.pop(context);
+            }),
         ListTile(
             leading: Icon(Icons.where_to_vote, color: iconColor),
             title: Text('Visited places', style: tilesStyle()),
-            onTap: () {}),
+            onTap: () {
+              Navigator.pop(context);
+            }),
         Divider(),
         ListTile(
             leading: Icon(Icons.settings, color: iconColor),
             title: Text('Settings', style: tilesStyle()),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SettingsPage()));
             }),
@@ -98,6 +108,7 @@ class _DashNavState extends State<DashNav> {
           leading: Icon(Icons.power_settings_new, color: iconColor),
           title: Text('Logout', style: tilesStyle()),
           onTap: () {
+            Navigator.pop(context);
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => MyApp()));
           },
