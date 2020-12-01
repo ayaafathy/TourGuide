@@ -21,7 +21,7 @@ class LocProfile extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, locations[1].name),
+          appBar: buildAppBar(null, () {}, locations[0].name),
           drawer: DashNav(),
           body: SafeArea(
             child: LocationProfilePage(),
@@ -41,7 +41,7 @@ class LocationProfilePage extends StatelessWidget {
       height: screenSize.height / 3.3,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(locations[2].coverImageUrl),
+          image: AssetImage(locations[0].coverImageUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -55,7 +55,7 @@ class LocationProfilePage extends StatelessWidget {
         height: 130.0,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(locations[2].imageUrl),
+            image: AssetImage(locations[0].imageUrl),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
@@ -77,7 +77,7 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      locations[2].name,
+      locations[0].name,
       style: _nameTextStyle,
     );
   }
@@ -90,7 +90,7 @@ class LocationProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Text(
-        locations[2].shortInfo,
+        locations[0].shortInfo,
         style: TextStyle(
           fontFamily: 'Roboto',
           color: Colors.grey[700],
@@ -148,7 +148,7 @@ class LocationProfilePage extends StatelessWidget {
               },
               starCount: 5,
               isReadOnly: false,
-              rating: locations[2].rating,
+              rating: locations[0].rating,
               size: 30.0,
               color: Colors.lightBlue[300],
               borderColor: Colors.lightBlue[300],
@@ -173,7 +173,7 @@ class LocationProfilePage extends StatelessWidget {
       alignment: Alignment.center,
       margin: EdgeInsets.only(top: 16, bottom: 6, left: 18, right: 18),
       child: Text(
-        locations[2].bio,
+        locations[0].bio,
         textAlign: TextAlign.center,
         style: bioTextStyle,
       ),
