@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tour_guide/widgets/dash_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 
 void main() => runApp(SettingsPage());
 
 class SettingsPage extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,11 +12,7 @@ class SettingsPage extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(() {
-            _scaffoldKey.currentState.openDrawer();
-          }, 'Settings'),
-          key: _scaffoldKey,
-          drawer: DashNav(),
+          appBar: buildAppBar(null, () {}, 'Settings'),
           body: SafeArea(
             child: Container(
               margin: EdgeInsets.all(20),
@@ -67,7 +61,7 @@ Widget settings() {
       settingTile(() {}, Icons.lock, 'Privacy'),
       settingTile(() {}, Icons.person, 'Linked Accounts'),
       settingTile(() {}, Icons.notifications, 'Notifications'),
-      settingTile(() {}, Icons.help_center, 'Help'),
+      settingTile(() {}, Icons.help_center_rounded, 'Help'),
     ],
   );
 }
