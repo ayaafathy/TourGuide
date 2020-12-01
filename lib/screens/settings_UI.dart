@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
-import 'package:tour_guide/screens/faq_UI.dart';
+import 'package:tour_guide/screens/help_center.dart';
 
 void main() => runApp(SettingsScreen());
 
@@ -37,7 +37,7 @@ Widget settings(BuildContext context) {
       Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(102, 165, 255, 0.2),
+          color: Color.fromRGBO(102, 165, 255, 0.1),
           borderRadius: BorderRadius.all(Radius.circular(11)),
         ),
         child: GestureDetector(
@@ -65,6 +65,7 @@ Widget settings(BuildContext context) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => HelpCenter()));
       }, Icons.help_rounded, 'Help Center'),
+      // settingTile(() {}, Icons., 'Notifications'),
     ],
   );
 }
@@ -73,7 +74,7 @@ Widget settingTile(onTap, IconData icon, String title) {
   return Container(
     padding: EdgeInsets.all(10),
     decoration: BoxDecoration(
-      color: Color.fromRGBO(102, 165, 255, 0.2),
+      color: Color.fromRGBO(102, 165, 255, 0.1),
       borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
     child: GestureDetector(
