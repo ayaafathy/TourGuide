@@ -10,6 +10,7 @@ import 'package:tour_guide/screens/user_profile.dart';
 
 void main() => runApp(
       MaterialApp(
+        title: 'Named Routes',
         debugShowCheckedModeBanner: false,
         initialRoute: '/signin',
         routes: {

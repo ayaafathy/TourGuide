@@ -6,8 +6,17 @@ import 'package:tour_guide/widgets/appBar.dart';
 //import 'package:tour_guide/main.dart';
 
 void main() => runApp(LocProfile());
-
+var pageIndex;
 class LocProfile extends StatelessWidget {
+  var locIndex;
+  LocProfile([int index]){
+    locIndex = index;
+    pageIndex = locIndex;
+  }
+  LocProfile.custom([int index]){
+    this.locIndex = index;
+    pageIndex = locIndex;
+  }
   @override
   Widget build(BuildContext context) {
     //return MaterialApp(
@@ -21,7 +30,7 @@ class LocProfile extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, locations[0].name),
+          appBar: buildAppBar(null, () {}, locations[locIndex].name),
           drawer: DashNav(),
           body: SafeArea(
             child: LocationProfilePage(),
@@ -41,7 +50,7 @@ class LocationProfilePage extends StatelessWidget {
       height: screenSize.height / 3.3,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(locations[0].coverImageUrl),
+          image: AssetImage(locations[pageIndex].coverImageUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -55,7 +64,7 @@ class LocationProfilePage extends StatelessWidget {
         height: 130.0,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(locations[0].imageUrl),
+            image: AssetImage(locations[pageIndex].imageUrl),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
@@ -77,7 +86,7 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      locations[0].name,
+      locations[pageIndex].name,
       style: _nameTextStyle,
     );
   }
@@ -90,7 +99,7 @@ class LocationProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Text(
-        locations[0].shortInfo,
+        locations[pageIndex].shortInfo,
         style: TextStyle(
           fontFamily: 'Roboto',
           color: Colors.grey[700],
@@ -148,7 +157,7 @@ class LocationProfilePage extends StatelessWidget {
               },
               starCount: 5,
               isReadOnly: false,
-              rating: locations[0].rating,
+              rating: locations[pageIndex].rating,
               size: 30.0,
               color: Colors.lightBlue[300],
               borderColor: Colors.lightBlue[300],
@@ -173,7 +182,7 @@ class LocationProfilePage extends StatelessWidget {
       alignment: Alignment.center,
       margin: EdgeInsets.only(top: 16, bottom: 6, left: 18, right: 18),
       child: Text(
-        locations[0].bio,
+        locations[pageIndex].bio,
         textAlign: TextAlign.center,
         style: bioTextStyle,
       ),
