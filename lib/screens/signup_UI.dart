@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/forms_widgets.dart';
 import 'package:tour_guide/widgets/signUp_widgets.dart';
 import 'package:tour_guide/screens/signin_UI.dart';
@@ -90,7 +91,8 @@ class _BuildSignUpState extends State<BuildSignUp> {
                         Duration(seconds: 1),
                         () => Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => MyApp()),
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()),
                             ));
                   }
                 });

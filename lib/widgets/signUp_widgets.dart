@@ -31,21 +31,19 @@ class PasswordField extends StatefulWidget {
 class _PasswordFieldState extends State<PasswordField> {
   bool passVisible;
   String password;
-
-  final passwordValidator = MultiValidator([
-    RequiredValidator(errorText: 'Password is required'),
-    RangeValidator(
-        min: 8,
-        max: 12,
-        errorText: 'Password must be between 8 and 12 characters'),
-    PatternValidator(r'^(?=.*?[A-Z])(?=.*?[a-z]).{8,12}$',
-        errorText: 'Passwords must have at least one uppercase letter')
-  ]);
+  final _passwordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     passVisible = false;
+    _passwordController.addListener(() => password);
+  }
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -76,8 +74,18 @@ class _PasswordFieldState extends State<PasswordField> {
           //helperStyle: TextStyle(color: Colors.red, fontSize: 15),
           contentPadding: const EdgeInsets.all(5.0)),
       style: textStyle(),
-      validator: passwordValidator,
-      onChanged: (value) => password = value,
+      controller: _passwordController,
+      validator: (value) {
+        if (value.length > 12 || value.length < 8) {
+          return ('Password must be between 8 and 12 characters');
+        } else if (!value.contains(new RegExp(r'[A-Z]'))) {
+          return ('passwords must have at least one uppercase letter');
+        } else if (!value.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+          return ('passwords must have at least one special character');
+        }
+        return null;
+      },
+      //onChanged: (value) => password = value,
     );
   }
 }
@@ -88,11 +96,18 @@ class ConfirmPassField extends StatefulWidget {
 
 class _ConfirmPassFieldState extends State<ConfirmPassField> {
   bool confirmVisible;
+  final _confirmController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     confirmVisible = false;
+  }
+
+  @override
+  void dispose() {
+    _confirmController.dispose();
+    super.dispose();
   }
 
   @override
@@ -121,8 +136,14 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
           hintStyle: hintStyle(),
           contentPadding: const EdgeInsets.all(5.0)),
       style: textStyle(),
-      validator: (val) => MatchValidator(errorText: 'Passwords do not match')
-          .validateMatch(val, _PasswordFieldState().password),
+      controller: _confirmController,
+      //validator: (value) {
+      //  if (_confirmController.text !=
+      //      _PasswordFieldState()._passwordController.text) {
+      //    return ('Passwords do not match');
+      //  }
+      // return null;
+      //},
     );
   }
 }
