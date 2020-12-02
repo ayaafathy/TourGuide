@@ -4,26 +4,29 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 
 Widget usernameField() {
-  return TextFormField(
-    obscureText: false,
-    decoration: InputDecoration(
-        prefixIcon: Icon(
-          Icons.person,
-          size: 25,
-          color: Colors.grey[900],
-        ),
-        hintText: 'Username',
-        hintStyle: hintStyle(),
-        contentPadding: const EdgeInsets.all(5.0)),
-    style: textStyle(),
-    validator: (value) {
-      if (value.isEmpty) {
-        return ('Username is required');
-      } else if (value.length > 10) {
-        return ('Invalid username');
-      }
-      return null;
-    },
+  return Padding(
+    padding: EdgeInsets.all(5.0),
+    child: TextFormField(
+      obscureText: false,
+      decoration: InputDecoration(
+          prefixIcon: Icon(
+            Icons.person,
+            size: 25,
+            color: Colors.grey[900],
+          ),
+          hintText: 'Username',
+          hintStyle: hintStyle(),
+          contentPadding: const EdgeInsets.all(5.0)),
+      style: textStyle(),
+      validator: (value) {
+        if (value.isEmpty) {
+          return ('Username is required');
+        } else if (value.length > 10) {
+          return ('Invalid username');
+        }
+        return null;
+      },
+    ),
   );
 }
 

@@ -16,36 +16,39 @@ class _SignInPassFieldState extends State<SignInPassField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: !passVisible,
-      decoration: InputDecoration(
-          prefixIcon: Icon(
-            Icons.lock,
-            size: 25,
-            color: Colors.grey[900],
-          ),
-          suffixIcon: IconButton(
-            icon: Icon(
-              passVisible ? Icons.visibility : Icons.visibility_off,
+    return Padding(
+      padding: EdgeInsets.all(5.0),
+      child: TextFormField(
+        obscureText: !passVisible,
+        decoration: InputDecoration(
+            prefixIcon: Icon(
+              Icons.lock,
               size: 25,
               color: Colors.grey[900],
             ),
-            onPressed: () {
-              setState(() {
-                passVisible = !passVisible;
-              });
-            },
-          ),
-          hintText: 'Password',
-          hintStyle: hintStyle(),
-          contentPadding: const EdgeInsets.all(5.0)),
-      style: textStyle(),
-      validator: (value) {
-        if (value.isEmpty) {
-          return ('Password is required');
-        }
-        return null;
-      },
+            suffixIcon: IconButton(
+              icon: Icon(
+                passVisible ? Icons.visibility : Icons.visibility_off,
+                size: 25,
+                color: Colors.grey[900],
+              ),
+              onPressed: () {
+                setState(() {
+                  passVisible = !passVisible;
+                });
+              },
+            ),
+            hintText: 'Password',
+            hintStyle: hintStyle(),
+            contentPadding: const EdgeInsets.all(5.0)),
+        style: textStyle(),
+        validator: (value) {
+          if (value.isEmpty) {
+            return ('Password is required');
+          }
+          return null;
+        },
+      ),
     );
   }
 }
