@@ -7,12 +7,17 @@ import 'package:tour_guide/screens/destination_screen.dart';
 import 'package:tour_guide/screens/location_profile.dart';
 import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
+import 'package:tour_guide/screens/startup_animation.dart';
+// import 'package:tour_guide/screens/map.dart';
+
+// import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() => runApp(
       MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/signin',
+        initialRoute: '/Start',
         routes: {
+          '/Start': (context) => MyAnim(),
           '/signin': (context) => MyApp(),
           '/signup': (context) => SignUp(),
           '/settings': (context) => SettingsScreen(),
@@ -21,6 +26,7 @@ void main() => runApp(
           '/loc': (context) => LocProfile(),
           '/saved': (context) => MySavedList(),
           '/profile': (context) => UserProfile(),
+          // '/map': (context) => Map(),
         },
       ),
     );
