@@ -8,63 +8,89 @@ void main()
 class MySavedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
 
-    singleCard(iconcode, icontitle){
-      return Card(
-        child: InkWell(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Icon(IconData(iconcode,fontFamily: 'MaterialIcons'),
-                color: Colors.blue,
-                size: 40.0,),
-              Text(
-                icontitle,
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 60),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+              IconButton(
+              icon: Icon(Icons.arrow_back),
+          iconSize: 30.0,
+          color: Colors.black,
+          onPressed: () => Navigator.pop(context),
+        ),
+                Row(
+                children: [
+                  IconButton(icon: Icon(Icons.notifications), onPressed: (){}),
+                ],
+              ),
+              ],
+              ),
+              SizedBox(height: 37),
+              Text.rich(
+              TextSpan(
+                text: 'Welcome,',
+                style: TextStyle(fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                    text: ' Marc',
+                    style: TextStyle(fontWeight: FontWeight.normal),
+                  ),
+                ]
+              ),
+                  style: TextStyle(fontSize: 50),
+              ),
+              SizedBox(height: 30),
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search, size:18),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  hintText: 'Search',
                 ),
+              ),
+              SizedBox(height: 40),
+              Text(
+                'Saved Places',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+              ),
+              SizedBox(height: 10),
+              SizedBox(
+                height: 300,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.491,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 20,
+
+                  physics: NeverScrollableScrollPhysics(),
+                children: [
+                  for (var country in countries)
+                    Image.asset('assets/images/$country.jpg',
+                      height: 400,
+                      width: 400,
+                        fit: BoxFit.fill,
+
+                        scale: 0.8)
+                ],),
               )
+
+
+
+
             ],
           ),
         ),
-      );
-    }
-
-    return Scaffold(
-      appBar: AppBar(
-
-        leading: IconButton(
-          icon: Icon(
-            Icons.notes_rounded,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            // do something
-          },
-        ),
-
-
-        title: Text('Saved List'),
-        centerTitle: true,
-
-
-      ),
-      body: new GridView.count(
-        crossAxisCount: 3,
-        children: <Widget>[
-          singleCard(62168,'Masr'),
-          singleCard(62168,'tagmo3'),
-          singleCard(62168,'tahrir'),
-          singleCard(62168,'Mat7af'),
-          singleCard(62168,'Qubaa'),
-          singleCard(62168,'saba7 fol'),
-
-
-        ],
       ),
     );
   }
 }
+final countries = ['paris' , 'venice', 'tower', 'newyork', 'santorini', 'saopaulo'];
