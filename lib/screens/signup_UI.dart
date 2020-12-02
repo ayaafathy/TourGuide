@@ -61,7 +61,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
     return Form(
         key: _signUpKey,
         child: Container(
-          margin: EdgeInsets.only(left: 35, top: 60, right: 35),
+          margin: EdgeInsets.only(left: 35, top: 45, right: 35),
           child: (Column(children: <Widget>[
             Container(
                 padding: EdgeInsets.only(left: 5, top: 2, right: 5, bottom: 10),
@@ -78,7 +78,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                   ],
                 )),
             Padding(
-              padding: EdgeInsets.only(top: 30),
+              padding: EdgeInsets.only(top: 20),
               child: Builder(builder: (BuildContext context) {
                 return buildButton('Continue', Icons.email, () {
                   if (_signUpKey.currentState.validate()) {
@@ -101,7 +101,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
             googleButton('Continue with Google'),
             buildAPIButtons(),
             Padding(
-              padding: EdgeInsets.only(top: 30, bottom: 10),
+              padding: EdgeInsets.only(top: 25, bottom: 10),
               child: new GestureDetector(
                 onTap: () {
                   Navigator.push(
