@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 //import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
+import 'package:tour_guide/screens/savelist_UI.dart';
 //import 'package:tour_guide/screens/signin_UI.dart';
 import 'package:tour_guide/main.dart';
 
@@ -88,6 +89,8 @@ class _DashNavState extends State<DashNav> {
             title: Text('Saved', style: tilesStyle()),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MySavedList()));
             }),
         ListTile(
             leading: Icon(Icons.where_to_vote, color: iconColor),
