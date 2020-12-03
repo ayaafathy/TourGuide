@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tour_guide/screens/hotel_screen.dart';
 import 'package:tour_guide/screens/signin_UI.dart';
 import 'package:tour_guide/screens/signup_UI.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
@@ -8,6 +9,7 @@ import 'package:tour_guide/screens/location_profile.dart';
 import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
+
 // import 'package:tour_guide/screens/map.dart';
 
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -27,6 +29,7 @@ void main() => runApp(
           '/loc': (context) => LocProfile(),
           '/saved': (context) => MySavedList(),
           '/profile': (context) => UserProfile(),
+          'hotel': (context) => Hotelscreen(),
           // '/map': (context) => Map(),
         },
       ),
