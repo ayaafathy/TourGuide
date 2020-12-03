@@ -40,7 +40,6 @@ class _PasswordFieldState extends State<PasswordField> {
   void initState() {
     super.initState();
     passVisible = false;
-    _passwordController.addListener(() => password);
   }
 
   @override
@@ -145,13 +144,15 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
             contentPadding: const EdgeInsets.all(5.0)),
         style: textStyle(),
         controller: _confirmController,
-        //validator: (value) {
-        //  if (_confirmController.text !=
-        //      _PasswordFieldState()._passwordController.text) {
-        //    return ('Passwords do not match');
-        //  }
-        // return null;
-        //},
+        /*
+        validator: (value) {
+          if (_confirmController.text !=
+              _PasswordFieldState()._passwordController.text) {
+            return ('Passwords do not match');
+          }
+          return null;
+        },
+        */
       ),
     );
   }
