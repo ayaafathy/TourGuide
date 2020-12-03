@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tour_guide/models/tour_guides_model.dart';
 //import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
 import 'package:tour_guide/screens/savelist_UI.dart';
+import 'package:tour_guide/screens/guides_screen.dart';
+
 //import 'package:tour_guide/screens/signin_UI.dart';
 import 'package:tour_guide/main.dart';
+
+import '../homepage.dart';
 
 class DashNav extends StatefulWidget {
   @override
@@ -70,6 +75,8 @@ class _DashNavState extends State<DashNav> {
           title: Text('Feed', style: tilesStyle()),
           onTap: () {
             Navigator.pop(context);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomeScreen()));
           },
         ),
         ListTile(
@@ -97,6 +104,14 @@ class _DashNavState extends State<DashNav> {
             title: Text('Visited places', style: tilesStyle()),
             onTap: () {
               Navigator.pop(context);
+            }),
+        ListTile(
+            leading: Icon(Icons.beach_access, color: iconColor),
+            title: Text('Tours', style: tilesStyle()),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => GuideScreen()));
             }),
         Divider(),
         ListTile(

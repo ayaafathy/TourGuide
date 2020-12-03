@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tour_guide/widgets/appBar.dart';
+import 'package:tour_guide/widgets/drawer_UI.dart';
 
 void main() => runApp(Map());
 
@@ -31,10 +33,15 @@ class _MapsState extends State<Maps> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Maps'),
-      ),
+      appBar: buildAppBar(Icons.menu, () {
+        _scaffoldKey.currentState.openDrawer();
+      }, 'Maps'),
+      key: _scaffoldKey,
+      drawer: DashNav(),
       body: ListView(children: [
         Container(
             child: GoogleMap(
