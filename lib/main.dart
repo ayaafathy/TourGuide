@@ -8,6 +8,7 @@ import 'package:tour_guide/screens/destination_screen.dart';
 import 'package:tour_guide/screens/location_profile.dart';
 import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
+import 'package:tour_guide/screens/search_UI2.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
 
 // import 'package:tour_guide/screens/map.dart';
@@ -30,6 +31,7 @@ void main() => runApp(
           '/saved': (context) => MySavedList(),
           '/profile': (context) => UserProfile(),
           'hotel': (context) => Hotelscreen(),
+          '/search': (context) => Search(),
           // '/map': (context) => Map(),
         },
       ),
