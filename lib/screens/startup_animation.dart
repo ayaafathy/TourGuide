@@ -30,22 +30,22 @@ class LogoAnimation extends StatefulWidget {
 
 class _LogoAnimationState extends State<LogoAnimation>
     with TickerProviderStateMixin {
-  AnimationController _lc;
-  Animation _la;
+  AnimationController ac;
+  Animation a;
 
   @override
   void initState() {
-    _lc = AnimationController(duration: Duration(seconds: 6), vsync: this);
+    ac = AnimationController(duration: Duration(seconds: 6), vsync: this);
 
-    _la = Tween(begin: 0.0, end: 300.0)
-        .animate(CurvedAnimation(curve: Curves.ease, parent: _lc));
+    a = Tween(begin: 0.0, end: 300.0)
+        .animate(CurvedAnimation(curve: Curves.ease, parent: ac));
 
-    _lc.forward();
+    ac.forward();
 
-    _lc.addStatusListener((status) {
+    ac.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.push(
-            context, new MaterialPageRoute(builder: (context) => HomeScreen()));
+            context, new MaterialPageRoute(builder: (context) => SignIn()));
       }
     });
     super.initState();
@@ -53,14 +53,14 @@ class _LogoAnimationState extends State<LogoAnimation>
 
   @override
   void dispose() {
-    _lc?.dispose();
+    ac?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedLogo(
-      animation: _la,
+      animation: a,
     );
   }
 }
