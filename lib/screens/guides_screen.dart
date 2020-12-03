@@ -29,17 +29,15 @@ class _GuideScreenState extends State<GuideScreen> {
         new GlobalKey<ScaffoldState>();
 
     return Scaffold(
-      appBar: buildAppBar(Icons.menu, () {
-        _scaffoldKey.currentState.openDrawer();
-      }, 'Tour Guides'),
-      key: _scaffoldKey,
-      drawer: DashNav(),
+      appBar: buildAppBar(null, () {}, 'Tour Guides'),
       body: Column(
         children: <Widget>[
           Stack(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 40.0),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

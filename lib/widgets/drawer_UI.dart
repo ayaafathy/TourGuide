@@ -107,7 +107,7 @@ class _DashNavState extends State<DashNav> {
             }),
         ListTile(
             leading: Icon(Icons.beach_access, color: iconColor),
-            title: Text('Tours', style: tilesStyle()),
+            title: Text('Tour Guides', style: tilesStyle()),
             onTap: () {
               Navigator.pop(context);
               Navigator.push(context,
