@@ -3,7 +3,7 @@ import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/forms_widgets.dart';
 import 'package:tour_guide/widgets/signUp_widgets.dart';
 import 'package:tour_guide/screens/signin_UI.dart';
-import 'package:tour_guide/main.dart';
+//import 'package:tour_guide/main.dart';
 
 void main() {
   runApp(SignUp());
