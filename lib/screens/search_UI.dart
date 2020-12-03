@@ -3,7 +3,7 @@ import 'package:search_page/search_page.dart';
 import 'package:tour_guide/models/location_model.dart';
 import 'package:tour_guide/main.dart';
 import 'package:tour_guide/screens/location_profile.dart';
-
+import 'search_UI2.dart';
 
 void main() => runApp(SearchApp());
 
@@ -46,22 +46,17 @@ class SearchApp extends StatelessWidget {
                 child: Text('Lookup your desired location'),
               ),
               failure: Center(
-                child: Text('No location found found :('),
+                child: Text('No location found :('),
               ),
               filter: (locations) => [
-                locations.name,
+                  locations.name,
                 locations.shortInfo,
                 locations.rating.toString(),
               ],
               builder: (locations) => ListTile(
                   title: Text(locations.name),
                   subtitle: Text(locations.shortInfo),
-                  trailing: Text('${locations.rating} stars'),
-                  onTap: () {
-                    Navigator.pushNamed(
-                        context,
-                        '/loc');
-                  }
+                  trailing: Text('${locations.rating} stars')
               ),
             ),
           ),

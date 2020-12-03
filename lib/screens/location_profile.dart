@@ -311,7 +311,7 @@ class LocationProfilePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      buildButton('popular Times', () {}),
+                      buildButton('Popular Times', () {}),
                       buildButton('Mark as Visited', () {}),
                     ],
                   ),
