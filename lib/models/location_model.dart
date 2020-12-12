@@ -69,7 +69,7 @@ final List<Location> locations = [
       bio: "The Cairo Tower - commonly known to locals as Nasser's Pineapple - is a free-standing concrete tower in Cairo, Egypt. At 187 m, it has been the tallest structure in Egypt and North Africa for about 50 years.",
       address: 'Cairo',
       price: 240,
-      rating: 4.0
+      rating: 4.5
   ),
   Location(
       imageUrl: 'assets/images/genericLocation.jpg',
@@ -79,7 +79,7 @@ final List<Location> locations = [
       bio: "Al-Azhar Mosque is the finest building of Cairo's Fatimid era and one of the city's earliest surviving mosques",
       address: 'Cairo',
       price: 240,
-      rating: 4.0
+      rating: 5.0
   ),
   Location(
       imageUrl: 'assets/images/genericLocation.jpg',
@@ -89,7 +89,7 @@ final List<Location> locations = [
       bio: "This Middle Eastern souq (bazaar) is a labyrinthine collection of skinny alleyways established as a shopping district in AD 1400, which still rings with the clang of metal workers and silversmiths.",
       address: 'Cairo',
       price: 240,
-      rating: 4.0
+      rating: 3.0
   ),
   Location(
       imageUrl: 'assets/images/genericLocation.jpg',
@@ -99,7 +99,7 @@ final List<Location> locations = [
       bio: "In a commanding location at the foot of the Mokattam Hills, Cairo's citadel was built by Saladin in 1176. The original structure he laid out has long disappeared except for the eastern outer walls, but a legacy of rulers has made their own additions here.",
       address: 'Cairo',
       price: 240,
-      rating: 4.0
+      rating: 3.5
   ),
   Location(
       imageUrl: 'assets/images/genericLocation.jpg',
@@ -109,7 +109,7 @@ final List<Location> locations = [
       bio: "Sultan Hassan Mosque is a vision of Arabic artistry with an abundance of stalactite detailing and intricate arabesque features. It was built in 1356-63 for the Sultan Hassan el-Nasir.",
       address: 'Cairo',
       price: 240,
-      rating: 4.0
+      rating: 3.0
   ),
   Location(
       imageUrl: 'assets/images/genericLocation.jpg',
@@ -119,7 +119,7 @@ final List<Location> locations = [
       bio: "Cairo's Museum of Islamic Art holds one of the most important collections of Middle Eastern artistry in the world.",
       address: 'Cairo ',
       price: 240,
-      rating: 4.0
+      rating: 2.5
   ),
   Location(
       imageUrl: 'assets/images/genericLocation.jpg',
@@ -129,7 +129,7 @@ final List<Location> locations = [
       bio: "You can climb to the top of this medieval era relic (built in the 11th century) for some amazing rooftop views over Islamic Cairo. ",
       address: 'Cairo',
       price: 240,
-      rating: 4.0
+      rating: 5.0
   ),
   Location(
       imageUrl: 'assets/images/genericLocation.jpg',
