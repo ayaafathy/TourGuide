@@ -5,15 +5,15 @@ import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 //import 'package:tour_guide/main.dart';
 
-void main() => runApp(LocProfile());
+void main() => runApp(locProfile());
 var pageIndex;
-class LocProfile extends StatelessWidget {
+class locProfile extends StatelessWidget {
   var locIndex;
-  LocProfile([int index]){
+  locProfile([int index]){
     locIndex = index;
     pageIndex = locIndex;
   }
-  LocProfile.custom([int index]){
+  locProfile.custom([int index]){
     this.locIndex = index;
     pageIndex = locIndex;
   }
@@ -30,7 +30,7 @@ class LocProfile extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, locations[locIndex].name),
+          appBar: buildAppBar(null, () {}, locationsList[locIndex].name),
           drawer: DashNav(),
           body: SafeArea(
             child: LocationProfilePage(),
@@ -50,7 +50,7 @@ class LocationProfilePage extends StatelessWidget {
       height: screenSize.height / 3.3,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(locations[pageIndex].coverImageUrl),
+          image: AssetImage(locationsList[pageIndex].coverImageUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -64,7 +64,7 @@ class LocationProfilePage extends StatelessWidget {
         height: 130.0,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(locations[pageIndex].imageUrl),
+            image: AssetImage(locationsList[pageIndex].imageUrl),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
@@ -86,7 +86,7 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      locations[pageIndex].name,
+      locationsList[pageIndex].name,
       style: _nameTextStyle,
     );
   }
@@ -99,7 +99,7 @@ class LocationProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Text(
-        locations[pageIndex].shortInfo,
+        locationsList[pageIndex].shortInfo,
         style: TextStyle(
           fontFamily: 'Roboto',
           color: Colors.grey[700],
@@ -157,7 +157,7 @@ class LocationProfilePage extends StatelessWidget {
               },
               starCount: 5,
               isReadOnly: false,
-              rating: locations[pageIndex].rating,
+              rating: locationsList[pageIndex].rating,
               size: 30.0,
               color: Colors.lightBlue[300],
               borderColor: Colors.lightBlue[300],
@@ -182,7 +182,7 @@ class LocationProfilePage extends StatelessWidget {
       alignment: Alignment.center,
       margin: EdgeInsets.only(top: 16, bottom: 6, left: 18, right: 18),
       child: Text(
-        locations[pageIndex].bio,
+        locationsList[pageIndex].bio,
         textAlign: TextAlign.center,
         style: bioTextStyle,
       ),
