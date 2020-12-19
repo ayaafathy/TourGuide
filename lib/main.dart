@@ -7,6 +7,7 @@ import 'package:tour_guide/screens/destination_screen.dart';
 import 'package:tour_guide/screens/location_profile.dart';
 import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
+import 'package:dcdg/dcdg.dart';
 
 void main() => runApp(
       MaterialApp(
