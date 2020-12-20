@@ -13,7 +13,9 @@ class SettingsScreen extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, 'Settings'),
+          appBar: buildAppBar(Icons.arrow_back_rounded, () {
+            Navigator.pop(context);
+          }, 'Settings'),
           body: SafeArea(
             child: Container(
               margin: EdgeInsets.all(20),
@@ -65,7 +67,6 @@ Widget settings(BuildContext context) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => HelpCenter()));
       }, Icons.help_rounded, 'Help Center'),
-      // settingTile(() {}, Icons., 'Notifications'),
     ],
   );
 }
