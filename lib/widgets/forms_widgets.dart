@@ -65,6 +65,14 @@ Widget googleButton(String text) {
   );
 }
 
+Widget fbButton(String text) {
+  return SignInButton(Buttons.Facebook,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
+      //shape:BeveledRectangleBorder,
+      text: text,
+      onPressed: () {});
+}
+
 Widget buildAPIButtons() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,

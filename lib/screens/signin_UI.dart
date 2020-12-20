@@ -13,12 +13,12 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Login Page',
+      title: 'Sign In',
       home: Container(
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/24hrs.jpg'),
+            image: AssetImage('assets/images/redstreet.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -29,7 +29,7 @@ class SignIn extends StatelessWidget {
             elevation: 5,
             backgroundColor: Colors.transparent,
             title: Text(
-              'Sign in',
+              'Sign In',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -92,10 +92,17 @@ class _BuildSignInState extends State<BuildSignIn> {
                 });
               }),
             ),
-            googleButton('Continue with Google'),
-            buildAPIButtons(),
+            googleButton('Sign In with Google'),
+            fbButton('Sign In with Facebook'),
             Padding(
-              padding: EdgeInsets.only(top: 60, bottom: 10),
+              padding: EdgeInsets.only(top: 15, bottom: 20),
+              child: new GestureDetector(
+                onTap: () {},
+                child: buildFooterText('Forget Password?', Colors.white, 16),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 22, bottom: 10),
               child: new GestureDetector(
                 onTap: () {
                   Navigator.push(

@@ -29,7 +29,9 @@ class _GuideScreenState extends State<GuideScreen> {
         new GlobalKey<ScaffoldState>();
 
     return Scaffold(
-      appBar: buildAppBar(null, () {}, 'Tour Guides'),
+      appBar: buildAppBar(Icons.arrow_back_rounded, () {
+        Navigator.pop(context);
+      }, 'Tour Guides'),
       body: Column(
         children: <Widget>[
           Stack(
