@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:tour_guide/screens/map.dart';
 import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 // ignore: unused_import
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tour_guide/widgets/destination_carousel.dart';
 import 'package:tour_guide/widgets/hotel_carousel.dart';
-//import 'dash_UI.dart';
+
+// import 'dash_UI.dart';
+// void main() => runApp(HomeScreen());
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -33,17 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 30.0),
           children: <Widget>[
-            /*Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 120),
-              child: Text(
-                'What would you like to find?',
-                style: TextStyle(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                ),
-              ),
-            ),*/
             SizedBox(
               height: 20.0,
             ),
@@ -71,6 +63,17 @@ class _HomeScreenState extends State<HomeScreen> {
             // ignore: deprecated_member_use
             title: SizedBox.shrink(),
           ),
+          // BottomNavigationBarItem(
+          //   IconButton(
+          //     icon: Icon(Icons.public),
+          //     onPressed: () {
+          //       Navigator.push(
+          //           context, MaterialPageRoute(builder: (context) => Maps()));
+          //     },
+          //   ),
+          //   // ignore: deprecated_member_use
+          //   title: SizedBox.shrink(),
+          // ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.public,
@@ -84,6 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
               radius: 15.0,
               backgroundImage: AssetImage('assets/images/marc.jpg'),
             ),
+
             // ignore: deprecated_member_use
             title: SizedBox.shrink(),
           ),
