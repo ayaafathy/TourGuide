@@ -1,4 +1,5 @@
 class Location {
+  int index;
   String imageUrl = 'assets/images/genericLocation.jpg';
   String coverImageUrl = 'assets/images/genericLocationCover.jpg';
   String name;
@@ -9,6 +10,7 @@ class Location {
   var rating;
 
   Location({
+    this.index,
     this.imageUrl,
     this.coverImageUrl,
     this.name,
@@ -20,8 +22,9 @@ class Location {
   });
 }
 
-final List<Location> locations = [
+final List<Location> locationsList = [
   Location(
+      index: 0,
       imageUrl: 'assets/images/Location0.jpg',
       coverImageUrl: 'assets/images/lc0.jpg',
       name: 'Pyramids of Giza',
@@ -32,6 +35,7 @@ final List<Location> locations = [
       rating: 5.0
   ),
   Location(
+      index: 1,
       imageUrl: 'assets/images/Location1.jpg',
       coverImageUrl: 'assets/images/lc1.jpg',
       name: 'Alexandria Library',

@@ -12,7 +12,9 @@ class HelpCenter extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, 'Help'),
+          appBar: buildAppBar(Icons.arrow_back_rounded, () {
+            Navigator.pop(context);
+          }, 'Help'),
           body: SafeArea(
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),

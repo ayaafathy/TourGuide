@@ -19,7 +19,7 @@ class SignUp extends StatelessWidget {
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/24hrs.jpg'),
+            image: AssetImage('assets/images/redstreet.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -98,8 +98,8 @@ class _BuildSignUpState extends State<BuildSignUp> {
                 });
               }),
             ),
-            googleButton('Continue with Google'),
-            buildAPIButtons(),
+            googleButton('Sign Up with Google'),
+            fbButton('Sign Up with Facebook'),
             Padding(
               padding: EdgeInsets.only(top: 25, bottom: 10),
               child: new GestureDetector(
