@@ -1,0 +1,148 @@
+class Location {
+  int index;
+  String imageUrl = 'assets/images/genericLocation.jpg';
+  String coverImageUrl = 'assets/images/genericLocationCover.jpg';
+  String name;
+  String shortInfo;
+  String bio;
+  String address;
+  int price;
+  var rating;
+
+  Location({
+    this.index,
+    this.imageUrl,
+    this.coverImageUrl,
+    this.name,
+    this.shortInfo,
+    this.bio,
+    this.address,
+    this.price,
+    this.rating
+  });
+}
+
+final List<Location> locationsList = [
+  Location(
+      index: 0,
+      imageUrl: 'assets/images/Location0.jpg',
+      coverImageUrl: 'assets/images/lc0.jpg',
+      name: 'Pyramids of Giza',
+      shortInfo: 'One of the seven wonders of the world',
+      bio: 'Belonging to a civilization more than 7000 years old',
+      address: 'Al Haram, Nazlet El-Semman, Al Giza Desert, Giza Governorate',
+      price: 175,
+      rating: 5.0
+  ),
+  Location(
+      index: 1,
+      imageUrl: 'assets/images/Location1.jpg',
+      coverImageUrl: 'assets/images/lc1.jpg',
+      name: 'Alexandria Library',
+      shortInfo: 'a modern landmark of knowledge',
+      bio: 'Like a lighthouse for the world, the alexandria library stands vigil',
+      address: 'Al Azaritah WA Ash Shatebi, Qism Bab Sharqi, Alexandria Governorate 21526',
+      price: 300,
+      rating: 5.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'Old Cairo',
+      shortInfo: 'Coptic Cairo',
+      bio: "This small church-filled cluster of twisty laneways lies within the walls of Old Babylon where the Roman Emperor Trajan first built a fortress along the Nile. Parts of the Roman towers still preside over the main street.",
+      address: 'Old Cairo',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'The Egyptian Museum',
+      shortInfo: 'One of the biggest homes to history',
+      bio: "The absolutely staggering collection of antiquities displayed in Cairo's Egyptian Museum makes it one of the world's great museums",
+      address: 'Cairo',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/Location2.jpg',
+      coverImageUrl: 'assets/images/lc2.jpg',
+      name: 'Cairo Tower',
+      shortInfo: 'Tallest Tower in Egypt and Africa',
+      bio: "The Cairo Tower - commonly known to locals as Nasser's Pineapple - is a free-standing concrete tower in Cairo, Egypt. At 187 m, it has been the tallest structure in Egypt and North Africa for about 50 years.",
+      address: 'Cairo',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'Al-Azhar Mosque',
+      shortInfo: 'Islamic Architecture at its finest',
+      bio: "Al-Azhar Mosque is the finest building of Cairo's Fatimid era and one of the city's earliest surviving mosques",
+      address: 'Cairo',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'Khan el-Khalili',
+      shortInfo: 'One of the worlds greatest shopping experiences',
+      bio: "This Middle Eastern souq (bazaar) is a labyrinthine collection of skinny alleyways established as a shopping district in AD 1400, which still rings with the clang of metal workers and silversmiths.",
+      address: 'Cairo',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'The Citadel',
+      shortInfo: 'Saladins Citadel',
+      bio: "In a commanding location at the foot of the Mokattam Hills, Cairo's citadel was built by Saladin in 1176. The original structure he laid out has long disappeared except for the eastern outer walls, but a legacy of rulers has made their own additions here.",
+      address: 'Cairo',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'Sultan Hassan Mosque',
+      shortInfo: 'One of the finest examples of Mamluk architecture in the world',
+      bio: "Sultan Hassan Mosque is a vision of Arabic artistry with an abundance of stalactite detailing and intricate arabesque features. It was built in 1356-63 for the Sultan Hassan el-Nasir.",
+      address: 'Cairo',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'Museum of Islamic Art',
+      shortInfo: 'Home of Islamic Art',
+      bio: "Cairo's Museum of Islamic Art holds one of the most important collections of Middle Eastern artistry in the world.",
+      address: 'Cairo ',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'Bab Zuweila',
+      shortInfo: 'Of all the Islamic Cairo districts gates, Bab Zuweila is the most interesting.',
+      bio: "You can climb to the top of this medieval era relic (built in the 11th century) for some amazing rooftop views over Islamic Cairo. ",
+      address: 'Cairo',
+      price: 240,
+      rating: 4.0
+  ),
+  Location(
+      imageUrl: 'assets/images/genericLocation.jpg',
+      coverImageUrl: 'assets/images/genericLocationCover.jpg',
+      name: 'Al-Azhar Park',
+      shortInfo: 'the gloriously manicured gardens are a lovely place for an evening stroll',
+      bio: "It was opened in 2005 and provides a much needed respite to the overcrowded chaos of Cairo's street hustle.",
+      address: 'Zamalek, Cairo Governorate',
+      price: 240,
+      rating: 4.0
+  ),
+];

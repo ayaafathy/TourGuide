@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:tour_guide/models/location_model.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 //import 'package:tour_guide/main.dart';
 
-void main() => runApp(LocProfile());
-
-class LocProfile extends StatelessWidget {
+void main() => runApp(locProfile());
+var pageIndex;
+class locProfile extends StatelessWidget {
+  var locIndex;
+  locProfile([int index]){
+    locIndex = index;
+    pageIndex = locIndex;
+  }
+  locProfile.custom([int index]){
+    this.locIndex = index;
+    pageIndex = locIndex;
+  }
   @override
   Widget build(BuildContext context) {
     //return MaterialApp(
     //  title: "Location Profile",
     //  home: LocationProfilePage(),
     //debugShowCheckedModeBanner : false;
-    LocationProfilePage cairoTower = new LocationProfilePage();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -21,7 +30,7 @@ class LocProfile extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, cairoTower._name),
+          appBar: buildAppBar(null, () {}, locationsList[locIndex].name),
           drawer: DashNav(),
           body: SafeArea(
             child: LocationProfilePage(),
@@ -34,19 +43,14 @@ class LocProfile extends StatelessWidget {
 
 // ignore: must_be_immutable
 class LocationProfilePage extends StatelessWidget {
-  final String _name = "Cairo Tower";
-  final String _status = "Tallest Tower in Egypt and Africa";
-  final String _bio =
-      "\"The Cairo Tower - commonly known to locals as Nasser's Pineapple - is a free-standing concrete tower in Cairo, Egypt. At 187 m, it has been the tallest structure in Egypt and North Africa for about 50 years.\"";
 
-  var rating = 5.0;
 
   Widget _buildCoverImage(Size screenSize) {
     return Container(
       height: screenSize.height / 3.3,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/cover.jpg'),
+          image: AssetImage(locationsList[pageIndex].coverImageUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -60,7 +64,7 @@ class LocationProfilePage extends StatelessWidget {
         height: 130.0,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/tower.jpg'),
+            image: AssetImage(locationsList[pageIndex].imageUrl),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
@@ -82,7 +86,7 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      _name,
+      locationsList[pageIndex].name,
       style: _nameTextStyle,
     );
   }
@@ -95,7 +99,7 @@ class LocationProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Text(
-        _status,
+        locationsList[pageIndex].shortInfo,
         style: TextStyle(
           fontFamily: 'Roboto',
           color: Colors.grey[700],
@@ -153,7 +157,7 @@ class LocationProfilePage extends StatelessWidget {
               },
               starCount: 5,
               isReadOnly: false,
-              rating: rating,
+              rating: locationsList[pageIndex].rating,
               size: 30.0,
               color: Colors.lightBlue[300],
               borderColor: Colors.lightBlue[300],
@@ -178,7 +182,7 @@ class LocationProfilePage extends StatelessWidget {
       alignment: Alignment.center,
       margin: EdgeInsets.only(top: 16, bottom: 6, left: 18, right: 18),
       child: Text(
-        _bio,
+        locationsList[pageIndex].bio,
         textAlign: TextAlign.center,
         style: bioTextStyle,
       ),
@@ -307,7 +311,7 @@ class LocationProfilePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      buildButton('popular Times', () {}),
+                      buildButton('Popular Times', () {}),
                       buildButton('Mark as Visited', () {}),
                     ],
                   ),
