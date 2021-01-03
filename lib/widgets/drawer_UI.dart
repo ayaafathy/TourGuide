@@ -100,12 +100,6 @@ class _DashNavState extends State<DashNav> {
                   MaterialPageRoute(builder: (context) => MySavedList()));
             }),
         ListTile(
-            leading: Icon(Icons.where_to_vote, color: iconColor),
-            title: Text('Visited places', style: tilesStyle()),
-            onTap: () {
-              Navigator.pop(context);
-            }),
-        ListTile(
             leading: Icon(Icons.beach_access, color: iconColor),
             title: Text('Tour Guides', style: tilesStyle()),
             onTap: () {
