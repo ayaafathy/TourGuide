@@ -3,10 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 
-Widget usernameField() {
+Widget usernameField(TextEditingController controller) {
   return Padding(
     padding: EdgeInsets.all(5.0),
     child: TextFormField(
+      controller: controller,
       obscureText: false,
       decoration: InputDecoration(
           prefixIcon: Icon(

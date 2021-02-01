@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 
 class SignInPassField extends StatefulWidget {
+   TextEditingController controller;
+   SignInPassField(this.controller);
+
   _SignInPassFieldState createState() => _SignInPassFieldState();
 }
 
@@ -19,6 +22,7 @@ class _SignInPassFieldState extends State<SignInPassField> {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: TextFormField(
+        controller: widget.controller,
         obscureText: !passVisible,
         decoration: InputDecoration(
             prefixIcon: Icon(

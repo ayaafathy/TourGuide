@@ -3,6 +3,7 @@ import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/forms_widgets.dart';
 import 'package:tour_guide/widgets/signIn_passField.dart';
 import 'package:tour_guide/screens/signup_UI.dart';
+import 'package:tour_guide/services/flutterfire.dart';
 
 void main() {
   runApp(SignIn());
@@ -54,6 +55,9 @@ class BuildSignIn extends StatefulWidget {
 
 class _BuildSignInState extends State<BuildSignIn> {
   final _signInKey = GlobalKey<FormState>();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -69,11 +73,14 @@ class _BuildSignInState extends State<BuildSignIn> {
                     borderRadius: BorderRadius.all(Radius.circular(11))),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[usernameField(), SignInPassField()],
+                  children: <Widget>[
+                    usernameField(_usernameController),
+                    SignInPassField(_passwordController)
+                  ],
                 )),
             Padding(
               padding: EdgeInsets.only(top: 40),
-              child: Builder(builder: (BuildContext context) {
+              /*child: Builder(builder: (BuildContext context) {
                 return buildButton('Continue', Icons.email, () {
                   if (_signInKey.currentState.validate()) {
                     Scaffold.of(context).showSnackBar(
@@ -90,6 +97,23 @@ class _BuildSignInState extends State<BuildSignIn> {
                             ));
                   }
                 });
+              }),*/
+              child: Builder(builder: (BuildContext context) {
+                return buildButton(
+                  'Continue',
+                  Icons.email,
+                  () async {
+                    bool shouldNavigate = await signIn(
+                        _usernameController.text, _passwordController.text);
+                    print(shouldNavigate);
+                    if (shouldNavigate) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      );
+                    }
+                  },
+                );
               }),
             ),
             googleButton('Sign In with Google'),

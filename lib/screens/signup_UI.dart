@@ -55,6 +55,7 @@ class BuildSignUp extends StatefulWidget {
 
 class _BuildSignUpState extends State<BuildSignUp> {
   final _signUpKey = GlobalKey<FormState>();
+  TextEditingController _usernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +73,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     emailField(),
-                    usernameField(),
+                    usernameField(_usernameController),
                     PasswordField(),
                     ConfirmPassField(),
                   ],
