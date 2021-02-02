@@ -5,7 +5,7 @@ import 'package:tour_guide/widgets/fonts_style.dart';
 Widget emailField() {
   final emailValidator = MultiValidator([
     RequiredValidator(errorText: 'Email is required'),
-    EmailValidator(errorText: 'Invalid Email'),
+    EmailValidator(errorText: 'Invalid Email format'),
   ]);
 
   return Padding(

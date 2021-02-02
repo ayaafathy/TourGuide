@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/forms_widgets.dart';
-import 'package:tour_guide/widgets/signIn_passField.dart';
+import 'package:tour_guide/widgets/signIn_widgets.dart';
 import 'package:tour_guide/screens/signup_UI.dart';
 import 'package:tour_guide/services/flutterfire.dart';
 
@@ -74,7 +74,7 @@ class _BuildSignInState extends State<BuildSignIn> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    usernameField(_usernameController),
+                    signInEmailField(_usernameController),
                     SignInPassField(_passwordController)
                   ],
                 )),
@@ -83,6 +83,8 @@ class _BuildSignInState extends State<BuildSignIn> {
               /*child: Builder(builder: (BuildContext context) {
                 return buildButton('Continue', Icons.email, () {
                   if (_signInKey.currentState.validate()) {
+                    print(_usernameController.text);
+                    print(_passwordController.text);
                     Scaffold.of(context).showSnackBar(
                       new SnackBar(
                         content: Text('Logged In!'),
@@ -103,14 +105,16 @@ class _BuildSignInState extends State<BuildSignIn> {
                   'Continue',
                   Icons.email,
                   () async {
-                    bool shouldNavigate = await signIn(
-                        _usernameController.text, _passwordController.text);
-                    print(shouldNavigate);
-                    if (shouldNavigate) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
-                      );
+                    if (_signInKey.currentState.validate()) {
+                      bool shouldNavigate = await signIn(
+                          _usernameController.text, _passwordController.text);
+                      print(shouldNavigate);
+                      if (shouldNavigate) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        );
+                      }
                     }
                   },
                 );

@@ -73,7 +73,6 @@ class _BuildSignUpState extends State<BuildSignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     emailField(),
-                    usernameField(_usernameController),
                     PasswordField(),
                     ConfirmPassField(),
                   ],
