@@ -55,7 +55,7 @@ class BuildSignIn extends StatefulWidget {
 
 class _BuildSignInState extends State<BuildSignIn> {
   final _signInKey = GlobalKey<FormState>();
-  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -74,46 +74,38 @@ class _BuildSignInState extends State<BuildSignIn> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    signInEmailField(_usernameController),
+                    signInEmailField(_emailController),
                     SignInPassField(_passwordController)
                   ],
                 )),
             Padding(
               padding: EdgeInsets.only(top: 40),
-              /*child: Builder(builder: (BuildContext context) {
-                return buildButton('Continue', Icons.email, () {
-                  if (_signInKey.currentState.validate()) {
-                    print(_usernameController.text);
-                    print(_passwordController.text);
-                    Scaffold.of(context).showSnackBar(
-                      new SnackBar(
-                        content: Text('Logged In!'),
-                      ),
-                    );
-                    Future.delayed(
-                        Duration(seconds: 1),
-                        () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomeScreen()),
-                            ));
-                  }
-                });
-              }),*/
               child: Builder(builder: (BuildContext context) {
                 return buildButton(
                   'Continue',
                   Icons.email,
                   () async {
                     if (_signInKey.currentState.validate()) {
+                      /*
+                      print(_usernameController.text);
+                      print(_passwordController.text);
+                      */
                       bool shouldNavigate = await signIn(
-                          _usernameController.text, _passwordController.text);
+                          _emailController.text, _passwordController.text);
                       print(shouldNavigate);
                       if (shouldNavigate) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        Scaffold.of(context).showSnackBar(
+                          new SnackBar(
+                            content: Text('Logged In!'),
+                          ),
                         );
+                        Future.delayed(
+                            Duration(seconds: 1),
+                            () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()),
+                                ));
                       }
                     }
                   },

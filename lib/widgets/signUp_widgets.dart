@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 
-Widget emailField() {
+Widget emailField(TextEditingController controller) {
   final emailValidator = MultiValidator([
     RequiredValidator(errorText: 'Email is required'),
     EmailValidator(errorText: 'Invalid Email format'),
@@ -11,6 +11,7 @@ Widget emailField() {
   return Padding(
     padding: EdgeInsets.all(5.0),
     child: TextFormField(
+      controller: controller,
       obscureText: false,
       decoration: InputDecoration(
           prefixIcon: Icon(
@@ -28,13 +29,15 @@ Widget emailField() {
 }
 
 class PasswordField extends StatefulWidget {
+  TextEditingController _passwordController;
+  PasswordField(this._passwordController);
+
   _PasswordFieldState createState() => _PasswordFieldState();
 }
 
 class _PasswordFieldState extends State<PasswordField> {
   bool passVisible;
   String password;
-  final _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -44,7 +47,7 @@ class _PasswordFieldState extends State<PasswordField> {
 
   @override
   void dispose() {
-    _passwordController.dispose();
+    widget._passwordController.dispose();
     super.dispose();
   }
 
@@ -53,6 +56,7 @@ class _PasswordFieldState extends State<PasswordField> {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: TextFormField(
+        controller: widget._passwordController,
         obscureText: !passVisible,
         decoration: InputDecoration(
             prefixIcon: Icon(
@@ -78,9 +82,10 @@ class _PasswordFieldState extends State<PasswordField> {
             //helperStyle: TextStyle(color: Colors.red, fontSize: 15),
             contentPadding: const EdgeInsets.all(5.0)),
         style: textStyle(),
-        controller: _passwordController,
         validator: (value) {
-          if (value.length > 12 || value.length < 8) {
+          if (value.isEmpty) {
+            return ('Password is required');
+          } else if (value.length > 12 || value.length < 8) {
             return ('Password must be between 8 and 12 characters');
           } else if (!value.contains(new RegExp(r'[A-Z]'))) {
             return ('passwords must have at least one uppercase letter');
@@ -89,7 +94,6 @@ class _PasswordFieldState extends State<PasswordField> {
           }
           return null;
         },
-        //onChanged: (value) => password = value,
       ),
     );
   }
@@ -144,15 +148,6 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
             contentPadding: const EdgeInsets.all(5.0)),
         style: textStyle(),
         controller: _confirmController,
-        /*
-        validator: (value) {
-          if (_confirmController.text !=
-              _PasswordFieldState()._passwordController.text) {
-            return ('Passwords do not match');
-          }
-          return null;
-        },
-        */
       ),
     );
   }

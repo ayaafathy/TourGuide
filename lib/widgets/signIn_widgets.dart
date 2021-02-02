@@ -29,8 +29,8 @@ Widget signInEmailField(TextEditingController controller) {
 }
 
 class SignInPassField extends StatefulWidget {
-  TextEditingController controller;
-  SignInPassField(this.controller);
+  TextEditingController _passwordController;
+  SignInPassField(this._passwordController);
 
   _SignInPassFieldState createState() => _SignInPassFieldState();
 }
@@ -45,11 +45,17 @@ class _SignInPassFieldState extends State<SignInPassField> {
   }
 
   @override
+  void dispose() {
+    widget._passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: TextFormField(
-        controller: widget.controller,
+        controller: widget._passwordController,
         obscureText: !passVisible,
         decoration: InputDecoration(
             prefixIcon: Icon(
