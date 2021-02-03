@@ -49,51 +49,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _initialized = false;
-  bool _error = false;
-
   @override
   Widget build(BuildContext context) {
     return SignIn();
   }
 }
-
-/*
-class _MyAppState extends State<MyApp> {
-  bool _initialized = false;
-  bool _error = false;
-
-  void initializeFlutterFire() async {
-    try {
-      await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
-    } catch (e) {
-      setState(() {
-        _error = true;
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    initializeFlutterFire();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_error) {
-      return CircularProgressIndicator();
-      //Something went wrong, put the indicator for now
-      //Should show error message
-    }
-    if (!_initialized) {
-      return CircularProgressIndicator();
-      //Should show a loading indicator as flutterfire is intializing
-    }
-    return SignIn();
-  }
-}
-*/
