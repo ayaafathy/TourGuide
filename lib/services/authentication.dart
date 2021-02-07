@@ -1,5 +1,4 @@
 /// For Authentication with REST API
-///
 
 import 'package:flutter/widgets.dart';
 import 'dart:async';
