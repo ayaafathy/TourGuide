@@ -137,7 +137,7 @@ class Authentication with ChangeNotifier {
   }
 
   //***TODO: check this again
-  Future<bool> _autoSignIn() async {
+  Future<bool> autoSignIn() async {
     final prefs = await SharedPreferences.getInstance();
 
     if (!prefs.containsKey('TG_User')) {

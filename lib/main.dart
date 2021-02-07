@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:tour_guide/NotUsed/signin_UI.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/services/authentication.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
-
-/*
 import 'package:tour_guide/screens/hotel_screen.dart';
-import 'package:tour_guide/screens/signup_UI.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
 import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/screens/destination_screen.dart';
@@ -16,8 +11,9 @@ import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
 import 'package:tour_guide/screens/map.dart';
-*/
+
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
+
 /*
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,16 +31,21 @@ void main() {
   );
 }
 
-/*
-void main() => runApp(
-      MaterialApp(
-        title: 'Named Routes',
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/Start',
-        routes: {
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    /// TODO: Use this when state managements in other models is done
+    /*
+    return MultiProvider(
+      providers: [],
+      child: Consumer<Authentication>(
+        builder: (ctx, auth, _) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: '',
+          initialRoute: '/Start',
+          routes: {
           '/Start': (context) => MyAnim(),
-          '/signin': (context) => MyApp(),
-          '/signup': (context) => SignUp(),
+          '/auth': (context) => MyApp(),
           '/settings': (context) => SettingsScreen(),
           '/home': (context) => HomeScreen(),
           '/dest': (context) => DestinationScreen(),
@@ -54,29 +55,32 @@ void main() => runApp(
           'hotel': (context) => Hotelscreen(),
           //'/search': (context) => Search(),
           '/map': (context) => Maps(),
-        },
+          },
+          home: Container(
+            constraints: BoxConstraints.expand(),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/redstreet.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: auth.isAuthenticated
+                ? HomeScreen()
+                : FutureBuilder(
+                    future: auth.autoSignIn(),
+                    builder: (ctx, autResSnapshot) =>
+                        autResSnapshot.connectionState ==
+                                ConnectionState.waiting
+                            ? MyAnim()
+                            : AuthScreen(),
+                  ),
+             
+          ),
+        ),
       ),
     );
-*/
-/*
-class MyApp extends StatefulWidget {
-  _MyAppState createState() => _MyAppState();
-}
+    */
 
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return authScreen();
-  }
-}
-
-
-
- */
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '',
@@ -88,7 +92,7 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: authScreen(),
+        child: AuthScreen(),
       ),
     );
   }
