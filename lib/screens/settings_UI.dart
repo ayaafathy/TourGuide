@@ -5,6 +5,7 @@ import 'package:tour_guide/screens/help_center.dart';
 
 void main() => runApp(SettingsScreen());
 
+///edit material app, only 1 material app
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

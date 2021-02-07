@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/homepage.dart';
-import 'package:tour_guide/widgets/forms_widgets.dart';
-import 'package:tour_guide/widgets/signUp_widgets.dart';
-import 'package:tour_guide/screens/signin_UI.dart';
+import 'package:tour_guide/NotUsed/forms_widgets.dart';
+import 'package:tour_guide/NotUsed/signUp_widgets.dart';
+import 'package:tour_guide/NotUsed/signin_UI.dart';
 import 'package:tour_guide/services/flutterfire.dart';
 //import 'package:tour_guide/main.dart';
-
-void main() {
-  runApp(SignUp());
-}
 
 class SignUp extends StatelessWidget {
   @override
@@ -75,7 +71,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     emailField(_emailController),
-                    PasswordField(_passwordController),
+                    signUpPasswordField(_passwordController),
                     ConfirmPassField(),
                   ],
                 )),
@@ -113,7 +109,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SignIn()),
+                    MaterialPageRoute(builder: (context) => BuildSignIn()),
                   );
                 },
                 child: Column(

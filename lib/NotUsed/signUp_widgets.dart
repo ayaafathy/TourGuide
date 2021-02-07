@@ -28,14 +28,14 @@ Widget emailField(TextEditingController controller) {
   );
 }
 
-class PasswordField extends StatefulWidget {
+class signUpPasswordField extends StatefulWidget {
   TextEditingController _passwordController;
-  PasswordField(this._passwordController);
+  signUpPasswordField(this._passwordController);
 
-  _PasswordFieldState createState() => _PasswordFieldState();
+  _signUpPasswordFieldState createState() => _signUpPasswordFieldState();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
+class _signUpPasswordFieldState extends State<signUpPasswordField> {
   bool passVisible;
   String password;
 
@@ -100,12 +100,16 @@ class _PasswordFieldState extends State<PasswordField> {
 }
 
 class ConfirmPassField extends StatefulWidget {
+  TextEditingController _confirmController;
+  bool authenticationMode;
+  //ConfirmPassField(this._confirmController);
+  //ConfirmPassField(this._confirmController, this.authenticationMode);
+
   _ConfirmPassFieldState createState() => _ConfirmPassFieldState();
 }
 
 class _ConfirmPassFieldState extends State<ConfirmPassField> {
   bool confirmVisible;
-  final _confirmController = TextEditingController();
 
   @override
   void initState() {
@@ -115,7 +119,7 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
 
   @override
   void dispose() {
-    _confirmController.dispose();
+    widget._confirmController.dispose();
     super.dispose();
   }
 
@@ -124,6 +128,8 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: TextFormField(
+        ///CHECK
+        enabled: widget.authenticationMode,
         obscureText: !confirmVisible,
         decoration: InputDecoration(
             prefixIcon: Icon(
@@ -147,7 +153,7 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
             hintStyle: hintStyle(),
             contentPadding: const EdgeInsets.all(5.0)),
         style: textStyle(),
-        controller: _confirmController,
+        controller: widget._confirmController,
       ),
     );
   }

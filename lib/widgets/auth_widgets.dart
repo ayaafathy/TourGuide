@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tour_guide/widgets/fonts_style.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:tour_guide/widgets/fonts_style.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-Widget signInEmailField(TextEditingController controller) {
+//////////////////////////////
+/// *****Email*****
+Widget authEmailField(TextEditingController controller, onSaved) {
   final emailValidator = MultiValidator([
     RequiredValidator(errorText: 'Email is required'),
     EmailValidator(errorText: 'Invalid Email format'),
@@ -11,6 +15,7 @@ Widget signInEmailField(TextEditingController controller) {
   return Padding(
     padding: EdgeInsets.all(5.0),
     child: TextFormField(
+      keyboardType: TextInputType.emailAddress,
       controller: controller,
       obscureText: false,
       decoration: InputDecoration(
@@ -24,18 +29,23 @@ Widget signInEmailField(TextEditingController controller) {
           contentPadding: const EdgeInsets.all(5.0)),
       style: textStyle(),
       validator: emailValidator,
+      onSaved: onSaved,
     ),
   );
 }
 
-class SignInPassField extends StatefulWidget {
+//////////////////////////////
+/// *****Password*****
+class authPassField extends StatefulWidget {
   TextEditingController _passwordController;
-  SignInPassField(this._passwordController);
+  String _authMode;
+  ValueSetter<String> _onSaved;
+  authPassField(this._passwordController, this._authMode, this._onSaved);
 
-  _SignInPassFieldState createState() => _SignInPassFieldState();
+  _authPassFieldState createState() => _authPassFieldState();
 }
 
-class _SignInPassFieldState extends State<SignInPassField> {
+class _authPassFieldState extends State<authPassField> {
   bool passVisible;
 
   @override
@@ -83,9 +93,42 @@ class _SignInPassFieldState extends State<SignInPassField> {
           if (value.isEmpty) {
             return ('Password is required');
           }
+          if (widget._authMode == 'signUp') {
+            if (value.length > 12 || value.length < 8) {
+              return ('Password must be between 8 and 12 characters');
+            } else if (!value.contains(new RegExp(r'[A-Z]'))) {
+              return ('passwords must have at least one uppercase letter');
+            } else if (!value.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+              return ('passwords must have at least one special character');
+            }
+          }
+
           return null;
         },
+        onSaved: widget._onSaved,
       ),
     );
   }
+}
+
+//////////////////////////////
+/// *****Google*****
+Widget googleButton(String text) {
+  return SignInButton(
+    Buttons.Google,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
+    //shape:BeveledRectangleBorder,
+    text: text,
+    onPressed: () {},
+  );
+}
+
+//////////////////////////////
+/// *****Facebook*****
+Widget fbButton(String text) {
+  return SignInButton(Buttons.Facebook,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
+      //shape:BeveledRectangleBorder,
+      text: text,
+      onPressed: () {});
 }

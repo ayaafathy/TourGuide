@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Authentication with ChangeNotifier {
   String _userID;
   String _email;
+  String _username;
   String _token;
   DateTime _expiryDate;
   Timer _authenticationTimer;
@@ -22,12 +23,17 @@ class Authentication with ChangeNotifier {
     return _email;
   }
 
+  String get username {
+    return _username;
+  }
+
   String get token {
     if (token != null &&
         _expiryDate != null &&
         _expiryDate.isAfter(DateTime.now())) {
       return _token;
     }
+    return null;
   }
 
   bool get isAuthenticated {
@@ -62,14 +68,18 @@ class Authentication with ChangeNotifier {
 
       _userID = responseData['localId'];
       _email = responseData['email'];
+      _username = _email.substring(0, _email.indexOf('@'));
       _token = responseData['idToken'];
 
       /// For debugging
+      print('**********************************************');
+      print('/////Test $_username');
       if (_userID == null) {
         throw HttpException('Null ID');
       }
 
       /// For debugging ///*****
+      print('**********************************************');
       _expiryDate = DateTime.now().add(
         Duration(
           seconds: int.parse(
@@ -115,9 +125,11 @@ class Authentication with ChangeNotifier {
   Future<void> signOut() async {
     _userID = null;
     _email = null;
+    _username = null;
     _token = null;
     _expiryDate = null;
     _authenticationTimer?.cancel();
+
     notifyListeners();
 
     final prefs = await SharedPreferences.getInstance();
@@ -137,6 +149,7 @@ class Authentication with ChangeNotifier {
     _expiryDate = DateTime.parse(savedUserData['expiryDate']);
 
     /// For debugging ///*****
+    print('**********************************************');
     if (_expiryDate.isBefore(DateTime.now())) {
       print('Expired');
       return false;
@@ -154,6 +167,7 @@ class Authentication with ChangeNotifier {
     }
 
     /// For debugging ///*****
+    print('**********************************************');
     print('Test: $_token');
     print('_expiryDate: $_expiryDate');
 

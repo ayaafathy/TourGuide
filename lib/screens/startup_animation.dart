@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tour_guide/homepage.dart';
-import 'package:tour_guide/screens/signin_UI.dart';
+import 'package:tour_guide/main.dart';
+import 'package:tour_guide/NotUsed/signin_UI.dart';
 
 ///import 'package:tour_guide/homepage.dart';
 
@@ -45,7 +45,7 @@ class _LogoAnimationState extends State<LogoAnimation>
     ac.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.push(
-            context, new MaterialPageRoute(builder: (context) => SignIn()));
+            context, new MaterialPageRoute(builder: (context) => MyApp()));
       }
     });
     super.initState();
