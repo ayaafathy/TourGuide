@@ -9,7 +9,7 @@ import 'package:tour_guide/services/authentication.dart';
 
 enum AuthenticationMode { signUp, signIn }
 
-class authScreen extends StatelessWidget {
+class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';
   @override
   Widget build(BuildContext context) {
