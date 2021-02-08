@@ -126,7 +126,7 @@ class _AuthFormState extends State<AuthForm> {
       } else if (e.toString().contains('INVALID_PASSWORD')) {
         errorMsg = 'Invalid password.';
       }
-      
+
       _showError(errorMsg);
     } catch (e) {
       print('**********************************************');
@@ -185,11 +185,11 @@ class _AuthFormState extends State<AuthForm> {
                         _authenticationData['email'] = value;
                       }),
                       if (_authenticationMode == AuthenticationMode.signUp)
-                        authPassField(_passwordController, 'signUp', (value) {
+                        AuthPassField(_passwordController, 'signUp', (value) {
                           _authenticationData['password'] = value;
                         }),
                       if (_authenticationMode == AuthenticationMode.signIn)
-                        authPassField(_passwordController, 'signIn', (value) {
+                        AuthPassField(_passwordController, 'signIn', (value) {
                           _authenticationData['password'] = value;
                         }),
                       if (_authenticationMode == AuthenticationMode.signUp)

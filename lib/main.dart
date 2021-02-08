@@ -84,6 +84,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '',
+      routes: {
+        '/Start': (context) => MyAnim(),
+        '/auth': (context) => MyApp(),
+        '/settings': (context) => SettingsScreen(),
+        '/home': (context) => HomeScreen(),
+        '/dest': (context) => DestinationScreen(),
+        '/loc': (context) => locProfile(),
+        '/saved': (context) => MySavedList(),
+        '/profile': (context) => UserProfile(),
+        'hotel': (context) => Hotelscreen(),
+        //'/search': (context) => Search(),
+        '/map': (context) => Maps(),
+      },
       home: Container(
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
