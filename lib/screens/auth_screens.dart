@@ -126,8 +126,11 @@ class _AuthFormState extends State<AuthForm> {
       } else if (e.toString().contains('INVALID_PASSWORD')) {
         errorMsg = 'Invalid password.';
       }
+      
       _showError(errorMsg);
     } catch (e) {
+      print('**********************************************');
+      print(e);
       const errorMsg = 'Something went wrong. Please try again later.';
       _showError(errorMsg);
     }
