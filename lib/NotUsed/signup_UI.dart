@@ -52,7 +52,9 @@ class BuildSignUp extends StatefulWidget {
 
 class _BuildSignUpState extends State<BuildSignUp> {
   final _signUpKey = GlobalKey<FormState>();
+  // ignore: prefer_final_fields
   TextEditingController _emailController = TextEditingController();
+  // ignore: prefer_final_fields
   TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -71,7 +73,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     emailField(_emailController),
-                    signUpPasswordField(_passwordController),
+                    SignUpPasswordField(_passwordController),
                     ConfirmPassField(),
                   ],
                 )),
@@ -85,7 +87,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                     print(shouldNavigate);
                     if (shouldNavigate) {
                       Scaffold.of(context).showSnackBar(
-                        new SnackBar(
+                        SnackBar(
                           content: Text('Your account is ready!'),
                         ),
                       );
@@ -105,7 +107,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
             fbButton('Sign Up with Facebook'),
             Padding(
               padding: EdgeInsets.only(top: 25, bottom: 10),
-              child: new GestureDetector(
+              child: GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
@@ -116,7 +118,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     buildFooterText(
-                        "Already have an account?", Colors.white, 16),
+                        'Already have an account?', Colors.white, 16),
                     buildFooterText('Sign In', Colors.white, 16),
                   ],
                 ),

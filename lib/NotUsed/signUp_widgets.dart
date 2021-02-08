@@ -28,14 +28,17 @@ Widget emailField(TextEditingController controller) {
   );
 }
 
-class signUpPasswordField extends StatefulWidget {
+// ignore: must_be_immutable
+class SignUpPasswordField extends StatefulWidget {
+  SignUpPasswordField(this._passwordController);
+  // ignore: prefer_final_fields
   TextEditingController _passwordController;
-  signUpPasswordField(this._passwordController);
 
-  _signUpPasswordFieldState createState() => _signUpPasswordFieldState();
+  @override
+  _SignUpPasswordFieldState createState() => _SignUpPasswordFieldState();
 }
 
-class _signUpPasswordFieldState extends State<signUpPasswordField> {
+class _SignUpPasswordFieldState extends State<SignUpPasswordField> {
   bool passVisible;
   String password;
 
@@ -87,9 +90,9 @@ class _signUpPasswordFieldState extends State<signUpPasswordField> {
             return ('Password is required');
           } else if (value.length > 12 || value.length < 8) {
             return ('Password must be between 8 and 12 characters');
-          } else if (!value.contains(new RegExp(r'[A-Z]'))) {
+          } else if (!value.contains(RegExp(r'[A-Z]'))) {
             return ('passwords must have at least one uppercase letter');
-          } else if (!value.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+          } else if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
             return ('passwords must have at least one special character');
           }
           return null;
@@ -99,12 +102,14 @@ class _signUpPasswordFieldState extends State<signUpPasswordField> {
   }
 }
 
+// ignore: must_be_immutable
 class ConfirmPassField extends StatefulWidget {
   TextEditingController _confirmController;
   bool authenticationMode;
   //ConfirmPassField(this._confirmController);
   //ConfirmPassField(this._confirmController, this.authenticationMode);
 
+  @override
   _ConfirmPassFieldState createState() => _ConfirmPassFieldState();
 }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 //////////////////////////////
@@ -36,16 +35,21 @@ Widget authEmailField(TextEditingController controller, onSaved) {
 
 //////////////////////////////
 /// *****Password*****
-class authPassField extends StatefulWidget {
+// ignore: must_be_immutable
+class AuthPassField extends StatefulWidget {
+  AuthPassField(this._passwordController, this._authMode, this._onSaved);
+  // ignore: prefer_final_fields
   TextEditingController _passwordController;
+  // ignore: prefer_final_fields
   String _authMode;
+  // ignore: prefer_final_fields
   ValueSetter<String> _onSaved;
-  authPassField(this._passwordController, this._authMode, this._onSaved);
 
-  _authPassFieldState createState() => _authPassFieldState();
+  @override
+  _AuthPassFieldState createState() => _AuthPassFieldState();
 }
 
-class _authPassFieldState extends State<authPassField> {
+class _AuthPassFieldState extends State<AuthPassField> {
   bool passVisible;
 
   @override
@@ -96,9 +100,9 @@ class _authPassFieldState extends State<authPassField> {
           if (widget._authMode == 'signUp') {
             if (value.length > 12 || value.length < 8) {
               return ('Password must be between 8 and 12 characters');
-            } else if (!value.contains(new RegExp(r'[A-Z]'))) {
+            } else if (!value.contains(RegExp(r'[A-Z]'))) {
               return ('passwords must have at least one uppercase letter');
-            } else if (!value.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+            } else if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
               return ('passwords must have at least one special character');
             }
           }

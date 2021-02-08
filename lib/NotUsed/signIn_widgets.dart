@@ -30,14 +30,15 @@ Widget authEmailField(TextEditingController controller, onSaved) {
   );
 }
 
-class authPassField extends StatefulWidget {
-  TextEditingController _passwordController;
-  authPassField(this._passwordController);
+class AuthPassField extends StatefulWidget {
+  AuthPassField(this._passwordController);
+  final TextEditingController _passwordController;
 
-  _authPassFieldState createState() => _authPassFieldState();
+  @override
+  _AuthPassFieldState createState() => _AuthPassFieldState();
 }
 
-class _authPassFieldState extends State<authPassField> {
+class _AuthPassFieldState extends State<AuthPassField> {
   bool passVisible;
 
   @override

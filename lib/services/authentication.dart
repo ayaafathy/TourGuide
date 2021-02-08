@@ -93,7 +93,8 @@ class Authentication with ChangeNotifier {
 
       /// End of for debugging ///*****
 
-      _autoSignOut();
+      //await _autoSignOut();
+      _autoSignOut(); // ignore: unawaited_futures
 
       /// Provider
       notifyListeners();
@@ -108,9 +109,10 @@ class Authentication with ChangeNotifier {
         /// Standard format: toIso8601String()
       });
 
+      // ignore: unawaited_futures
       prefs.setString('TG_User', userData);
     } catch (error) {
-      throw error; //***TODO: check this again
+      rethrow; //***TODO: check this again
     }
   }
 
@@ -133,6 +135,7 @@ class Authentication with ChangeNotifier {
     notifyListeners();
 
     final prefs = await SharedPreferences.getInstance();
+    // ignore: unawaited_futures
     prefs.clear();
   }
 
@@ -154,7 +157,7 @@ class Authentication with ChangeNotifier {
       print('Expired');
       return false;
     }
-    print("//Auto SignIn $savedUserData");
+    print('//Auto SignIn $savedUserData');
 
     /// End of for debugging ///*****
 
@@ -175,6 +178,7 @@ class Authentication with ChangeNotifier {
     return true;
   }
 
+  // ignore: missing_return
   Future<void> _autoSignOut() {
     if (_authenticationTimer != null) {
       _authenticationTimer.cancel();
