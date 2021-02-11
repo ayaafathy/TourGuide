@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_guide/models/tour_guides_model.dart';
+//import 'package:tour_guide/models/tour_guides_model.dart';
 //import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
@@ -59,6 +59,7 @@ class _DashNavState extends State<DashNav> {
 
   Column buildList() {
     ///ICON COLOR: GREY
+    // ignore: omit_local_variable_types
     Color iconColor = Colors.grey[700];
     return Column(
       children: [

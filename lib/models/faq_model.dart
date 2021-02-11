@@ -1,9 +1,9 @@
 class FAQ {
+  FAQ(this.id, this.q, this.a);
+
   int id;
   String q;
   String a;
-
-  FAQ(this.id, this.q, this.a);
 }
 
 class FAQs {

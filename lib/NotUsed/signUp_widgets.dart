@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
 
-Widget emailField() {
+Widget emailField(TextEditingController controller) {
   final emailValidator = MultiValidator([
     RequiredValidator(errorText: 'Email is required'),
-    EmailValidator(errorText: 'Invalid Email'),
+    EmailValidator(errorText: 'Invalid Email format'),
   ]);
 
   return Padding(
     padding: EdgeInsets.all(5.0),
     child: TextFormField(
+      controller: controller,
       obscureText: false,
       decoration: InputDecoration(
           prefixIcon: Icon(
@@ -27,14 +28,19 @@ Widget emailField() {
   );
 }
 
-class PasswordField extends StatefulWidget {
-  _PasswordFieldState createState() => _PasswordFieldState();
+// ignore: must_be_immutable
+class SignUpPasswordField extends StatefulWidget {
+  SignUpPasswordField(this._passwordController);
+  // ignore: prefer_final_fields
+  TextEditingController _passwordController;
+
+  @override
+  _SignUpPasswordFieldState createState() => _SignUpPasswordFieldState();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
+class _SignUpPasswordFieldState extends State<SignUpPasswordField> {
   bool passVisible;
   String password;
-  final _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -44,7 +50,7 @@ class _PasswordFieldState extends State<PasswordField> {
 
   @override
   void dispose() {
-    _passwordController.dispose();
+    widget._passwordController.dispose();
     super.dispose();
   }
 
@@ -53,6 +59,7 @@ class _PasswordFieldState extends State<PasswordField> {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: TextFormField(
+        controller: widget._passwordController,
         obscureText: !passVisible,
         decoration: InputDecoration(
             prefixIcon: Icon(
@@ -78,30 +85,36 @@ class _PasswordFieldState extends State<PasswordField> {
             //helperStyle: TextStyle(color: Colors.red, fontSize: 15),
             contentPadding: const EdgeInsets.all(5.0)),
         style: textStyle(),
-        controller: _passwordController,
         validator: (value) {
-          if (value.length > 12 || value.length < 8) {
+          if (value.isEmpty) {
+            return ('Password is required');
+          } else if (value.length > 12 || value.length < 8) {
             return ('Password must be between 8 and 12 characters');
-          } else if (!value.contains(new RegExp(r'[A-Z]'))) {
+          } else if (!value.contains(RegExp(r'[A-Z]'))) {
             return ('passwords must have at least one uppercase letter');
-          } else if (!value.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+          } else if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
             return ('passwords must have at least one special character');
           }
           return null;
         },
-        //onChanged: (value) => password = value,
       ),
     );
   }
 }
 
+// ignore: must_be_immutable
 class ConfirmPassField extends StatefulWidget {
+  TextEditingController _confirmController;
+  bool authenticationMode;
+  //ConfirmPassField(this._confirmController);
+  //ConfirmPassField(this._confirmController, this.authenticationMode);
+
+  @override
   _ConfirmPassFieldState createState() => _ConfirmPassFieldState();
 }
 
 class _ConfirmPassFieldState extends State<ConfirmPassField> {
   bool confirmVisible;
-  final _confirmController = TextEditingController();
 
   @override
   void initState() {
@@ -111,7 +124,7 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
 
   @override
   void dispose() {
-    _confirmController.dispose();
+    widget._confirmController.dispose();
     super.dispose();
   }
 
@@ -120,6 +133,8 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: TextFormField(
+        ///CHECK
+        enabled: widget.authenticationMode,
         obscureText: !confirmVisible,
         decoration: InputDecoration(
             prefixIcon: Icon(
@@ -143,16 +158,7 @@ class _ConfirmPassFieldState extends State<ConfirmPassField> {
             hintStyle: hintStyle(),
             contentPadding: const EdgeInsets.all(5.0)),
         style: textStyle(),
-        controller: _confirmController,
-        /*
-        validator: (value) {
-          if (_confirmController.text !=
-              _PasswordFieldState()._passwordController.text) {
-            return ('Passwords do not match');
-          }
-          return null;
-        },
-        */
+        controller: widget._confirmController,
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tour_guide/homepage.dart';
-import 'package:tour_guide/screens/signin_UI.dart';
+import 'package:tour_guide/main.dart';
 
 ///import 'package:tour_guide/homepage.dart';
 
@@ -12,7 +11,7 @@ class MyAnim extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "animation",
+      title: 'animation',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
@@ -45,7 +44,7 @@ class _LogoAnimationState extends State<LogoAnimation>
     ac.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.push(
-            context, new MaterialPageRoute(builder: (context) => SignIn()));
+            context, MaterialPageRoute(builder: (context) => MyApp()));
       }
     });
     super.initState();
@@ -69,6 +68,7 @@ class AnimatedLogo extends AnimatedWidget {
   AnimatedLogo({Key key, Animation<double> animation})
       : super(key: key, listenable: animation);
 
+  @override
   Widget build(BuildContext context) {
     Animation<double> animation = listenable;
     return Container(
@@ -76,7 +76,7 @@ class AnimatedLogo extends AnimatedWidget {
         child: Container(
           width: animation.value,
           height: animation.value,
-          child: Image(image: AssetImage("assets/images/logo.jpg")),
+          child: Image(image: AssetImage('assets/images/logo.jpg')),
         ),
       ),
       color: Colors.white,
