@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/models/activity_model.dart';
 import 'package:tour_guide/models/destination_model.dart';
+import 'package:tour_guide/widgets/rating.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DestinationScreen extends StatefulWidget {
@@ -13,14 +14,9 @@ class DestinationScreen extends StatefulWidget {
 }
 
 class _DestinationScreenState extends State<DestinationScreen> {
-  Text _buildRatingStars(int rating) {
-    String stars = '';
-    for (int i = 0; i < rating; i++) {
-      stars += '⭐';
-    }
-    stars.trim();
-    return Text(stars);
-  }
+
+  int _rating;
+
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +133,8 @@ class _DestinationScreenState extends State<DestinationScreen> {
                 return Stack(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 5.0),
-                      height: 170.0,
+                      margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 10.0),
+                      height: 200.0,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -191,8 +187,17 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                 color: Colors.grey,
                               ),
                             ),
-                            _buildRatingStars(activity.rating),
-                            SizedBox(height: 10.0),
+                            Rating((rating) {
+                              setState(() {
+                                _rating = rating;
+                              });
+                            }, 5),
+                            SizedBox(
+                                height: 15,
+                                child: (_rating != null && _rating != 0)
+                                    ? Text("You selected $_rating rating",
+                                    style: TextStyle(fontSize: 11))
+                                    : SizedBox.shrink()),
                             Row(
                               children: <Widget>[
                                 Container(
