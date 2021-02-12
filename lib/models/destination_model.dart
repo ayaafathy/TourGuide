@@ -1,4 +1,6 @@
 import 'package:tour_guide/models/activity_model.dart';
+import 'package:flutter/foundation.dart';
+
 
 class Destination {
   String imageUrl;
@@ -6,13 +8,16 @@ class Destination {
   String country;
   String description;
   List<Activity> activities;
+  bool isFavorite;
 
   Destination({
-    this.imageUrl,
-    this.city,
-    this.country,
-    this.description,
+    @required this.imageUrl,
+    @required this.city,
+    @required this.country,
+    @required this.description,
     this.activities,
+    this.isFavorite = false,
+
   });
 }
 
