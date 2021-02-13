@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tour_guide/services/authentication.dart';
+import 'package:tour_guide/providers/authentication.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
 import 'package:tour_guide/screens/hotel_screen.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
@@ -12,8 +12,6 @@ import 'package:tour_guide/screens/user_profile.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
 import 'package:tour_guide/screens/map.dart';
 
-// import 'package:animated_splash_screen/animated_splash_screen.dart';
-
 /*
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +22,7 @@ void main() async {
 
 void main() {
   runApp(
+    /// To place Authentication at the top of the widget tree
     ChangeNotifierProvider(
       create: (context) => Authentication(),
       child: MyApp(),
@@ -35,9 +34,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// TODO: Use this when state managements in other models is done
+    /// TODO: savedLocations model,  method
     /*
     return MultiProvider(
-      providers: [],
+      providers: [
+        ChangeNotifierProxyProvider<Authentication, savedLocations>(
+          create: (_) => savedLocations(
+              Provider.of<Authentication>(context, listen: true).token,
+              Provider.of<Authentication>(context, listen: true)._userID, []),
+          update: (ctx, Authentication, savedLocations) =>
+              savedLocations..receiveToken(Authentication, savedLocations.items),
+        ),
+        ChangeNotifierProvider.value(
+          value: Cart(),
+        ),
+     
+      ],
       child: Consumer<Authentication>(
         builder: (ctx, auth, _) => MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -105,7 +117,8 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: AuthScreen(),
+        child: // HomeScreen(),
+            AuthScreen(),
       ),
     );
   }

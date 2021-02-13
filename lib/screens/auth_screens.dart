@@ -5,7 +5,7 @@ import 'package:tour_guide/widgets/fonts_style.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:tour_guide/widgets/auth_widgets.dart';
 import 'package:tour_guide/models/http_exception.dart';
-import 'package:tour_guide/services/authentication.dart';
+import 'package:tour_guide/providers/authentication.dart';
 
 enum AuthenticationMode { signUp, signIn }
 
@@ -102,14 +102,14 @@ class _AuthFormState extends State<AuthForm> {
       if (_authenticationMode == AuthenticationMode.signIn) {
         // Log user in
         await Provider.of<Authentication>(context, listen: false).signIn(
-          _authenticationData['email'],
-          _authenticationData['password'],
+          _authenticationData['email'].trim(),
+          _authenticationData['password'].trim(),
         );
       } else {
         // Sign user up
         await Provider.of<Authentication>(context, listen: false).signUp(
-          _authenticationData['email'],
-          _authenticationData['password'],
+          _authenticationData['email'].trim(),
+          _authenticationData['password'].trim(),
         );
       }
     } on HttpException catch (e) {
@@ -181,15 +181,18 @@ class _AuthFormState extends State<AuthForm> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       /// Email & Password Widgets from 'auth_widgets.dart' in 'Widgets' directory
-                      authEmailField(_emailController, (value) {
+                      AuthEmailField(_emailController, (value) {
+                        //value = value.trim();
                         _authenticationData['email'] = value;
                       }),
                       if (_authenticationMode == AuthenticationMode.signUp)
                         AuthPassField(_passwordController, 'signUp', (value) {
+                          //value = value.trim();
                           _authenticationData['password'] = value;
                         }),
                       if (_authenticationMode == AuthenticationMode.signIn)
                         AuthPassField(_passwordController, 'signIn', (value) {
+                          //value = value.trim();
                           _authenticationData['password'] = value;
                         }),
                       if (_authenticationMode == AuthenticationMode.signUp)

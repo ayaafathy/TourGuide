@@ -43,12 +43,14 @@ class _GuideScreenState extends State<GuideScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+                    /*
                     IconButton(
                       icon: Icon(Icons.arrow_back),
                       iconSize: 30.0,
                       color: Colors.white,
                       onPressed: () => Navigator.pop(context),
                     ),
+                    */
                   ],
                 ),
               ),
