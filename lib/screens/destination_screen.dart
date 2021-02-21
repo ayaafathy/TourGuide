@@ -127,7 +127,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
-              itemCount: widget.destination.activities.length,
+              itemCount: widget.destination.activities.length, //////---------->>>>
               itemBuilder: (BuildContext context, int index) {
                 Activity activity = widget.destination.activities[index];
                 return Stack(
