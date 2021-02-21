@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tour_guide/models/location_model.dart';
+import 'package:tour_guide/provider/destinations.dart';
+import 'package:tour_guide/provider/locations.dart';
 import 'package:tour_guide/services/authentication.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
 import 'package:tour_guide/screens/hotel_screen.dart';
@@ -14,6 +17,7 @@ import 'package:tour_guide/screens/map.dart';
 
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
 
+
 /*
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,21 +28,28 @@ void main() async {
 
 void main() {
   runApp(
+    /*
     ChangeNotifierProvider(
       create: (context) => Authentication(),
       child: MyApp(),
-    ),
-  );
+    ),*/
+    MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// TODO: Use this when state managements in other models is done
-    /*
+
     return MultiProvider(
-      providers: [],
-      child: Consumer<Authentication>(
+      providers: [
+        ChangeNotifierProvider(create: (context) => Authentication()),
+        ChangeNotifierProvider(create: (context) => Locations()),
+        ChangeNotifierProvider(create: (context) => Destinations()),
+
+
+      ],
+      child:/* Consumer<Authentication>(
         builder: (ctx, auth, _) => MaterialApp(
           debugShowCheckedModeBanner: false,
           title: '',
@@ -74,14 +85,14 @@ class MyApp extends StatelessWidget {
                             ? MyAnim()
                             : AuthScreen(),
                   ),
-             
+
           ),
         ),
       ),
     );
-    */
 
-    return MaterialApp(
+*/
+     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '',
       routes: {
@@ -105,8 +116,8 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: AuthScreen(),
+        child: HomeScreen(),
       ),
-    );
+    ));
   }
 }
