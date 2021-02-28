@@ -2,7 +2,7 @@
 
 import 'package:flutter/widgets.dart';
 import 'dart:async';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as https;
 import 'dart:convert';
 import 'package:tour_guide/models/http_exception.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -49,16 +49,30 @@ class Authentication with ChangeNotifier {
 
     /// Response Payload(REST API)
     try {
-      final response = await http.post(
+      final response = await https.post(
         url,
         body: json.encode(
           {
-            'email': email,
-            'password': password,
-            'returnSecureToken': true,
+            "email": email,
+            "password": password,
+            "returnSecureToken": true,
           },
         ),
       );
+      /*
+      if (response.statusCode == 200) {
+        print(json.decode(response.body));
+      } else {
+        print(response.statusCode);
+      }
+      */
+
+      /*
+      String jsonsDataString = response.body .toString(); 
+      final responseData = jsonDecode(jsonsDataString);
+      print(responseData.toString());
+      */
+
       final responseData = json.decode(response.body);
 
       /// Error response payload(REST API)
@@ -102,9 +116,9 @@ class Authentication with ChangeNotifier {
       /// Shared Preferences, save data for auto sign in
       final prefs = await SharedPreferences.getInstance();
       final userData = json.encode({
-        'userID': _userID,
-        'token': _token,
-        'expiryDate': _expiryDate.toIso8601String(),
+        "userID": _userID,
+        "token": _token,
+        "expiryDate": _expiryDate.toIso8601String(),
 
         /// Standard format: toIso8601String()
       });

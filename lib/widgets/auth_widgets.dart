@@ -5,7 +5,7 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 //////////////////////////////
 /// *****Email*****
-Widget authEmailField(TextEditingController controller, onSaved) {
+Widget AuthEmailField(TextEditingController controller, onSaved) {
   final emailValidator = MultiValidator([
     RequiredValidator(errorText: 'Email is required'),
     EmailValidator(errorText: 'Invalid Email format'),
