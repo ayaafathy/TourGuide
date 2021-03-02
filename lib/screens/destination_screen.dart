@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tour_guide/models/activity_model.dart';
 import 'package:tour_guide/models/destination_model.dart';
+import 'package:tour_guide/provider/activities.dart';
 import 'package:tour_guide/widgets/rating.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -20,6 +22,14 @@ class _DestinationScreenState extends State<DestinationScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final acttest = Provider.of<Activities>(context).items;
+    var asize = acttest.length;
+    //Activity activity = widget.destination.activities[index];
+
+    print("xxx");
+    //print(activity);
+
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -127,10 +137,16 @@ class _DestinationScreenState extends State<DestinationScreen> {
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
-              itemCount: widget.destination.activities.length, //////---------->>>>
+              itemCount: asize, //////---------->>>>
               itemBuilder: (BuildContext context, int index) {
-                Activity activity = widget.destination.activities[index];
-                return Stack(
+                print(index);
+                // final acttest = Provider.of<Activities>(context).items;
+                //
+                // //Activity activity = widget.destination.activities[index];
+                // Activity activity = acttest[index];
+                // print("xxx");
+                // print(activity);
+                return Column(
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 10.0),
@@ -153,7 +169,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                 Container(
                                   width: 120.0,
                                   child: Text(
-                                    activity.name,
+                                    acttest[index].name,
                                     style: TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.w600,
@@ -165,7 +181,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                 Column(
                                   children: <Widget>[
                                     Text(
-                                      '\$${activity.price}',
+                                      '\$${/*activity.price*/"Activity Price"}',
                                       style: TextStyle(
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.w600,
@@ -182,7 +198,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                               ],
                             ),
                             Text(
-                              activity.type,
+                              acttest[index].type,
                               style: TextStyle(
                                 color: Colors.grey,
                               ),
@@ -209,7 +225,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                   ),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    activity.startTimes[0],
+                                    acttest[index].startTimes[0],
                                   ),
                                 ),
                                 SizedBox(width: 10.0),
@@ -222,7 +238,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                   ),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    activity.startTimes[1],
+                                    acttest[index].startTimes[1],
                                   ),
                                 ),
                               ],
@@ -240,7 +256,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                         child: Image(
                           width: 110.0,
                           image: AssetImage(
-                            activity.imageUrl,
+                            acttest[index].imageUrl,
                           ),
                           fit: BoxFit.cover,
                         ),

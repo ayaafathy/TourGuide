@@ -22,7 +22,7 @@ class _MySavedListState extends State<MySavedList> {
       appBar: AppBar(title: const Text('Favourite Screen'),),
       body: Column(
       children: <Widget>[
-        SizedBox(height: 10),
+        SizedBox(height: 20),
         Expanded(
           child: ListView.builder(
             itemCount: destinations.length,

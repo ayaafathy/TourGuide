@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tour_guide/provider/destinations.dart';
 import 'package:tour_guide/screens/map.dart';
 import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
@@ -40,6 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20.0,
             ),
             DestinationCarousel(),
+            // ChangeNotifierProvider<Destinations>(
+            //   create: (_)=> Destinations(),
+            //   child: DestinationCarousel(
+            //
+            //   ),
+            // ),
             SizedBox(
               height: 20.0,
             ),

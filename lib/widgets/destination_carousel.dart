@@ -7,10 +7,16 @@ import 'package:tour_guide/models/destination_model.dart';
 import 'package:tour_guide/provider/destinations.dart';
 import 'package:tour_guide/screens/destination_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:tour_guide/provider/activities.dart';
 
-class DestinationCarousel extends StatelessWidget {
+class DestinationCarousel extends StatefulWidget {
 
 
+  @override
+  _DestinationCarouselState createState() => _DestinationCarouselState();
+}
+
+class _DestinationCarouselState extends State<DestinationCarousel> {
   @override
   Widget build(BuildContext context) {
     final destination = Provider.of<Destinations>(context);
@@ -58,9 +64,13 @@ class DestinationCarousel extends StatelessWidget {
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (_) => DestinationScreen(
-                                destination: des,
-                              ))),
+                          builder: (_) => ChangeNotifierProvider<Activities>(
+                            create: (_)=> Activities(),
+                            child: DestinationScreen(
+
+                                  destination: des,
+                                ),
+                          ))),
                   child: Container(
                     margin: EdgeInsets.all(10.0),
                     width: 210.0,
@@ -135,9 +145,25 @@ class DestinationCarousel extends StatelessWidget {
                                           fontWeight: FontWeight.w600,
                                           letterSpacing: 1.2),
                                     ),
-                                     IconButton(icon: Icon(Icons.favorite),
-                                        color: Theme.of(context).accentColor,
-                                        onPressed: () {},
+                                    IconButton(
+                                      icon: Icon(
+                                        des.isFavorite ? Icons.favorite : Icons.favorite_border,
+                                      ),
+                                      color: Colors.red,
+                                      onPressed: () {
+                                        setState(() {
+                                          des.toggleFavoriteStatus();
+                                        });
+                                        // if(des.isFavorite)
+                                        //   {
+                                        //     Icons.favorite;
+                                        //   }
+                                        // else
+                                        //   {
+                                        //     Icons.favorite_border;
+                                        //   }
+                                        //des.toggleFavoriteStatus();
+                                        },
 
                                     ),
                                     Row(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/models/location_model.dart';
+import 'package:tour_guide/provider/activities.dart';
 import 'package:tour_guide/provider/destinations.dart';
 import 'package:tour_guide/provider/locations.dart';
 import 'package:tour_guide/services/authentication.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => Authentication()),
         ChangeNotifierProvider(create: (context) => Locations()),
         ChangeNotifierProvider(create: (context) => Destinations()),
+        ChangeNotifierProvider(create: (context) => Activities()),
 
 
       ],

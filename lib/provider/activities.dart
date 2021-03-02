@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../models/activity_model.dart';
+import 'package:provider/provider.dart';
+
 
 class Activities with ChangeNotifier {
-  final List<Activity> _activities = [
+  final List<Activity> _items = [
     Activity(
       id: '1',
       imageUrl: 'assets/images/stmarksbasilica.jpg',
@@ -32,19 +34,19 @@ class Activities with ChangeNotifier {
     ),
   ];
 
-  List<Activity> get activities {
+  List<Activity> get items {
     // if (_showFavoritesOnly) {
     //   return _items.where((prodItem) => prodItem.isFavorite).toList();
     // }
-    return [..._activities];
+    return [..._items];
   }
 
   List<Activity> get favoriteItems {
-    return _activities.where((prodItem) => prodItem.isFavorite).toList();
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
   Activity findById(String id) {
-    return _activities.firstWhere((prod) => prod.id == id);
+    return _items.firstWhere((prod) => prod.id == id);
   }
 
 }

@@ -3,10 +3,13 @@ import 'package:provider/provider.dart';
 import '../models/destination_model.dart';
 import '../models/activity_model.dart';
 import 'package:tour_guide/provider/activities.dart';
+import 'activities.dart';
+
 
 class Destinations with ChangeNotifier {
   static String dummyDesc =
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. When an unknown printer took a galley.";
+  //final deeb = Provider.of<Activities>(context);
 
 
 
@@ -17,7 +20,7 @@ class Destinations with ChangeNotifier {
       city: 'Venice',
       country: 'Italy',
       description: 'Visit Venice for an amazing and unforgettable adventure.',
-      //activities: act
+      activities: []
     ),
     Destination(
       id: '2',
@@ -25,7 +28,7 @@ class Destinations with ChangeNotifier {
       city: 'Paris',
       country: 'France',
       description: 'Visit Paris for an amazing and unforgettable adventure.',
-      //activities: activities,
+      activities: [],
     ),
     Destination(
       id: '3',
@@ -33,7 +36,7 @@ class Destinations with ChangeNotifier {
       city: 'New Delhi',
       country: 'India',
       description: 'Visit New Delhi for an amazing and unforgettable adventure.',
-      //activities: activities,
+      activities: [],
     ),
     Destination(
       id: '4',
@@ -41,7 +44,7 @@ class Destinations with ChangeNotifier {
       city: 'Sao Paulo',
       country: 'Brazil',
       description: 'Visit Sao Paulo for an amazing and unforgettable adventure.',
-      //activities: activities,
+      activities: [],
     ),
     Destination(
       id: '5',
@@ -49,7 +52,7 @@ class Destinations with ChangeNotifier {
       city: 'New York City',
       country: 'United States',
       description: 'Visit New York for an amazing and unforgettable adventure.',
-      //activities: activities,
+      activities: [],
     ),
   ];
 
@@ -64,8 +67,17 @@ class Destinations with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
-  Destination findById(int id) {
-    return _items.firstWhere((prod) => prod.id == id.toString());
+  Destination findById(String id) {
+    return _items.firstWhere((prod) => prod.id == id);
+  }
+
+  List<Activity> getProductsById(BuildContext context, String id) {
+    List<Activity> list = [];
+    for (Activity activityid in _items.firstWhere((cat) => cat.id == id).activities)
+    {
+      list.add(Provider.of<Activities>(context).findById(activityid.id));
+    }
+    return list;
   }
 
 }

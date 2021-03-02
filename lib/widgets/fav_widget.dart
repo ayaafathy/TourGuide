@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/models/destination_model.dart';
+import 'package:tour_guide/provider/destinations.dart';
 const kDefaultPadding = 20.0;
 const kTextColor = Color(0xFF535353);
 const kTextLightColor = Color(0xFFACACAC);
-class FavWidget extends StatelessWidget {
+
+class FavWidget extends StatefulWidget {
 
   final Destination destination;
 
   const FavWidget({Key key, this.destination}) : super(key: key);
 
+  @override
+  _FavWidgetState createState() => _FavWidgetState();
+}
 
+class _FavWidgetState extends State<FavWidget> {
   @override
   Widget build(BuildContext context) {
+    final des = Provider.of<Destinations>(context).favoriteItems;
+
     return Dismissible(
-      key: ValueKey(destination.id),
+      key: ValueKey(widget.destination.id),
       background: Container(
         color: Colors.green,
         child: Icon(
           Icons.delete,
-          color: Colors.white,
+          color: Colors.red,
           size: 40,
         ),
         alignment: Alignment.centerRight,
@@ -49,8 +57,12 @@ class FavWidget extends StatelessWidget {
               FlatButton(
                 child: Text('Yes', style: TextStyle(color: kTextColor)),
                 onPressed: () {
-                  destination.toggleFavoriteStatus();
-                  Navigator.of(ctx).pop(true);
+                  setState(() {
+                    widget.destination.toggleFavoriteStatus();
+                    Navigator.of(ctx).pop(true);
+                  });
+                  // widget.destination.toggleFavoriteStatus();
+                  // Navigator.of(ctx).pop(true);
                 },
               ),
             ],
@@ -66,10 +78,24 @@ class FavWidget extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 30.0,
-            backgroundImage: AssetImage(destination.imageUrl),
+            backgroundImage: AssetImage(widget.destination.imageUrl),
             backgroundColor: Colors.transparent,
           ),
-          title: Text(destination.city),
+          title: Text(widget.destination.city),
+          trailing: IconButton(
+            icon: Icon(
+              Icons.delete,
+            ),
+            color: Colors.red,
+            onPressed: () {
+setState(() {
+  widget.destination.toggleFavoriteStatus();
+
+});
+             // widget.destination.toggleFavoriteStatus();
+            },
+
+          ),
 
         ),
       ),
