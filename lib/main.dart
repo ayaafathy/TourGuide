@@ -12,6 +12,8 @@ import 'package:tour_guide/screens/user_profile.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
 import 'package:tour_guide/screens/map.dart';
 
+import 'package:tour_guide/services/push_notifications.dart';
+
 ///import 'package:flutter_launcher_icons/android.dart';
 
 /*
@@ -119,8 +121,9 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: // HomeScreen(),
-            AuthScreen(),
+        child: NotificationScreen(),
+        //HomeScreen(),
+        //AuthScreen(),
       ),
     );
   }
