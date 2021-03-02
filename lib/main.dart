@@ -11,7 +11,8 @@ import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
 import 'package:tour_guide/screens/map.dart';
-import 'package:flutter_launcher_icons/android.dart';
+
+///import 'package:flutter_launcher_icons/android.dart';
 
 /*
 void main() async {
