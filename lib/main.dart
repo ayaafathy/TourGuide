@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tour_guide/provider/activities.dart';
+import 'package:tour_guide/provider/destinations.dart';
+import 'package:tour_guide/provider/locations.dart';
 import 'package:tour_guide/providers/authentication.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
 import 'package:tour_guide/screens/hotel_screen.dart';
@@ -39,19 +42,23 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProxyProvider<Authentication, savedLocations>(
-          create: (_) => savedLocations(
-              Provider.of<Authentication>(context, listen: true).token,
-              Provider.of<Authentication>(context, listen: true)._userID, []),
-          update: (ctx, Authentication, savedLocations) =>
-              savedLocations..receiveToken(Authentication, savedLocations.items),
-        ),
-        ChangeNotifierProvider.value(
-          value: Cart(),
-        ),
+        // ChangeNotifierProxyProvider<Authentication, savedLocations>(
+        //   create: (_) => savedLocations(
+        //       Provider.of<Authentication>(context, listen: true).token,
+        //       Provider.of<Authentication>(context, listen: true)._userID, []),
+        //   update: (ctx, Authentication, savedLocations) =>
+        //       savedLocations..receiveToken(Authentication, savedLocations.items),
+        // ),
+        // ChangeNotifierProvider.value(
+        //   value: Cart(),
+        // ),
+        ChangeNotifierProvider(create: (context) => Authentication()),
+        ChangeNotifierProvider(create: (context) => Locations()),
+        ChangeNotifierProvider(create: (context) => Destinations()),
+        ChangeNotifierProvider(create: (context) => Activities()),
 
       ],
-      child: Consumer<Authentication>(
+      child: /*Consumer<Authentication>(
         builder: (ctx, auth, _) => MaterialApp(
           debugShowCheckedModeBanner: false,
           title: '',
@@ -92,9 +99,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+*/
 
-
-    return MaterialApp(
+     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '',
       routes: {
@@ -118,9 +125,9 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: // HomeScreen(),
-        AuthScreen(),
+        child:  HomeScreen(),
+        //AuthScreen(),
       ),
-    );
+    ));
   }
 }
