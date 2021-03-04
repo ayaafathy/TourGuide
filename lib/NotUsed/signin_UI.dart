@@ -74,6 +74,34 @@ class _BuildSignInState extends State<BuildSignIn> {
                       print(_passwordController.text);
                       */
                       // ignore: omit_local_variable_types
+
+                      Scaffold.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Logged In!'),
+                        ),
+                      );
+                      Future.delayed(
+                          Duration(seconds: 1),
+                          () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen()),
+                              ));
+                    }
+                  },
+                );
+                /* 
+                child: Builder(builder: (BuildContext context) {
+                return buildButton(
+                  'Continue',
+                  Icons.email,
+                  () async {
+                    if (_signInKey.currentState.validate()) {
+                      /*
+                      print(_emailController.text);
+                      print(_passwordController.text);
+                      */
+                      // ignore: omit_local_variable_types
                       bool shouldNavigate = await signIn(
                           _emailController.text, _passwordController.text);
                       print(shouldNavigate);
@@ -94,6 +122,8 @@ class _BuildSignInState extends State<BuildSignIn> {
                     }
                   },
                 );
+              }),
+                 */
               }),
             ),
             googleButton('Sign In with Google'),

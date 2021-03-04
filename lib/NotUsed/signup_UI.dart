@@ -82,6 +82,25 @@ class _BuildSignUpState extends State<BuildSignUp> {
               child: Builder(builder: (BuildContext context) {
                 return buildButton('Continue', Icons.email, () async {
                   if (_signUpKey.currentState.validate()) {
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Your account is ready!'),
+                      ),
+                    );
+                    Future.delayed(
+                        Duration(seconds: 1),
+                        () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()),
+                            ));
+                  }
+                });
+              }),
+
+              /*child: Builder(builder: (BuildContext context) {
+                return buildButton('Continue', Icons.email, () async {
+                  if (_signUpKey.currentState.validate()) {
                     var shouldNavigate = await register(
                         _emailController.text, _passwordController.text);
                     print(shouldNavigate);
@@ -101,7 +120,7 @@ class _BuildSignUpState extends State<BuildSignUp> {
                     }
                   }
                 });
-              }),
+              }),*/
             ),
             googleButton('Sign Up with Google'),
             fbButton('Sign Up with Facebook'),
