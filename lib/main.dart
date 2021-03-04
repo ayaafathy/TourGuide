@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tour_guide/provider/activities.dart';
-import 'package:tour_guide/provider/destinations.dart';
-import 'package:tour_guide/provider/locations.dart';
 import 'package:tour_guide/providers/authentication.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
 import 'package:tour_guide/screens/hotel_screen.dart';
@@ -14,15 +11,9 @@ import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
 import 'package:tour_guide/screens/map.dart';
-import 'package:flutter_launcher_icons/android.dart';
 
-/*
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
-}
-*/
+/// import 'package:tour_guide/services/push_notifications.dart';
+///import 'package:flutter_launcher_icons/android.dart';
 
 void main() {
   runApp(
@@ -37,71 +28,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    /// TODO: Use this when state managements in other models is done
-    /// TODO: savedLocations model,  method
-
-    return MultiProvider(
-      providers: [
-        // ChangeNotifierProxyProvider<Authentication, savedLocations>(
-        //   create: (_) => savedLocations(
-        //       Provider.of<Authentication>(context, listen: true).token,
-        //       Provider.of<Authentication>(context, listen: true)._userID, []),
-        //   update: (ctx, Authentication, savedLocations) =>
-        //       savedLocations..receiveToken(Authentication, savedLocations.items),
-        // ),
-        // ChangeNotifierProvider.value(
-        //   value: Cart(),
-        // ),
-        ChangeNotifierProvider(create: (context) => Authentication()),
-        ChangeNotifierProvider(create: (context) => Locations()),
-        ChangeNotifierProvider(create: (context) => Destinations()),
-        ChangeNotifierProvider(create: (context) => Activities()),
-
-      ],
-      child: /*Consumer<Authentication>(
-        builder: (ctx, auth, _) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: '',
-          initialRoute: '/Start',
-          routes: {
-          '/Start': (context) => MyAnim(),
-          '/auth': (context) => MyApp(),
-          '/settings': (context) => SettingsScreen(),
-          '/home': (context) => HomeScreen(),
-          '/dest': (context) => DestinationScreen(),
-          '/loc': (context) => locProfile(),
-          '/saved': (context) => MySavedList(),
-          '/profile': (context) => UserProfile(),
-          'hotel': (context) => Hotelscreen(),
-          //'/search': (context) => Search(),
-          '/map': (context) => Maps(),
-          },
-          home: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/redstreet.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: auth.isAuthenticated
-                ? HomeScreen()
-                : FutureBuilder(
-                    future: auth.autoSignIn(),
-                    builder: (ctx, autResSnapshot) =>
-                        autResSnapshot.connectionState ==
-                                ConnectionState.waiting
-                            ? MyAnim()
-                            : AuthScreen(),
-                  ),
-
-          ),
-        ),
-      ),
-    );
-*/
-
-     MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '',
       routes: {
@@ -125,9 +52,10 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child:  HomeScreen(),
-        //AuthScreen(),
+        child: AuthScreen(),
+        //NotificationScreen(),
+        //HomeScreen(),
       ),
-    ));
+    );
   }
 }
