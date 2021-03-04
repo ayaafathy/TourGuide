@@ -1,9 +1,8 @@
 /// For Authentication with REST API
-
-import 'package:flutter/widgets.dart';
 import 'dart:async';
-import 'package:http/http.dart' as https;
 import 'dart:convert';
+import 'package:http/http.dart' as https;
+import 'package:flutter/widgets.dart';
 import 'package:tour_guide/models/http_exception.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -41,11 +40,11 @@ class Authentication with ChangeNotifier {
   }
 
   Future<void> _authenticate(
-      String action, String email, String password) async {
+      String email, String password, String action) async {
     /// Action: 'SignUp' OR 'signInWithPassword'
-    final APIkey = 'AIzaSyDpUWCfMS_wtdKSaCP63XIJ3IEA5e8LOyY';
+    final apiKey = 'AIzaSyDpUWCfMS_wtdKSaCP63XIJ3IEA5e8LOyY';
     final url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:$action?key=$APIkey';
+        'https://identitytoolkit.googleapis.com/v1/accounts:$action?key=$apiKey';
 
     /// Response Payload(REST API)
     try {
@@ -53,12 +52,16 @@ class Authentication with ChangeNotifier {
         url,
         body: json.encode(
           {
-            "email": email,
-            "password": password,
-            "returnSecureToken": true,
+            'email': email,
+            'password': password,
+            'returnSecureToken': true,
           },
         ),
       );
+
+      print(response.statusCode);
+      print(response.body);
+
       /*
       if (response.statusCode == 200) {
         print(json.decode(response.body));
@@ -126,7 +129,7 @@ class Authentication with ChangeNotifier {
       // ignore: unawaited_futures
       prefs.setString('TG_User', userData);
     } catch (error) {
-      rethrow; //***TODO: check this again
+      throw error; //***TODO: check this again
     }
   }
 
