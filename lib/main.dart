@@ -12,17 +12,8 @@ import 'package:tour_guide/screens/user_profile.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
 import 'package:tour_guide/screens/map.dart';
 
-import 'package:tour_guide/services/push_notifications.dart';
-
+/// import 'package:tour_guide/services/push_notifications.dart';
 ///import 'package:flutter_launcher_icons/android.dart';
-
-/*
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
-}
-*/
 
 void main() {
   runApp(
@@ -37,66 +28,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    /// TODO: Use this when state managements in other models is done
-    /// TODO: savedLocations model,  method
-    /*
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProxyProvider<Authentication, savedLocations>(
-          create: (_) => savedLocations(
-              Provider.of<Authentication>(context, listen: true).token,
-              Provider.of<Authentication>(context, listen: true)._userID, []),
-          update: (ctx, Authentication, savedLocations) =>
-              savedLocations..receiveToken(Authentication, savedLocations.items),
-        ),
-        ChangeNotifierProvider.value(
-          value: Cart(),
-        ),
-     
-      ],
-      child: Consumer<Authentication>(
-        builder: (ctx, auth, _) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: '',
-          initialRoute: '/Start',
-          routes: {
-          '/Start': (context) => MyAnim(),
-          '/auth': (context) => MyApp(),
-          '/settings': (context) => SettingsScreen(),
-          '/home': (context) => HomeScreen(),
-          '/dest': (context) => DestinationScreen(),
-          '/loc': (context) => locProfile(),
-          '/saved': (context) => MySavedList(),
-          '/profile': (context) => UserProfile(),
-          'hotel': (context) => Hotelscreen(),
-          //'/search': (context) => Search(),
-          '/map': (context) => Maps(),
-          },
-          home: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/redstreet.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: auth.isAuthenticated
-                ? HomeScreen()
-                : FutureBuilder(
-                    future: auth.autoSignIn(),
-                    builder: (ctx, autResSnapshot) =>
-                        autResSnapshot.connectionState ==
-                                ConnectionState.waiting
-                            ? MyAnim()
-                            : AuthScreen(),
-                  ),
-             
-          ),
-        ),
-      ),
-    );
-    */
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '',
@@ -121,9 +52,9 @@ class MyApp extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: NotificationScreen(),
+        child: AuthScreen(),
+        //NotificationScreen(),
         //HomeScreen(),
-        //AuthScreen(),
       ),
     );
   }
