@@ -125,6 +125,11 @@ class DestinationCarousel extends StatelessWidget {
                                           fontWeight: FontWeight.w600,
                                           letterSpacing: 1.2),
                                     ),
+                                     IconButton(icon: Icon(Icons.favorite),
+                                        color: Theme.of(context).accentColor,
+                                        onPressed: () {},
+
+                                    ),
                                     Row(
                                       children: <Widget>[
                                         Icon(

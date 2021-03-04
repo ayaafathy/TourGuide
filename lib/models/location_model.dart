@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class Location {
   int index;
   String imageUrl = 'assets/images/genericLocation.jpg';
@@ -6,21 +8,31 @@ class Location {
   String shortInfo;
   String bio;
   String address;
-  int price;
+  double price;
   var rating;
+  bool isFavorite;
 
   Location({
-    this.index,
-    this.imageUrl,
-    this.coverImageUrl,
-    this.name,
-    this.shortInfo,
-    this.bio,
-    this.address,
+    @required this.index,
+    @required this.imageUrl,
+    @required this.coverImageUrl,
+    @required this.name,
+    @required this.shortInfo,
+    @required this.bio,
+    @required this.address,
     this.price,
-    this.rating
+    this.rating,
+    this.isFavorite = false,
   });
+
+  void toggleFavoriteLocationStatus()
+  {
+    isFavorite=!isFavorite;
+  }
+
 }
+
+
 
 final List<Location> locationsList = [
   Location(
