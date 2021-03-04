@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tour_guide/models/location_model.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'file:///C:/Users/Mostafa/AndroidStudioProjects/TourGuide/lib/provider/locations.dart';
 import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 //import 'package:tour_guide/main.dart';
@@ -23,6 +25,7 @@ class locProfile extends StatelessWidget {
     //  title: "Location Profile",
     //  home: LocationProfilePage(),
     //debugShowCheckedModeBanner : false;
+    final location = Provider.of<Locations>(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -30,7 +33,7 @@ class locProfile extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, locationsList[locIndex].name),
+          appBar: buildAppBar(null, () {}, location.locationsList[locIndex].name),
           drawer: DashNav(),
           body: SafeArea(
             child: LocationProfilePage(),
@@ -45,26 +48,30 @@ class locProfile extends StatelessWidget {
 class LocationProfilePage extends StatelessWidget {
 
 
-  Widget _buildCoverImage(Size screenSize) {
+  Widget _buildCoverImage(Size screenSize,BuildContext context) {
+    final location = Provider.of<Locations>(context);
+
     return Container(
       height: screenSize.height / 3.3,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(locationsList[pageIndex].coverImageUrl),
+          image: AssetImage(location.locationsList[pageIndex].coverImageUrl),
           fit: BoxFit.cover,
         ),
       ),
     );
   }
 
-  Widget _buildProfileImage() {
+  Widget _buildProfileImage(BuildContext context) {
+    final location = Provider.of<Locations>(context);
+
     return Center(
       child: Container(
         width: 130.0,
         height: 130.0,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(locationsList[pageIndex].imageUrl),
+            image: AssetImage(location.locationsList[pageIndex].imageUrl),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(80.0),
@@ -77,7 +84,9 @@ class LocationProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildName() {
+  Widget _buildName(BuildContext context) {
+    final location = Provider.of<Locations>(context);
+
     TextStyle _nameTextStyle = TextStyle(
       fontFamily: 'Roboto',
       color: Colors.black,
@@ -86,12 +95,14 @@ class LocationProfilePage extends StatelessWidget {
     );
 
     return Text(
-      locationsList[pageIndex].name,
+      location.locationsList[pageIndex].name,
       style: _nameTextStyle,
     );
   }
 
   Widget _buildStatus(BuildContext context) {
+    final location = Provider.of<Locations>(context);
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 6.0),
       decoration: BoxDecoration(
@@ -99,7 +110,7 @@ class LocationProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Text(
-        locationsList[pageIndex].shortInfo,
+        location.locationsList[pageIndex].shortInfo,
         style: TextStyle(
           fontFamily: 'Roboto',
           color: Colors.grey[700],
@@ -140,7 +151,9 @@ class LocationProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildStatContainer() {
+  Widget _buildStatContainer(BuildContext context) {
+    final location = Provider.of<Locations>(context);
+
     return Container(
       height: 40.0,
       margin: EdgeInsets.only(top: 8.0),
@@ -157,7 +170,7 @@ class LocationProfilePage extends StatelessWidget {
               },
               starCount: 5,
               isReadOnly: false,
-              rating: locationsList[pageIndex].rating,
+              rating: location.locationsList[pageIndex].rating,
               size: 30.0,
               color: Colors.lightBlue[300],
               borderColor: Colors.lightBlue[300],
@@ -168,6 +181,8 @@ class LocationProfilePage extends StatelessWidget {
   }
 
   Widget _buildBio(BuildContext context) {
+    final location = Provider.of<Locations>(context);
+
     TextStyle bioTextStyle = TextStyle(
       fontFamily: 'Roboto',
       fontWeight: FontWeight.w400, //try changing weight to w500 if not thin
@@ -182,7 +197,7 @@ class LocationProfilePage extends StatelessWidget {
       alignment: Alignment.center,
       margin: EdgeInsets.only(top: 16, bottom: 6, left: 18, right: 18),
       child: Text(
-        locationsList[pageIndex].bio,
+        location.locationsList[pageIndex].bio,
         textAlign: TextAlign.center,
         style: bioTextStyle,
       ),
@@ -290,19 +305,19 @@ class LocationProfilePage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          _buildCoverImage(screenSize),
+          _buildCoverImage(screenSize, context),
           SafeArea(
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
                   SizedBox(height: screenSize.height / 4.9),
-                  _buildProfileImage(),
+                  _buildProfileImage(context),
                   Container(
                     margin: EdgeInsets.only(top: 11),
-                    child: _buildName(),
+                    child: _buildName(context),
                   ),
                   _buildStatus(context),
-                  _buildStatContainer(),
+                  _buildStatContainer(context),
                   _buildBio(context),
                   //_buildSeparator(screenSize),
                   //SizedBox(height: 10.0),

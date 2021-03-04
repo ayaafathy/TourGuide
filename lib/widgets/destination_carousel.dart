@@ -1,12 +1,26 @@
+//import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tour_guide/models/destination_model.dart';
+import 'package:tour_guide/provider/destinations.dart';
 import 'package:tour_guide/screens/destination_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:tour_guide/provider/activities.dart';
 
-class DestinationCarousel extends StatelessWidget {
+class DestinationCarousel extends StatefulWidget {
+
+
+  @override
+  _DestinationCarouselState createState() => _DestinationCarouselState();
+}
+
+class _DestinationCarouselState extends State<DestinationCarousel> {
   @override
   Widget build(BuildContext context) {
+    final destination = Provider.of<Destinations>(context);
+
     return Column(
       children: <Widget>[
         Padding(
@@ -41,16 +55,22 @@ class DestinationCarousel extends StatelessWidget {
             height: 300.0,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: destinations.length,
+              itemCount: destination.items.length,
               itemBuilder: (BuildContext context, int index) {
-                Destination destination = destinations[index];
+                var des = destination.items[index];
+                print(des.id);
+                print(destination.items.contains(des));
                 return GestureDetector(
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (_) => DestinationScreen(
-                                destination: destination,
-                              ))),
+                          builder: (_) => ChangeNotifierProvider<Activities>(
+                            create: (_)=> Activities(),
+                            child: DestinationScreen(
+
+                                  destination: des,
+                                ),
+                          ))),
                   child: Container(
                     margin: EdgeInsets.all(10.0),
                     width: 210.0,
@@ -73,14 +93,14 @@ class DestinationCarousel extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
-                                    '${destination.activities.length} activities',
+                                    ' activities', //-------------------->>>>>>>>>>na2sa list var activity
                                     style: TextStyle(
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.w600,
                                         letterSpacing: 1.2),
                                   ),
                                   Text(
-                                    destination.description,
+                                    des.description,
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                 ],
@@ -107,7 +127,7 @@ class DestinationCarousel extends StatelessWidget {
                                 child: Image(
                                   height: 180.0,
                                   width: 180.0,
-                                  image: AssetImage(destination.imageUrl),
+                                  image: AssetImage(des.imageUrl),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -118,16 +138,32 @@ class DestinationCarousel extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
-                                      destination.city,
+                                      des.city,
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 24.0,
                                           fontWeight: FontWeight.w600,
                                           letterSpacing: 1.2),
                                     ),
-                                     IconButton(icon: Icon(Icons.favorite),
-                                        color: Theme.of(context).accentColor,
-                                        onPressed: () {},
+                                    IconButton(
+                                      icon: Icon(
+                                        des.isFavorite ? Icons.favorite : Icons.favorite_border,
+                                      ),
+                                      color: Colors.red,
+                                      onPressed: () {
+                                        setState(() {
+                                          des.toggleFavoriteStatus();
+                                        });
+                                        // if(des.isFavorite)
+                                        //   {
+                                        //     Icons.favorite;
+                                        //   }
+                                        // else
+                                        //   {
+                                        //     Icons.favorite_border;
+                                        //   }
+                                        //des.toggleFavoriteStatus();
+                                        },
 
                                     ),
                                     Row(
@@ -141,7 +177,7 @@ class DestinationCarousel extends StatelessWidget {
                                           width: 5.0,
                                         ),
                                         Text(
-                                          destination.country,
+                                          des.country,
                                           style: TextStyle(color: Colors.white),
                                         ),
                                       ],

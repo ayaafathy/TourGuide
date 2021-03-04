@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:search_page/search_page.dart';
 import 'package:tour_guide/models/location_model.dart';
 import 'package:tour_guide/main.dart';
+import 'package:tour_guide/provider/locations.dart';
 import 'package:tour_guide/screens/location_profile.dart';
 import 'dart:core';
 
@@ -33,11 +35,13 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final location = Provider.of<Locations>(context);
+
     return new Scaffold(
       body: ListView.builder(
-        itemCount: locationsList.length,
+        itemCount: location.locationsList.length,
         itemBuilder: (context, index) {
-          final Location loc = locationsList[index];
+          final Location loc = location.locationsList[index];
           return ListTile(
             title: Text(loc.name),
             subtitle: Text(loc.shortInfo),
@@ -56,7 +60,7 @@ class MyHomePage extends StatelessWidget {
         onPressed: () => showSearch(
           context: context,
           delegate: SearchPage<Location>(
-            items: locationsList,
+            items: location.locationsList,
           searchLabel: 'Search Locations',
             suggestion: Center(
               child: Text('Lookup your desired location'),
@@ -73,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                 title: Text(locations.name),
                 subtitle: Text(locations.shortInfo),
                 onTap: () {
-                  int index = locationsList.indexWhere((searchLocation) => searchLocation.name == locations.name);
+                  int index = location.locationsList.indexWhere((searchLocation) => searchLocation.name == locations.name);
                   Navigator.pushNamed(
                       context,
                       '/loc',
