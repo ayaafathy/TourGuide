@@ -59,7 +59,17 @@ class MyApp extends StatelessWidget {
           },
 
           /// TODO: Should navigate to HomeScreen() if user is authenticated and to MyAnim() if user isn't
-          home: MyAnim(),
+
+          home: auth.isAuth
+              ? HomeScreen()
+              : FutureBuilder(
+                  future: auth.autoSignIn(),
+                  builder: (ctx, autResSnapshot) =>
+                      autResSnapshot.connectionState == ConnectionState.waiting
+                          ? SplashScreen()
+                          : AuthScreen(),
+                  //MyAnim()
+                ),
         ),
       ),
     );

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tour_guide/main.dart';
+import 'package:tour_guide/providers/authentication.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
+import 'package:tour_guide/screens/splash_screen.dart';
+
 import 'package:tour_guide/screens/homepage.dart';
 
 ///import 'package:tour_guide/homepage.dart';
@@ -43,7 +47,11 @@ class _LogoAnimationState extends State<LogoAnimation>
     ac.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => AuthScreen()));
+          context,
+          MaterialPageRoute(
+            builder: (context) => AuthScreen(),
+          ),
+        );
       }
     });
     super.initState();
