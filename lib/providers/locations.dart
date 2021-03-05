@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import '../models/location_model.dart';
+import 'package:tour_guide/models/location_model.dart';
 
 class Locations with ChangeNotifier {
   final List<Location> _locationsList = [

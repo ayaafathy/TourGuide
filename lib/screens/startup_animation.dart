@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/main.dart';
-
-import '../homepage.dart';
+import 'package:tour_guide/screens/auth_screens.dart';
+import 'package:tour_guide/screens/homepage.dart';
 
 ///import 'package:tour_guide/homepage.dart';
 
@@ -10,15 +10,13 @@ void main() {
 }
 
 class MyAnim extends StatelessWidget {
+  static const routeName = '/Start';
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: LogoAnimation(),
+    /// Removed excess MaterialApp
+    return Scaffold(
+      body: LogoAnimation(),
     );
   }
 }
@@ -45,7 +43,7 @@ class _LogoAnimationState extends State<LogoAnimation>
     ac.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            context, MaterialPageRoute(builder: (context) => AuthScreen()));
       }
     });
     super.initState();
@@ -77,7 +75,7 @@ class AnimatedLogo extends AnimatedWidget {
         child: Container(
           width: animation.value,
           height: 250,
-          child: Image(image: AssetImage('assets/images/icon.png')),
+          child: Image(image: AssetImage('assets/images/logo.jpg')),
         ),
       ),
       color: Colors.white,

@@ -48,9 +48,10 @@ class Tours {
     this.name,
     this.region,
   });
-
+/*
   factory Tours.fromJson(Map<String, dynamic> json) => _$ToursFromJson(json);
   Map<String, dynamic> toJson() => _$ToursToJson(this);
+  */
 
   final String address;
   final String id;

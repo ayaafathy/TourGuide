@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/activity_model.dart';
+import 'package:tour_guide/models/activity_model.dart';
 import 'package:provider/provider.dart';
-
 
 class Activities with ChangeNotifier {
   final List<Activity> _items = [
@@ -48,5 +47,4 @@ class Activities with ChangeNotifier {
   Activity findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
-
 }

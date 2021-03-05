@@ -59,6 +59,8 @@ class Authentication with ChangeNotifier {
         ),
       );
 
+      /// For debugging ///*****
+      print('**********************************************');
       print(response.statusCode);
       print(response.body);
 
@@ -154,6 +156,10 @@ class Authentication with ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     // ignore: unawaited_futures
     prefs.clear();
+
+    /// For debugging ///*****
+    print('**********************************************');
+    print(_username);
   }
 
   //***TODO: check this again

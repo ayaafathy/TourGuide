@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/models/destination_model.dart';
-import 'package:tour_guide/provider/destinations.dart';
+import 'package:tour_guide/providers/destinations.dart';
+
 const kDefaultPadding = 20.0;
 const kTextColor = Color(0xFF535353);
 const kTextLightColor = Color(0xFFACACAC);
 
 class FavWidget extends StatefulWidget {
-
   final Destination destination;
 
   const FavWidget({Key key, this.destination}) : super(key: key);
@@ -69,7 +69,6 @@ class _FavWidgetState extends State<FavWidget> {
           ),
         );
       },
-
       child: Card(
         margin: EdgeInsets.symmetric(
           horizontal: 16,
@@ -88,15 +87,12 @@ class _FavWidgetState extends State<FavWidget> {
             ),
             color: Colors.red,
             onPressed: () {
-setState(() {
-  widget.destination.toggleFavoriteStatus();
-
-});
-             // widget.destination.toggleFavoriteStatus();
+              setState(() {
+                widget.destination.toggleFavoriteStatus();
+              });
+              // widget.destination.toggleFavoriteStatus();
             },
-
           ),
-
         ),
       ),
     );

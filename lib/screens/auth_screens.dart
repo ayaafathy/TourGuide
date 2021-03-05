@@ -14,26 +14,35 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        elevation: 5,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          'Welcome!',
-          style: TextStyle(
-            color: Colors.white,
-          ),
+    return Container(
+      constraints: BoxConstraints.expand(),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/redstreet.jpg'),
+          fit: BoxFit.cover,
         ),
-        centerTitle: true,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            height: deviceSize.height,
-            width: deviceSize.width,
-            child: AuthForm(),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        resizeToAvoidBottomPadding: false,
+        appBar: AppBar(
+          elevation: 5,
+          backgroundColor: Colors.transparent,
+          title: Text(
+            'Welcome!',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          centerTitle: true,
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              height: deviceSize.height,
+              width: deviceSize.width,
+              child: AuthForm(),
+            ),
           ),
         ),
       ),
