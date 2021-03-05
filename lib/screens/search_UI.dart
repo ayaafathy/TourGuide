@@ -53,7 +53,8 @@ class MyHomePage extends StatelessWidget {
           context: context,
           delegate: SearchPage<Location>(
             items: location.locationsList,
-            searchLabel: 'Search Locations',
+          searchLabel: 'Search Locations',
+
             suggestion: Center(
               child: Text('Lookup your desired location'),
             ),
@@ -65,10 +66,12 @@ class MyHomePage extends StatelessWidget {
                 title: Text(locations.name),
                 subtitle: Text(locations.shortInfo),
                 onTap: () {
-                  int index = location.locationsList.indexWhere(
-                      (searchLocation) =>
-                          searchLocation.name == locations.name);
-                  Navigator.pushNamed(context, '/loc',
+
+                  int index = location.locationsList.indexWhere((searchLocation) => searchLocation.name == locations.name);
+                  Navigator.pushNamed(
+                      context,
+                      '/loc',
+
                       arguments: locProfile.custom(index));
                 },
                 trailing: Text('${locations.rating} stars')),

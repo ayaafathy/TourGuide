@@ -29,3 +29,4 @@ class Location {
     isFavorite = !isFavorite;
   }
 }
+

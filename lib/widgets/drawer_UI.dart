@@ -7,6 +7,7 @@ import 'package:tour_guide/screens/settings_UI.dart';
 import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/guides_screen.dart';
 import 'package:tour_guide/screens/search_UI.dart';
+import 'package:tour_guide/screens/map.dart';
 //import 'package:tour_guide/screens/signin_UI.dart';
 import 'package:tour_guide/main.dart';
 
@@ -115,6 +116,14 @@ class _DashNavState extends State<DashNav> {
               Navigator.pop(context);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => GuideScreen()));
+            }),
+        ListTile(
+            leading: Icon(Icons.public, color: iconColor),
+            title: Text('Map', style: tilesStyle()),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Maps()));
             }),
         Divider(),
         ListTile(
