@@ -25,12 +25,8 @@ class Location {
     this.isFavorite = false,
   });
 
-  void toggleFavoriteLocationStatus()
-  {
-    isFavorite=!isFavorite;
+  void toggleFavoriteLocationStatus() {
+    isFavorite = !isFavorite;
   }
-
 }
-
-
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/providers/authentication.dart';
+import 'package:tour_guide/providers/locations.dart';
+import 'package:tour_guide/screens/splash_screen.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
 import 'package:tour_guide/screens/hotel_screen.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
@@ -32,13 +34,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (context) => Authentication()),
-          ChangeNotifierProvider(create: (context) => Locations()),
-          ChangeNotifierProvider(create: (context) => Destinations()),
-          ChangeNotifierProvider(create: (context) => Activities()),
-        ],
-        child: MaterialApp(
+
+      providers: [
+        ChangeNotifierProvider(create: (context) => Authentication()),
+        ChangeNotifierProvider(create: (context) => Locations()),
+				ChangeNotifierProvider(create: (context) => Destinations()),
+        ChangeNotifierProvider(create: (context) => Activities()),
+      ],
+      child: Consumer<Authentication>(
+        builder: (ctx, auth, _) => MaterialApp(
+          
+
+      
           debugShowCheckedModeBanner: false,
           title: '',
           routes: {
@@ -62,8 +69,40 @@ class MyApp extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            child: MyAnim(),
+
+            child: AuthScreen(),
+						//MyAnim()
           ),
-        ));
+          //NotificationScreen(),
+          //HomeScreen(),
+        ),
+        /*
+            auth.isAuthenticated
+                ? HomeScreen()
+                : FutureBuilder(
+                    future: auth.autoSignIn(),
+                    builder: (ctx, autResSnapshot) => autResSnapshot
+                                .connectionState ==
+                            ConnectionState.waiting
+                        ? SplashScreen()
+                        : Container(
+                            constraints: BoxConstraints.expand(),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage('assets/images/redstreet.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: AuthScreen(),
+                          ),
+                    //AuthScreen(),
+                    //NotificationScreen(),
+                    //HomeScreen(),
+                  ),
+          ),*/
+      ),
+    );
+
   }
 }
