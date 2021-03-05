@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/main.dart';
-
-import 'homepage.dart';
+import 'package:tour_guide/screens/auth_screens.dart';
+import 'package:tour_guide/screens/homepage.dart';
 
 ///import 'package:tour_guide/homepage.dart';
 
@@ -10,6 +10,8 @@ void main() {
 }
 
 class MyAnim extends StatelessWidget {
+  static const routeName = '/Start';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +49,7 @@ class _LogoAnimationState extends State<LogoAnimation>
         /// TODO: Should navigate to homescreen if user is authenticated and to authscreen if user isn't
 
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            context, MaterialPageRoute(builder: (context) => AuthScreen()));
       }
     });
     super.initState();

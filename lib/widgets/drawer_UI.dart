@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:tour_guide/providers/authentication.dart';
 //import 'package:tour_guide/models/tour_guides_model.dart';
 //import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
@@ -135,12 +137,13 @@ class _DashNavState extends State<DashNav> {
                   MaterialPageRoute(builder: (context) => SettingsScreen()));
             }),
         ListTile(
-          leading: Icon(Icons.power_settings_new, color: iconColor),
+          leading: Icon(Icons.exit_to_app_rounded, color: iconColor),
           title: Text('Logout', style: tilesStyle()),
           onTap: () {
-            Navigator.pop(context);
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MyApp()));
+            /// pushReplacementNamed: Forget PREVIOUS routes,
+            /// Exits app
+            Navigator.of(context).pushReplacementNamed('/');
+            Provider.of<Authentication>(context, listen: false).signOut();
           },
         ),
       ],
