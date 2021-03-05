@@ -57,18 +57,7 @@ class MyApp extends StatelessWidget {
             // '/search': (context) => Search(),
             '/map': (context) => Maps(),
           },
-          home: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/redstreet.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: //AuthScreen(),
-                MyAnim(),
-            //HomeScreen(),
-          ),
+          home: MyAnim(),
         ),
       ),
     );
