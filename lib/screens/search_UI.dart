@@ -19,10 +19,8 @@ void main() => runApp(SearchApp());
 class SearchApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'search_page',
-        routes: {'/loc': (context) => locProfile.custom(pageIndex)},
-        home: MyHomePage());
+    /// Removed excess MaterialApp
+    return MyHomePage();
   }
 }
 
@@ -53,8 +51,7 @@ class MyHomePage extends StatelessWidget {
           context: context,
           delegate: SearchPage<Location>(
             items: location.locationsList,
-          searchLabel: 'Search Locations',
-
+            searchLabel: 'Search Locations',
             suggestion: Center(
               child: Text('Lookup your desired location'),
             ),
@@ -66,12 +63,10 @@ class MyHomePage extends StatelessWidget {
                 title: Text(locations.name),
                 subtitle: Text(locations.shortInfo),
                 onTap: () {
-
-                  int index = location.locationsList.indexWhere((searchLocation) => searchLocation.name == locations.name);
-                  Navigator.pushNamed(
-                      context,
-                      '/loc',
-
+                  int index = location.locationsList.indexWhere(
+                      (searchLocation) =>
+                          searchLocation.name == locations.name);
+                  Navigator.pushNamed(context, '/loc',
                       arguments: locProfile.custom(index));
                 },
                 trailing: Text('${locations.rating} stars')),

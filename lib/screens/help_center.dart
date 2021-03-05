@@ -7,20 +7,16 @@ void main() => runApp(HelpCenter());
 class HelpCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Container(
-        constraints: BoxConstraints.expand(),
-        child: Scaffold(
-          appBar: buildAppBar(Icons.arrow_back_rounded, () {
-            Navigator.pop(context);
-          }, 'Help'),
-          body: SafeArea(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-              child: FAQ(),
-            ),
-          ),
+    /// Removed excess MaterialApp
+
+    return Scaffold(
+      appBar: buildAppBar(Icons.arrow_back_rounded, () {
+        Navigator.pop(context);
+      }, 'Help'),
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
+          child: FAQ(),
         ),
       ),
     );

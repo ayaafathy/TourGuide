@@ -9,36 +9,24 @@ import 'package:tour_guide/services/flutterfire.dart';
 class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'SignUp Page',
-      home: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/redstreet.jpg'),
-            fit: BoxFit.cover,
+    /// Removed excess MaterialApp
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        elevation: 5,
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Sign up',
+          style: TextStyle(
+            color: Colors.white,
           ),
         ),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          resizeToAvoidBottomPadding: false,
-          appBar: AppBar(
-            elevation: 5,
-            backgroundColor: Colors.transparent,
-            title: Text(
-              'Sign up',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            centerTitle: true,
-          ),
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: BuildSignUp(),
-            ),
-          ),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: BuildSignUp(),
         ),
       ),
     );

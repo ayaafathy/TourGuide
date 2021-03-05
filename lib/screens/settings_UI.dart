@@ -9,20 +9,15 @@ void main() => runApp(SettingsScreen());
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Container(
-        constraints: BoxConstraints.expand(),
-        child: Scaffold(
-          appBar: buildAppBar(Icons.arrow_back_rounded, () {
-            Navigator.pop(context);
-          }, 'Settings'),
-          body: SafeArea(
-            child: Container(
-              margin: EdgeInsets.all(20),
-              child: settings(context),
-            ),
-          ),
+    /// Removed excess MaterialApp
+    return Scaffold(
+      appBar: buildAppBar(Icons.arrow_back_rounded, () {
+        Navigator.pop(context);
+      }, 'Settings'),
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.all(20),
+          child: settings(context),
         ),
       ),
     );

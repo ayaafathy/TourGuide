@@ -22,25 +22,14 @@ class locProfile extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    //return MaterialApp(
-    //  title: "Location Profile",
-    //  home: LocationProfilePage(),
-    //debugShowCheckedModeBanner : false;
     final location = Provider.of<Locations>(context);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Location Profile",
-      home: Container(
-        constraints: BoxConstraints.expand(),
-        child: Scaffold(
-          appBar:
-              buildAppBar(null, () {}, location.locationsList[locIndex].name),
-          drawer: DashNav(),
-          body: SafeArea(
-            child: LocationProfilePage(),
-          ),
-        ),
+    /// Removed excess MaterialApp
+    return Scaffold(
+      appBar: buildAppBar(null, () {}, location.locationsList[locIndex].name),
+      drawer: DashNav(),
+      body: SafeArea(
+        child: LocationProfilePage(),
       ),
     );
   }

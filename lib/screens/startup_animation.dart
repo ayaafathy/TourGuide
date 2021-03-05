@@ -14,13 +14,9 @@ class MyAnim extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: LogoAnimation(),
+    /// Removed excess MaterialApp
+    return Scaffold(
+      body: LogoAnimation(),
     );
   }
 }

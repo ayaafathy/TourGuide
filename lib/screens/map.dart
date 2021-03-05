@@ -8,16 +8,6 @@ import 'src/locations.dart' as locations;
 
 void main() => runApp(Maps());
 
-// class Map extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: Map(),
-//     );
-//   }
-// }
-
 class Maps extends StatefulWidget {
   @override
   _MapsState createState() => _MapsState();
@@ -45,20 +35,19 @@ class _MapsState extends State<Maps> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Map'),
-          backgroundColor: Colors.green[700],
+    /// Removed excess MaterialApp
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Map'),
+        backgroundColor: Colors.green[700],
+      ),
+      body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: const LatLng(0, 0),
+          zoom: 2,
         ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: const LatLng(0, 0),
-            zoom: 2,
-          ),
-          markers: _markers.values.toSet(),
-        ),
+        markers: _markers.values.toSet(),
       ),
     );
   }

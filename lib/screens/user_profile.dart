@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(UserProfile());
 
+/// TODO: REMOVE MATERIALAPP
 class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
