@@ -1,10 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:tour_guide/provider/destinations.dart';
+import 'package:tour_guide/providers/destinations.dart';
+
 import 'package:tour_guide/screens/map.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
+
 import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/main.dart';
 
-import '../homepage.dart';
+import 'homepage.dart';
 
 ///import 'package:tour_guide/homepage.dart';
 
@@ -44,6 +44,8 @@ class _LogoAnimationState extends State<LogoAnimation>
 
     ac.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
+        /// TODO: Should navigate to homescreen if user is authenticated and to authscreen if user isn't
+
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => HomeScreen()));
       }
@@ -77,7 +79,7 @@ class AnimatedLogo extends AnimatedWidget {
         child: Container(
           width: animation.value,
           height: 250,
-          child: Image(image: AssetImage('assets/images/icon.png')),
+          child: Image(image: AssetImage('assets/images/logo.jpg')),
         ),
       ),
       color: Colors.white,

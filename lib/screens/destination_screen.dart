@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/models/activity_model.dart';
 import 'package:tour_guide/models/destination_model.dart';
-import 'package:tour_guide/provider/activities.dart';
+import 'package:tour_guide/providers/activities.dart';
 import 'package:tour_guide/widgets/rating.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -16,13 +16,10 @@ class DestinationScreen extends StatefulWidget {
 }
 
 class _DestinationScreenState extends State<DestinationScreen> {
-
   int _rating;
-
 
   @override
   Widget build(BuildContext context) {
-
     final acttest = Provider.of<Activities>(context).items;
     var asize = acttest.length;
     //Activity activity = widget.destination.activities[index];
@@ -181,7 +178,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                 Column(
                                   children: <Widget>[
                                     Text(
-                                      '\$${/*activity.price*/"Activity Price"}',
+                                      '\$${/*activity.price*/ "Activity Price"}',
                                       style: TextStyle(
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.w600,
@@ -212,7 +209,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                 height: 15,
                                 child: (_rating != null && _rating != 0)
                                     ? Text("You selected $_rating rating",
-                                    style: TextStyle(fontSize: 11))
+                                        style: TextStyle(fontSize: 11))
                                     : SizedBox.shrink()),
                             Row(
                               children: <Widget>[

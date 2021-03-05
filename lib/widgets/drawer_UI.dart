@@ -11,7 +11,7 @@ import 'package:tour_guide/screens/map.dart';
 //import 'package:tour_guide/screens/signin_UI.dart';
 import 'package:tour_guide/main.dart';
 
-import '../homepage.dart';
+import '../screens/homepage.dart';
 
 class DashNav extends StatefulWidget {
   @override

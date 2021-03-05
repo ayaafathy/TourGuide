@@ -4,14 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tour_guide/models/destination_model.dart';
-import 'package:tour_guide/provider/destinations.dart';
+import 'package:tour_guide/providers/destinations.dart';
 import 'package:tour_guide/screens/destination_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:tour_guide/provider/activities.dart';
+import 'package:tour_guide/providers/activities.dart';
 
 class DestinationCarousel extends StatefulWidget {
-
-
   @override
   _DestinationCarouselState createState() => _DestinationCarouselState();
 }
@@ -65,12 +63,11 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                       context,
                       MaterialPageRoute(
                           builder: (_) => ChangeNotifierProvider<Activities>(
-                            create: (_)=> Activities(),
-                            child: DestinationScreen(
-
+                                create: (_) => Activities(),
+                                child: DestinationScreen(
                                   destination: des,
                                 ),
-                          ))),
+                              ))),
                   child: Container(
                     margin: EdgeInsets.all(10.0),
                     width: 210.0,
@@ -147,7 +144,9 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                                     ),
                                     IconButton(
                                       icon: Icon(
-                                        des.isFavorite ? Icons.favorite : Icons.favorite_border,
+                                        des.isFavorite
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
                                       ),
                                       color: Colors.red,
                                       onPressed: () {
@@ -163,8 +162,7 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                                         //     Icons.favorite_border;
                                         //   }
                                         //des.toggleFavoriteStatus();
-                                        },
-
+                                      },
                                     ),
                                     Row(
                                       children: <Widget>[
