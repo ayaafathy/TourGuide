@@ -38,20 +38,19 @@ class Region {
 }
 
 @JsonSerializable()
-class Office {
-  Office({
+class Tours {
+  Tours({
     this.address,
     this.id,
     this.image,
     this.lat,
     this.lng,
     this.name,
-    this.phone,
     this.region,
   });
 
-  factory Office.fromJson(Map<String, dynamic> json) => _$OfficeFromJson(json);
-  Map<String, dynamic> toJson() => _$OfficeToJson(this);
+  factory Tours.fromJson(Map<String, dynamic> json) => _$ToursFromJson(json);
+  Map<String, dynamic> toJson() => _$ToursToJson(this);
 
   final String address;
   final String id;
@@ -59,14 +58,13 @@ class Office {
   final double lat;
   final double lng;
   final String name;
-  final String phone;
   final String region;
 }
 
 @JsonSerializable()
 class Locations {
   Locations({
-    this.offices,
+    this.tours,
     this.regions,
   });
 
@@ -74,14 +72,14 @@ class Locations {
       _$LocationsFromJson(json);
   Map<String, dynamic> toJson() => _$LocationsToJson(this);
 
-  final List<Office> offices;
+  final List<Tours> tours;
   final List<Region> regions;
 }
 
-Future<Locations> getGoogleOffices() async {
-  const googleLocationsURL = 'https://about.google/static/data/locations.json';
+Future<Locations> getGoogleTours() async {
+  const googleLocationsURL = 'file:///C:/xampp/htdocs/TourGuide/Locations.json';
 
-  // Retrieve the locations of Google offices
+  // Retrieve the locations of Google Tours
   final response = await http.get(googleLocationsURL);
   if (response.statusCode == 200) {
     return Locations.fromJson(json.decode(response.body));

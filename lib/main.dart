@@ -6,6 +6,9 @@ import 'package:tour_guide/screens/hotel_screen.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
 import 'package:tour_guide/homepage.dart';
 import 'package:tour_guide/screens/destination_screen.dart';
+import 'package:tour_guide/provider/activities.dart';
+import 'package:tour_guide/provider/destinations.dart';
+import 'package:tour_guide/provider/locations.dart';
 import 'package:tour_guide/screens/location_profile.dart';
 import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
@@ -28,34 +31,39 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: '',
-      routes: {
-        '/Start': (context) => MyAnim(),
-        '/auth': (context) => MyApp(),
-        '/settings': (context) => SettingsScreen(),
-        '/home': (context) => HomeScreen(),
-        '/dest': (context) => DestinationScreen(),
-        '/loc': (context) => locProfile(),
-        '/saved': (context) => MySavedList(),
-        '/profile': (context) => UserProfile(),
-        'hotel': (context) => Hotelscreen(),
-        //'/search': (context) => Search(),
-        '/map': (context) => Maps(),
-      },
-      home: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/redstreet.jpg'),
-            fit: BoxFit.cover,
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => Authentication()),
+          ChangeNotifierProvider(create: (context) => Locations()),
+          ChangeNotifierProvider(create: (context) => Destinations()),
+          ChangeNotifierProvider(create: (context) => Activities()),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: '',
+          routes: {
+            '/Start': (context) => MyAnim(),
+            '/auth': (context) => MyApp(),
+            '/settings': (context) => SettingsScreen(),
+            '/home': (context) => HomeScreen(),
+            '/dest': (context) => DestinationScreen(),
+            '/loc': (context) => locProfile(),
+            '/saved': (context) => MySavedList(),
+            '/profile': (context) => UserProfile(),
+            'hotel': (context) => Hotelscreen(),
+            //'/search': (context) => Search(),
+            '/map': (context) => Maps(),
+          },
+          home: Container(
+            constraints: BoxConstraints.expand(),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/redstreet.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: MyAnim(),
           ),
-        ),
-        child: AuthScreen(),
-        //NotificationScreen(),
-        //HomeScreen(),
-      ),
-    );
+        ));
   }
 }

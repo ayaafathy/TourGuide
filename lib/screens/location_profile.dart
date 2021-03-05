@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/models/location_model.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-import 'file:///C:/Users/Mostafa/AndroidStudioProjects/TourGuide/lib/provider/locations.dart';
+import 'package:tour_guide/provider/locations.dart';
+import 'package:tour_guide/lib/provider/locations.dart';
 import 'package:tour_guide/widgets/drawer_UI.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 //import 'package:tour_guide/main.dart';
 
 void main() => runApp(locProfile());
 var pageIndex;
+
 class locProfile extends StatelessWidget {
   var locIndex;
-  locProfile([int index]){
+  locProfile([int index]) {
     locIndex = index;
     pageIndex = locIndex;
   }
-  locProfile.custom([int index]){
+  locProfile.custom([int index]) {
     this.locIndex = index;
     pageIndex = locIndex;
   }
@@ -33,7 +35,8 @@ class locProfile extends StatelessWidget {
       home: Container(
         constraints: BoxConstraints.expand(),
         child: Scaffold(
-          appBar: buildAppBar(null, () {}, location.locationsList[locIndex].name),
+          appBar:
+              buildAppBar(null, () {}, location.locationsList[locIndex].name),
           drawer: DashNav(),
           body: SafeArea(
             child: LocationProfilePage(),
@@ -46,9 +49,7 @@ class locProfile extends StatelessWidget {
 
 // ignore: must_be_immutable
 class LocationProfilePage extends StatelessWidget {
-
-
-  Widget _buildCoverImage(Size screenSize,BuildContext context) {
+  Widget _buildCoverImage(Size screenSize, BuildContext context) {
     final location = Provider.of<Locations>(context);
 
     return Container(
