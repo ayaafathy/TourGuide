@@ -139,6 +139,7 @@ class _AuthFormState extends State<AuthForm> {
       _showError(errorMsg);
     } catch (e) {
       print('**********************************************');
+      print('Debugging in auth_screen continue()');
       print(e);
       const errorMsg = 'Something went wrong. Please try again later.';
       _showError(errorMsg);
