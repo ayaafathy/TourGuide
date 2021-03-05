@@ -13,7 +13,7 @@ import 'package:tour_guide/widgets/appBar.dart';
 // ignore: unused_import
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tour_guide/widgets/destination_carousel.dart';
-import 'package:tour_guide/widgets/hotel_carousel.dart';
+import 'package:tour_guide/widgets/location_carousel.dart';
 
 // import 'dash_UI.dart';
 // void main() => runApp(HomeScreen());

@@ -13,7 +13,7 @@ import 'package:tour_guide/screens/homepage.dart';
 import 'package:tour_guide/screens/map.dart';
 import 'package:tour_guide/screens/destination_screen.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
-import 'package:tour_guide/screens/hotel_screen.dart';
+import 'package:tour_guide/screens/location_screen.dart';
 import 'package:tour_guide/screens/settings_UI.dart';
 import 'package:tour_guide/screens/splash_screen.dart';
 import 'package:tour_guide/screens/startup_animation.dart';
