@@ -46,15 +46,15 @@ class MyApp extends StatelessWidget {
           title: '',
           routes: {
             '/Start': (context) => MyAnim(),
-            '/auth': (context) => MyApp(),
-            '/settings': (context) => SettingsScreen(),
+            '/auth': (context) => AuthScreen(),
             '/home': (context) => HomeScreen(),
+            '/settings': (context) => SettingsScreen(),
             '/dest': (context) => DestinationScreen(),
             '/loc': (context) => locProfile(),
             '/saved': (context) => MySavedList(),
             '/profile': (context) => UserProfile(),
             'hotel': (context) => Hotelscreen(),
-            //'/search': (context) => Search(),
+            // '/search': (context) => Search(),
             '/map': (context) => Maps(),
           },
           home: Container(
