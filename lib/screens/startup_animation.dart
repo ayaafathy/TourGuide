@@ -42,8 +42,6 @@ class _LogoAnimationState extends State<LogoAnimation>
 
     ac.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        /// TODO: Should navigate to homescreen if user is authenticated and to authscreen if user isn't
-
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => AuthScreen()));
       }

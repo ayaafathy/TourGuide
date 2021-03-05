@@ -57,6 +57,8 @@ class MyApp extends StatelessWidget {
             // '/search': (context) => Search(),
             '/map': (context) => Maps(),
           },
+
+          /// TODO: Should navigate to HomeScreen() if user is authenticated and to MyAnim() if user isn't
           home: MyAnim(),
         ),
       ),
