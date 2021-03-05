@@ -1,12 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:provider/provider.dart';
+import 'package:tour_guide/providers/locations.dart';
 
-import 'package:tour_guide/models/hotel_model.dart';
-import 'package:tour_guide/screens/hotel_screen.dart';
+import 'package:tour_guide/screens/location_screen.dart';
+import 'package:tour_guide/models/location_model.dart';
 
-class HotelCarousel extends StatelessWidget {
+class LocationsCarousel extends StatefulWidget {
+  @override
+  _LocationsCarouselState createState() => _LocationsCarouselState();
+}
+
+class _LocationsCarouselState extends State<LocationsCarousel> {
   @override
   Widget build(BuildContext context) {
+    final location = Provider.of<Locations>(context);
     return Column(
       children: <Widget>[
         Padding(
@@ -15,7 +23,7 @@ class HotelCarousel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Exclusive hotels',
+                'Touristic places',
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.bold,
@@ -23,7 +31,6 @@ class HotelCarousel extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () => print('see all'),
                 child: Text(
                   'See All',
                   style: TextStyle(
@@ -41,38 +48,43 @@ class HotelCarousel extends StatelessWidget {
           height: 300.0,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: hotels.length,
+            itemCount: location.locationsList.length,
             itemBuilder: (BuildContext context, int index) {
-              Hotel hotel = hotels[index];
+              var loc = location.locationsList[index];
               return GestureDetector(
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => Hotelscreen(hotel: hotel))),
+                        builder: (_) => ChangeNotifierProvider<Locations>(
+                              create: (_) => Locations(),
+                              child: LocationScreen(
+                                location: loc,
+                              ),
+                            ))),
                 child: Container(
                   margin: EdgeInsets.all(10.0),
-                  width: 240.0,
+                  width: 200.0,
                   child: Stack(
                     alignment: Alignment.topCenter,
                     children: <Widget>[
                       Positioned(
                         bottom: 15.0,
                         child: Container(
-                          height: 120.0,
-                          width: 240.0,
+                          height: 150.0,
+                          width: 250.0,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Colors.transparent,
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.only(top: 10.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
                                 Text(
-                                  hotel.name,
+                                  loc.name,
                                   style: TextStyle(
-                                      fontSize: 22.0,
+                                      fontSize: 15.0,
                                       fontWeight: FontWeight.w600,
                                       letterSpacing: 1.2),
                                 ),
@@ -80,16 +92,16 @@ class HotelCarousel extends StatelessWidget {
                                   height: 2.0,
                                 ),
                                 Text(
-                                  hotel.address,
+                                  loc.address,
                                   style: TextStyle(color: Colors.grey),
                                 ),
                                 SizedBox(
                                   height: 2.0,
                                 ),
                                 Text(
-                                  '\$${hotel.price}/night',
+                                  '\$${loc.price}',
                                   style: TextStyle(
-                                      fontSize: 18.0,
+                                      fontSize: 15.0,
                                       fontWeight: FontWeight.w600),
                                 )
                               ],
@@ -99,11 +111,11 @@ class HotelCarousel extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(20.0),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black,
+                              color: Colors.white,
                               offset: Offset(0.0, 2.0),
                               blurRadius: 6.0,
                             ),
@@ -114,7 +126,7 @@ class HotelCarousel extends StatelessWidget {
                           child: Image(
                             height: 180.0,
                             width: 220.0,
-                            image: AssetImage(hotel.imageUrl),
+                            image: AssetImage(loc.imageUrl),
                             fit: BoxFit.cover,
                           ),
                         ),

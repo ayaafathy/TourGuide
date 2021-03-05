@@ -23,10 +23,6 @@ class _DestinationScreenState extends State<DestinationScreen> {
     final acttest = Provider.of<Activities>(context).items;
     var asize = acttest.length;
     //Activity activity = widget.destination.activities[index];
-
-    print("xxx");
-    //print(activity);
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -66,22 +62,6 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       color: Colors.white,
                       onPressed: () => Navigator.pop(context),
                     ),
-                    Row(
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(Icons.search),
-                          iconSize: 30.0,
-                          color: Colors.white,
-                          onPressed: () => Navigator.pop(context),
-                        ),
-                        IconButton(
-                          icon: Icon(FontAwesomeIcons.sortAmountDown),
-                          iconSize: 25.0,
-                          color: Colors.white,
-                          onPressed: () => Navigator.pop(context),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
@@ -91,6 +71,11 @@ class _DestinationScreenState extends State<DestinationScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    Icon(
+                      FontAwesomeIcons.locationArrow,
+                      size: 15.0,
+                      color: Colors.white70,
+                    ),
                     Text(
                       widget.destination.city,
                       style: TextStyle(
@@ -120,21 +105,12 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   ],
                 ),
               ),
-              Positioned(
-                right: 20.0,
-                bottom: 20.0,
-                child: Icon(
-                  Icons.location_on,
-                  color: Colors.white70,
-                  size: 25.0,
-                ),
-              ),
             ],
           ),
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
-              itemCount: asize, //////---------->>>>
+              itemCount: asize,
               itemBuilder: (BuildContext context, int index) {
                 print(index);
                 // final acttest = Provider.of<Activities>(context).items;
@@ -147,14 +123,14 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 10.0),
-                      height: 200.0,
+                      height: 285.0,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(100.0, 20.0, 20.0, 20.0),
+                        padding: EdgeInsets.fromLTRB(5.0, 20.0, 20.0, 20.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,16 +154,26 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                 Column(
                                   children: <Widget>[
                                     Text(
-                                      '\$${/*activity.price*/ "Activity Price"}',
+                                      '\$${acttest[index].price}',
                                       style: TextStyle(
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                                    Text(
-                                      'per pax',
-                                      style: TextStyle(
-                                        color: Colors.grey,
+                                    Positioned(
+                                      left: 5.0,
+                                      top: 5.0,
+                                      bottom: 5.0,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        child: Image(
+                                          width: 110.0,
+                                          image: AssetImage(
+                                            acttest[index].imageUrl,
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -196,21 +182,13 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             ),
                             Text(
                               acttest[index].type,
-                              style: TextStyle(
-                                color: Colors.grey,
-                              ),
+                              style: TextStyle(color: Colors.grey),
                             ),
                             Rating((rating) {
                               setState(() {
                                 _rating = rating;
                               });
                             }, 5),
-                            SizedBox(
-                                height: 15,
-                                child: (_rating != null && _rating != 0)
-                                    ? Text("You selected $_rating rating",
-                                        style: TextStyle(fontSize: 11))
-                                    : SizedBox.shrink()),
                             Row(
                               children: <Widget>[
                                 Container(
@@ -241,21 +219,6 @@ class _DestinationScreenState extends State<DestinationScreen> {
                               ],
                             )
                           ],
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: 20.0,
-                      top: 15.0,
-                      bottom: 15.0,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Image(
-                          width: 110.0,
-                          image: AssetImage(
-                            acttest[index].imageUrl,
-                          ),
-                          fit: BoxFit.cover,
                         ),
                       ),
                     ),

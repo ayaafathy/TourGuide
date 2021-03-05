@@ -27,7 +27,7 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Top Destinations',
+                'Cities',
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.bold,
@@ -35,7 +35,6 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                 ),
               ),
               GestureDetector(
-                onTap: () => print('see all'),
                 child: Text(
                   'See All',
                   style: TextStyle(
@@ -56,8 +55,6 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
               itemCount: destination.items.length,
               itemBuilder: (BuildContext context, int index) {
                 var des = destination.items[index];
-                print(des.id);
-                print(destination.items.contains(des));
                 return GestureDetector(
                   onTap: () => Navigator.push(
                       context,
@@ -153,15 +150,6 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                                         setState(() {
                                           des.toggleFavoriteStatus();
                                         });
-                                        // if(des.isFavorite)
-                                        //   {
-                                        //     Icons.favorite;
-                                        //   }
-                                        // else
-                                        //   {
-                                        //     Icons.favorite_border;
-                                        //   }
-                                        //des.toggleFavoriteStatus();
                                       },
                                     ),
                                     Row(

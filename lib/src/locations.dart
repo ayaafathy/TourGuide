@@ -48,11 +48,8 @@ class Tours {
     this.name,
     this.region,
   });
-/*
   factory Tours.fromJson(Map<String, dynamic> json) => _$ToursFromJson(json);
   Map<String, dynamic> toJson() => _$ToursToJson(this);
-  */
-
   final String address;
   final String id;
   final String image;
@@ -78,7 +75,8 @@ class Locations {
 }
 
 Future<Locations> getGoogleTours() async {
-  const googleLocationsURL = 'file:///C:/xampp/htdocs/TourGuide/Locations.json';
+  const googleLocationsURL =
+      'https://locations-92c19-default-rtdb.firebaseio.com/';
 
   // Retrieve the locations of Google Tours
   final response = await http.get(googleLocationsURL);

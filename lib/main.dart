@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             '/loc': (context) => locProfile(),
             '/saved': (context) => MySavedList(),
             '/profile': (context) => UserProfile(),
-            'hotel': (context) => Hotelscreen(),
+            'location': (context) => LocationScreen(),
             // '/search': (context) => Search(),
             '/map': (context) => Maps(),
           },
