@@ -3,7 +3,6 @@ import 'package:tour_guide/screens/homepage.dart';
 import 'package:tour_guide/NotUsed/forms_widgets.dart';
 import 'package:tour_guide/NotUsed/signIn_widgets.dart';
 import 'package:tour_guide/NotUsed/signup_UI.dart';
-import 'package:tour_guide/services/flutterfire.dart';
 
 class SignIn extends StatelessWidget {
   @override

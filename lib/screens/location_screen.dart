@@ -97,13 +97,17 @@ class _LocationScreenState extends State<LocationScreen> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(20.0),
             ),
-            child: Text(
-              widget.location.bio,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 15.0,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 1.2,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+              child: Text(
+                widget.location.bio,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1.2,
+                ),
               ),
             ),
           ),

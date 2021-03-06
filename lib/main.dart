@@ -78,8 +78,8 @@ class MyApp extends StatelessWidget {
                       autResSnapshot.connectionState == ConnectionState.waiting
                           ? SplashScreen()
                           : AuthScreen(),
-                  //MyAnim()
                 ),
+          //MyAnim(),
         ),
       ),
     );

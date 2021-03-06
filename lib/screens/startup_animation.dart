@@ -4,7 +4,6 @@ import 'package:tour_guide/main.dart';
 import 'package:tour_guide/providers/authentication.dart';
 import 'package:tour_guide/screens/auth_screens.dart';
 import 'package:tour_guide/screens/splash_screen.dart';
-
 import 'package:tour_guide/screens/homepage.dart';
 
 ///import 'package:tour_guide/homepage.dart';

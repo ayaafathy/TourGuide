@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
 import 'package:tour_guide/providers/locations.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tour_guide/screens/location_screen.dart';
 import 'package:tour_guide/models/location_model.dart';
 
@@ -30,6 +30,7 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                   letterSpacing: 1.5,
                 ),
               ),
+              /*
               GestureDetector(
                 child: Text(
                   'See All',
@@ -40,7 +41,8 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                     letterSpacing: 1.0,
                   ),
                 ),
-              )
+              ),
+              */
             ],
           ),
         ),
@@ -70,8 +72,8 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                       Positioned(
                         bottom: 15.0,
                         child: Container(
-                          height: 150.0,
-                          width: 250.0,
+                          height: 120.0,
+                          width: 200.0,
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                             borderRadius: BorderRadius.circular(10.0),
@@ -84,13 +86,14 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                 Text(
                                   loc.name,
                                   style: TextStyle(
-                                      fontSize: 15.0,
+                                      fontSize: 18.0,
                                       fontWeight: FontWeight.w600,
                                       letterSpacing: 1.2),
                                 ),
                                 SizedBox(
                                   height: 2.0,
                                 ),
+                                /*
                                 Text(
                                   loc.address,
                                   style: TextStyle(color: Colors.grey),
@@ -98,6 +101,7 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                 SizedBox(
                                   height: 2.0,
                                 ),
+                                */
                                 Text(
                                   '\$${loc.price}',
                                   style: TextStyle(
@@ -121,14 +125,64 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                             ),
                           ],
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image(
-                            height: 180.0,
-                            width: 220.0,
-                            image: AssetImage(loc.imageUrl),
-                            fit: BoxFit.cover,
-                          ),
+                        child: Stack(
+                          children: <Widget>[
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image(
+                                height: 180.0,
+                                width: 180.0,
+                                image: AssetImage(loc.imageUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Positioned(
+                              left: 10.0,
+                              bottom: 10.0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    '',
+                                    //loc.city,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.w600,
+                                        letterSpacing: 1.2),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      loc.isFavorite
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                    ),
+                                    color: Colors.red,
+                                    onPressed: () {
+                                      /*
+                                        setState(() {
+                                          //loc.toggleFavoriteStatus();
+                                        
+                                        });
+                                        */
+                                    },
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        FontAwesomeIcons.locationArrow,
+                                        size: 10.0,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 5.0,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
