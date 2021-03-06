@@ -18,8 +18,8 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     final location = Provider.of<Locations>(context);
     return Scaffold(
-      body: Column(
-        children: <Widget>[
+      body: SingleChildScrollView(
+        child: Column(children: <Widget>[
           Stack(
             children: <Widget>[
               Container(
@@ -73,6 +73,10 @@ class _LocationScreenState extends State<LocationScreen> {
                           color: Colors.white70,
                         ),
                         SizedBox(width: 5.0),
+                        Text(
+                          widget.location.address, //loc.city
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
                     ),
                   ],
@@ -89,29 +93,55 @@ class _LocationScreenState extends State<LocationScreen> {
               ),
             ],
           ),
-          Container(
-            margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 5.0),
-            height: 170.0,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
-              child: Text(
-                widget.location.bio,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.2,
+          Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 5.0),
+                height: 100.0,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+                  child: Text(
+                    widget.location.bio,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
                 ),
               ),
-            ),
+              Container(
+                margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 5.0),
+                height: 100.0,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+                  child: Text(
+                    widget.location.address,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ]),
       ),
     );
   }

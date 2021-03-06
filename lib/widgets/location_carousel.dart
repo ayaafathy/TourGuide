@@ -142,15 +142,6 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text(
-                                    '',
-                                    //loc.city,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 24.0,
-                                        fontWeight: FontWeight.w600,
-                                        letterSpacing: 1.2),
-                                  ),
                                   IconButton(
                                     icon: Icon(
                                       loc.isFavorite
@@ -176,6 +167,10 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                       ),
                                       SizedBox(
                                         width: 5.0,
+                                      ),
+                                      Text(
+                                        '', //loc.city
+                                        style: TextStyle(color: Colors.white),
                                       ),
                                     ],
                                   ),

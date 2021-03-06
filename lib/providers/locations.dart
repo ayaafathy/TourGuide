@@ -11,7 +11,7 @@ class Locations with ChangeNotifier {
         name: 'Pyramids of Giza',
         shortInfo: 'One of the seven wonders of the world',
         bio: 'Belonging to a civilization more than 7000 years old',
-        address: 'Al Haram, Nazlet El-Semman, Al Giza Desert, Giza Governorate',
+        address: 'Al Haram, Al Giza Desert, Giza Governorate',
         price: 175,
         rating: 5.0),
     Location(
@@ -22,8 +22,7 @@ class Locations with ChangeNotifier {
         shortInfo: 'a modern landmark of knowledge',
         bio:
             'Like a lighthouse for the world, the alexandria library stands vigil',
-        address:
-            'Al Azaritah WA Ash Shatebi, Qism Bab Sharqi, Alexandria Governorate 21526',
+        address: ' Shatebi, Qism Bab Sharqi, Alexandria Governorate 21526',
         price: 300,
         rating: 5.0),
     Location(
