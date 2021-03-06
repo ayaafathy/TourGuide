@@ -64,6 +64,8 @@ class _GuideScreenState extends State<GuideScreen> {
                         child: ListView.builder(
                           padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
                           itemCount: guidesList.guides.length,
+
+                          /// index might be causing issue
                           itemBuilder: (BuildContext context, int index) {
                             Guide guide = guidesList.guides[index];
                             return Stack(

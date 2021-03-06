@@ -5,7 +5,7 @@ class Guide with ChangeNotifier {
   final String imageUrl;
   final String name;
   final int age;
-  final int phonenumber;
+  final String phonenumber;
   final int price;
   final int rating;
 
