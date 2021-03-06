@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        /*
         ChangeNotifierProxyProvider<Authentication, Guides>(
           create: (_) => Guides(
             [],
@@ -45,8 +46,9 @@ class MyApp extends StatelessWidget {
           update: (ctx, auth, guidesList) =>
               guidesList..receiveToken(auth, guidesList.guides),
         ),
+        */
         ChangeNotifierProvider(create: (context) => Authentication()),
-        //ChangeNotifierProvider(create: (context) => Guides()),
+        ChangeNotifierProvider(create: (context) => Guides()),
         ChangeNotifierProvider(create: (context) => Locations()),
         ChangeNotifierProvider(create: (context) => Destinations()),
         ChangeNotifierProvider(create: (context) => Activities()),

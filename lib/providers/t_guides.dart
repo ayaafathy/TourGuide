@@ -12,18 +12,21 @@ class Guides with ChangeNotifier {
   String authToken;
   String userID;
 
-  Guides(this._guides, this.authToken, this.userID);
+  //Guides(this._guides, this.authToken, this.userID);
+  Guides();
 
   List<Guide> get guides {
     return [..._guides];
   }
 
   Future<void> fetchAndSetGuides() async {
-    var url = '$baseUrl/tourguide.json?auth=$authToken';
+    var url =
+        'https://tourguide-422-default-rtdb.firebaseio.com/tourguide/tourguide.json';
     try {
       final response = await http.get(url);
-
-      final resData = json.decode(response.body) as Map<String, dynamic>;
+      print(response.body);
+      print(response.statusCode);
+      final resData = json.decode(response.body) as Map<dynamic, dynamic>;
       if (resData == null) {
         return;
       }
