@@ -6,8 +6,8 @@ import 'package:tour_guide/models/t_guide_model.dart';
 import 'package:tour_guide/providers/authentication.dart';
 
 class Guides with ChangeNotifier {
-  static const baseUrl =
-      'https://tourguide-422-default-rtdb.firebaseio.com/tourguide';
+  static const baseUrl = 'https://tourguide-422-default-rtdb.firebaseio.com';
+
   List<Guide> _guides = [];
   String authToken;
   String userID;
@@ -21,11 +21,9 @@ class Guides with ChangeNotifier {
 
   Future<void> fetchAndSetGuides() async {
     var url =
-        'https://tourguide-422-default-rtdb.firebaseio.com/tourguide/tourguide.json';
+        'https://tourguide-422-default-rtdb.firebaseio.com/tourguide.json';
     try {
       final response = await http.get(url);
-      print(response.body);
-      print(response.statusCode);
       final resData = json.decode(response.body) as Map<dynamic, dynamic>;
       if (resData == null) {
         return;
@@ -47,12 +45,14 @@ class Guides with ChangeNotifier {
       notifyListeners();
 
       /// For debugging
+      /*
       print('Tour Guides: **********************************************');
       print('/////Testing Tour Guides: ');
       print('Response statusCode: ');
       print(response.statusCode);
       print('Response Body: ');
       print(response.body);
+      */
     } on Exception catch (e) {
       print(e.toString());
       throw (e);
