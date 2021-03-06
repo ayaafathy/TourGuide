@@ -1,13 +1,12 @@
 import 'package:http/http.dart' as http;
 
 class User {
+  User({this.imageUrl, this.name, this.email, this.username, this.password});
   String imageUrl;
   String name;
   String email;
   String username;
   String password;
-
-  User({this.imageUrl, this.name, this.email, this.username, this.password});
 }
 
 final List<User> hotels = [
