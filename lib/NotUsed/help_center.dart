@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/widgets/appBar.dart';
-import 'package:tour_guide/screens/faq_UI.dart';
+import 'package:tour_guide/NotUsed/faq_UI.dart';
 
 void main() => runApp(HelpCenter());
 

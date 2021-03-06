@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tour_guide/widgets/appBar.dart';
 import 'package:tour_guide/widgets/fonts_style.dart';
-import 'package:tour_guide/screens/help_center.dart';
+import 'package:tour_guide/NotUsed/help_center.dart';
 
 void main() => runApp(SettingsScreen());
 
