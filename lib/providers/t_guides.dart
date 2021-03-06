@@ -24,8 +24,6 @@ class Guides with ChangeNotifier {
         'https://tourguide-422-default-rtdb.firebaseio.com/tourguide.json';
     try {
       final response = await http.get(url);
-      print(response.body);
-      print(response.statusCode);
       final resData = json.decode(response.body) as Map<dynamic, dynamic>;
       if (resData == null) {
         return;
@@ -47,12 +45,14 @@ class Guides with ChangeNotifier {
       notifyListeners();
 
       /// For debugging
+      /*
       print('Tour Guides: **********************************************');
       print('/////Testing Tour Guides: ');
       print('Response statusCode: ');
       print(response.statusCode);
       print('Response Body: ');
       print(response.body);
+      */
     } on Exception catch (e) {
       print(e.toString());
       throw (e);
