@@ -64,8 +64,9 @@ class _GuideScreenState extends State<GuideScreen> {
                         child: ListView.builder(
                           padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
                           itemCount: guidesList.guides.length,
+
+                          /// index might be causing issue
                           itemBuilder: (BuildContext context, int index) {
-                            Guide guide = guidesList.guides[index];
                             return Stack(
                               children: <Widget>[
                                 Container(
@@ -97,7 +98,7 @@ class _GuideScreenState extends State<GuideScreen> {
 
                                               /// Guide Name
                                               child: Text(
-                                                guide.name,
+                                                guidesList.guides[index].name,
                                                 style: TextStyle(
                                                   fontSize: 18.0,
                                                   fontWeight: FontWeight.w600,
@@ -110,7 +111,7 @@ class _GuideScreenState extends State<GuideScreen> {
                                               children: <Widget>[
                                                 /// Guide pricing
                                                 Text(
-                                                  '\$${guide.price}',
+                                                  '\$${guidesList.guides[index].price}',
                                                   style: TextStyle(
                                                     fontSize: 22.0,
                                                     fontWeight: FontWeight.w600,
@@ -129,12 +130,13 @@ class _GuideScreenState extends State<GuideScreen> {
 
                                         /// Guide Phone number
                                         Text(
-                                          '${guide.phonenumber}',
+                                          '${guidesList.guides[index].phonenumber}',
                                           style: TextStyle(
                                             color: Colors.grey,
                                           ),
                                         ),
-                                        _buildRatingStars(guide.rating),
+                                        _buildRatingStars(
+                                            guidesList.guides[index].rating),
                                         SizedBox(height: 10.0),
                                       ],
                                     ),
@@ -149,7 +151,7 @@ class _GuideScreenState extends State<GuideScreen> {
 
                                     /// Guide Image
                                     child: Image.network(
-                                      guide.imageUrl,
+                                      guidesList.guides[index].imageUrl,
                                       fit: BoxFit.cover,
                                       width: 110.0,
                                     ),

@@ -12,18 +12,21 @@ class Guides with ChangeNotifier {
   String authToken;
   String userID;
 
-  Guides(this._guides, this.authToken, this.userID);
+  //Guides(this._guides, this.authToken, this.userID);
+  Guides();
 
   List<Guide> get guides {
     return [..._guides];
   }
 
   Future<void> fetchAndSetGuides() async {
-    var url = '$baseUrl/tourguide.json?auth=$authToken';
+    var url =
+        'https://tourguide-422-default-rtdb.firebaseio.com/tourguide/tourguide.json';
     try {
       final response = await http.get(url);
-
-      final resData = json.decode(response.body) as Map<String, dynamic>;
+      print(response.body);
+      print(response.statusCode);
+      final resData = json.decode(response.body) as Map<dynamic, dynamic>;
       if (resData == null) {
         return;
       }
@@ -31,7 +34,7 @@ class Guides with ChangeNotifier {
       resData.forEach((key, data) {
         tgData.add(Guide(
           id: key,
-          imageUrl: data['imageURL'],
+          imageUrl: data['imageUrl'],
           name: data['name'],
           age: data['age'],
           phonenumber: data['phonenumber'],
@@ -70,7 +73,7 @@ class Guides with ChangeNotifier {
       imageUrl: 'assets/images/guide0.jpg',
       name: 'merlien',
       age: 25,
-      phonenumber: 01019736549,
+      phonenumber: '01019736549',
       price: 175,
       rating: 3,
     ),
@@ -78,7 +81,7 @@ class Guides with ChangeNotifier {
       imageUrl: 'assets/images/guide1.jpg',
       name: 'andro jr.',
       age: 25,
-      phonenumber: 01019765912,
+      phonenumber: '01019765912',
       price: 300,
       rating: 4,
     ),
@@ -86,7 +89,7 @@ class Guides with ChangeNotifier {
       imageUrl: 'assets/images/guide2.jpg',
       name: 'samantha jack',
       age: 25,
-      phonenumber: 01013927849,
+      phonenumber: '01013927849',
       price: 240,
       rating: 5,
     ),
@@ -94,7 +97,7 @@ class Guides with ChangeNotifier {
       imageUrl: 'assets/images/marc.jpg',
       name: 'arron white',
       age: 25,
-      phonenumber: 01011727849,
+      phonenumber: '01011727849',
       price: 190,
       rating: 3,
     ),
@@ -102,7 +105,7 @@ class Guides with ChangeNotifier {
       imageUrl: 'assets/images/omar.jpg',
       name: 'miley blake',
       age: 25,
-      phonenumber: 01013207849,
+      phonenumber: '01013207849',
       price: 140,
       rating: 2,
     ),
