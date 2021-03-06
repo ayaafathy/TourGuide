@@ -119,14 +119,14 @@ class _DashNavState extends State<DashNav> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => GuideScreen()));
             }),
-        ListTile(
+       /* ListTile(
             leading: Icon(Icons.public, color: iconColor),
             title: Text('Map', style: tilesStyle()),
             onTap: () {
               Navigator.pop(context);
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Maps()));
-            }),
+            }),*/
         Divider(),
         ListTile(
             leading: Icon(Icons.settings, color: iconColor),
