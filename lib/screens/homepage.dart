@@ -38,9 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 30.0),
           children: <Widget>[
-            SizedBox(
-              height: 20.0,
-            ),
             DestinationCarousel(),
             // ChangeNotifierProvider<Destinations>(
             //   create: (_)=> Destinations(),
