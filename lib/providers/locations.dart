@@ -4,7 +4,7 @@ import 'package:tour_guide/models/location_model.dart';
 import 'package:tour_guide/providers/authentication.dart';
 import 'package:http/http.dart' as http;
 import 'package:tour_guide/screens/location_profile.dart';
-import 'package:tour_guide/services/flutterfire.dart';
+import 'package:tour_guide/NotUsed/services/flutterfire.dart';
 
 
 class Locations with ChangeNotifier {
@@ -15,7 +15,7 @@ class Locations with ChangeNotifier {
 
   //Locations(this.authToken, this.userID, this._locationsList);
 
-   List<Location> _locationsList = [
+  List<Location> _locationsList = [
     // Location(
     //     index: '0',
     //     imageUrl: 'assets/images/Location0.jpg',
@@ -171,19 +171,19 @@ class Locations with ChangeNotifier {
     // print(data.value['loc104']);
     values.forEach((key, value) {
       _locationsList.add(Location(
-              //index: values[key]["address"],
-              imageUrl: values[key]["imageURL"],
-              coverImageUrl: values[key]["coverURL"],
-              name: values[key]["name"],
-              shortInfo:
-                  values[key]["info"],
-              bio:
-                  values[key]["bio"],
-              address: values[key]["address"],
-              price: values[key]["price"],
-              rating: values[key]["rating"]
-        ),
-          );
+        //index: values[key]["address"],
+          imageUrl: values[key]["imageURL"],
+          coverImageUrl: values[key]["coverURL"],
+          name: values[key]["name"],
+          shortInfo:
+          values[key]["info"],
+          bio:
+          values[key]["bio"],
+          address: values[key]["address"],
+          price: values[key]["price"],
+          rating: values[key]["rating"]
+      ),
+      );
 
     });});
     // print(_locationsList[0].name);
@@ -206,11 +206,11 @@ class Locations with ChangeNotifier {
     // }
     return _locationsList;
   }
-  // void receiveToken(Authentication auth, List<Locations> items)
-  // {
-  //   authToken = auth.token;
-  //   userID = auth.userID;
-  //   print('locations recieveToken, userID: $userID');
-  //   _locationsList= locationsList;
-  // }
+// void receiveToken(Authentication auth, List<Locations> items)
+// {
+//   authToken = auth.token;
+//   userID = auth.userID;
+//   print('locations recieveToken, userID: $userID');
+//   _locationsList= locationsList;
+// }
 }

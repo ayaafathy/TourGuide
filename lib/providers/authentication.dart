@@ -60,7 +60,7 @@ class Authentication with ChangeNotifier {
       );
 
       /// For debugging ///*****
-      print('**********************************************');
+      print('Authentication: **********************************************');
       print('Response statusCode: ');
       print(response.statusCode);
       print('Response Body: ');
@@ -79,14 +79,14 @@ class Authentication with ChangeNotifier {
       _token = responseData['idToken'];
 
       /// For debugging
-      print('**********************************************');
+      print('Authentication: **********************************************');
       print('/////Testing: Username is $_username');
       if (_userID == null) {
         throw HttpException('Null ID');
       }
 
       /// For debugging ///*****
-      print('**********************************************');
+      print('Authentication: **********************************************');
       _expiryDate = DateTime.now().add(
         Duration(
           seconds: int.parse(
@@ -109,9 +109,9 @@ class Authentication with ChangeNotifier {
       /// Shared Preferences, save data for auto sign in
       final prefs = await SharedPreferences.getInstance();
       final userData = json.encode({
-        "userID": _userID,
-        "token": _token,
-        "expiryDate": _expiryDate.toIso8601String(),
+        'userID': _userID,
+        'token': _token,
+        'expiryDate': _expiryDate.toIso8601String(),
 
         /// Standard format: toIso8601String()
       });
@@ -146,8 +146,8 @@ class Authentication with ChangeNotifier {
     prefs.clear();
 
     /// For debugging ///*****
-    print('**********************************************');
-    print('signOut() >>>> Username: $_username');
+    print('Signout: **********************************************');
+    print('Username: $_username');
   }
 
   //***TODO: check this again
@@ -163,13 +163,16 @@ class Authentication with ChangeNotifier {
     _expiryDate = DateTime.parse(savedUserData['expiryDate']);
 
     /// For debugging ///*****
-    print('**********************************************');
+
+    print('Auto Signin: **********************************************');
     if (_expiryDate.isBefore(DateTime.now())) {
-      print('Token Expired');
+      print('Auto Signin: Token Expired');
       return false;
     }
+    /*
+    print('Saved User Data: **********************************************');
     print(savedUserData);
-
+    */
     /// End of for debugging ///*****
 
     try {
@@ -181,8 +184,8 @@ class Authentication with ChangeNotifier {
     }
 
     /// For debugging ///*****
-    print('**********************************************');
-    print('Test: $_token');
+    print('Auto Signin: **********************************************');
+    print('Token: $_token');
     print('_expiryDate: $_expiryDate');
 
     /// End of for debugging ///*****
@@ -195,6 +198,9 @@ class Authentication with ChangeNotifier {
       _authenticationTimer.cancel();
     }
     Timer(_expiryDate.difference(DateTime.now()), signOut);
-    print('Auto SignIn working: ');
+    /*
+    print('Auto Signout: **********************************************');
+    print('Auto Signout working: ');
+    */
   }
 }

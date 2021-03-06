@@ -30,4 +30,3 @@ class Location with ChangeNotifier {
     isFavorite = !isFavorite;
   }
 }
-

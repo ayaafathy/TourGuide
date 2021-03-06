@@ -35,6 +35,7 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                   letterSpacing: 1.5,
                 ),
               ),
+              /*
               GestureDetector(
                 child: Text(
                   'See All',
@@ -45,7 +46,8 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                     letterSpacing: 1.0,
                   ),
                 ),
-              )
+              ),
+              */
             ],
           ),
         ),
