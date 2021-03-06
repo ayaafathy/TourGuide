@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:tour_guide/models/t_guide_model.dart';
 import 'package:tour_guide/providers/authentication.dart';
+import 'package:tour_guide/providers/t_guides.dart';
 import 'package:tour_guide/providers/locations.dart';
 import 'package:tour_guide/providers/activities.dart';
 import 'package:tour_guide/providers/destinations.dart';
-
 import 'package:tour_guide/screens/location_profile.dart';
 import 'package:tour_guide/screens/savelist_UI.dart';
 import 'package:tour_guide/screens/user_profile.dart';
@@ -35,7 +36,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProxyProvider<Authentication, Guides>(
+          create: (_) => Guides(
+            [],
+            Provider.of<Authentication>(context, listen: true).token,
+            Provider.of<Authentication>(context, listen: true).userID,
+          ),
+          update: (ctx, auth, guidesList) =>
+              guidesList..receiveToken(auth, guidesList.guides),
+        ),
         ChangeNotifierProvider(create: (context) => Authentication()),
+        //ChangeNotifierProvider(create: (context) => Guides()),
         ChangeNotifierProvider(create: (context) => Locations()),
         ChangeNotifierProvider(create: (context) => Destinations()),
         ChangeNotifierProvider(create: (context) => Activities()),
@@ -59,7 +70,6 @@ class MyApp extends StatelessWidget {
           },
 
           /// TODO: Should navigate to HomeScreen() if user is authenticated and to MyAnim() if user isn't
-
           home: auth.isAuth
               ? HomeScreen()
               : FutureBuilder(
