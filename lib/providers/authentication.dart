@@ -198,7 +198,9 @@ class Authentication with ChangeNotifier {
       _authenticationTimer.cancel();
     }
     Timer(_expiryDate.difference(DateTime.now()), signOut);
+    /*
     print('Auto Signout: **********************************************');
     print('Auto Signout working: ');
+    */
   }
 }
