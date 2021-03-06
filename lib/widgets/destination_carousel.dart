@@ -7,6 +7,7 @@ import 'package:tour_guide/models/destination_model.dart';
 import 'package:tour_guide/providers/destinations.dart';
 import 'package:tour_guide/screens/destination_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:tour_guide/providers/locations.dart';
 import 'package:tour_guide/providers/activities.dart';
 
 class DestinationCarousel extends StatefulWidget {
@@ -55,6 +56,10 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
               itemCount: destination.items.length,
               itemBuilder: (BuildContext context, int index) {
                 var des = destination.items[index];
+
+               // print(des.id);
+                //print(destination.items.contains(des));
+
                 return GestureDetector(
                   onTap: () => Navigator.push(
                       context,
