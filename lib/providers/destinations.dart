@@ -14,43 +14,31 @@ class Destinations with ChangeNotifier {
   final List<Destination> _items = [
     Destination(
         id: '1',
-        imageUrl: 'assets/images/venice.jpg',
-        city: 'Venice',
-        country: 'Italy',
+        imageUrl: 'assets/images/Cairo.jpg',
+        city: 'Cairo',
         description: 'Visit Venice for an amazing and unforgettable adventure.',
         activities: []),
     Destination(
       id: '2',
-      imageUrl: 'assets/images/paris.jpg',
-      city: 'Paris',
-      country: 'France',
+      imageUrl: 'assets/images/Alexandria.jpg',
+      city: 'Alexandria',
       description: 'Visit Paris for an amazing and unforgettable adventure.',
       activities: [],
     ),
     Destination(
       id: '3',
-      imageUrl: 'assets/images/newdelhi.jpg',
-      city: 'New Delhi',
-      country: 'India',
+      imageUrl: 'assets/images/Luxor.jpg',
+      city: 'Luxor',
       description:
           'Visit New Delhi for an amazing and unforgettable adventure.',
       activities: [],
     ),
     Destination(
       id: '4',
-      imageUrl: 'assets/images/saopaulo.jpg',
-      city: 'Sao Paulo',
-      country: 'Brazil',
+      imageUrl: 'assets/images/Aswan.jpg',
+      city: 'Aswan',
       description:
           'Visit Sao Paulo for an amazing and unforgettable adventure.',
-      activities: [],
-    ),
-    Destination(
-      id: '5',
-      imageUrl: 'assets/images/newyork.jpg',
-      city: 'New York City',
-      country: 'United States',
-      description: 'Visit New York for an amazing and unforgettable adventure.',
       activities: [],
     ),
   ];
@@ -70,12 +58,12 @@ class Destinations with ChangeNotifier {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
-  List<Activity> getProductsById(BuildContext context, String id) {
-    List<Activity> list = [];
-    for (Activity activityid
-        in _items.firstWhere((cat) => cat.id == id).activities) {
-      list.add(Provider.of<Activities>(context).findById(activityid.id));
-    }
-    return list;
-  }
+  // List<Activity> getProductsById(BuildContext context, String id) {
+  //   List<Activity> list = [];
+  //   for (Activity activityid
+  //       in _items.firstWhere((cat) => cat.id == id).activities) {
+  //     list.add(Provider.of<Activities>(context).findById(activityid.id));
+  //   }
+  //   return list;
+  // }
 }

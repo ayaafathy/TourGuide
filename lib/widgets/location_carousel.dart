@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/providers/locations.dart';
 import 'package:tour_guide/screens/location_profile.dart';
 
 import 'package:tour_guide/screens/location_screen.dart';
-
 
 import 'package:tour_guide/models/location_model.dart';
 
@@ -22,9 +22,9 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
     super.initState();
     location = Provider.of<Locations>(context, listen: false);
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: <Widget>[
         Padding(
@@ -58,11 +58,9 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
           height: 300.0,
           child: FutureBuilder(
               future: location.fetchAndSetLocations(),
-
-              builder: (context, AsyncSnapshot<void> snapshot){
-                if(snapshot.connectionState == ConnectionState.done)
-                {
-                  if(snapshot.hasData){
+              builder: (context, AsyncSnapshot<void> snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
                     print(location.locationsList.length);
                     return ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -74,13 +72,14 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                           onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => ChangeNotifierProvider<Locations>(
-                                    create: (_) => Locations(),
-                                    child: LocationScreen(
-                                      location: location.locationsList[index],
-                                    ),
-                                  ))),
-
+                                  builder: (_) =>
+                                      ChangeNotifierProvider<Locations>(
+                                        create: (_) => Locations.fromLoc(),
+                                        child: LocationScreen(
+                                          location:
+                                              location.locationsList[index],
+                                        ),
+                                      ))),
                           child: Container(
                             margin: EdgeInsets.all(10.0),
                             width: 200.0,
@@ -99,7 +98,8 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                     child: Padding(
                                       padding: const EdgeInsets.only(top: 10.0),
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
                                         children: <Widget>[
                                           Text(
                                             location.locationsList[index].name,
@@ -112,8 +112,10 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                             height: 2.0,
                                           ),
                                           Text(
-                                            location.locationsList[index].address,
-                                            style: TextStyle(color: Colors.grey),
+                                            location
+                                                .locationsList[index].address,
+                                            style:
+                                                TextStyle(color: Colors.grey),
                                           ),
                                           SizedBox(
                                             height: 2.0,
@@ -141,16 +143,64 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                       ),
                                     ],
                                   ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    child: Image(
-                                      height: 180.0,
-                                      width: 220.0,
-                                      image: NetworkImage(location.locationsList[index].imageUrl),
-                                      fit: BoxFit.cover,
-                                    ),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        child: Image(
+                                          height: 180.0,
+                                          width: 220.0,
+                                          image: NetworkImage(location
+                                              .locationsList[index].imageUrl),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        left: 10.0,
+                                        bottom: 10.0,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            IconButton(
+                                              icon: Icon(
+                                                location.locationsList[index]
+                                                        .isFavorite
+                                                    ? Icons.favorite
+                                                    : Icons.favorite_border,
+                                              ),
+                                              color: Colors.red,
+                                              onPressed: () {
+                                                setState(() {
+                                                  location.locationsList[index]
+                                                      .toggleFavoriteLocationStatus();
+                                                });
+                                              },
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Icon(
+                                                  FontAwesomeIcons
+                                                      .locationArrow,
+                                                  size: 10.0,
+                                                  color: Colors.white,
+                                                ),
+                                                SizedBox(
+                                                  width: 5.0,
+                                                ),
+                                                // Text(
+                                                //   des.country,
+                                                //   style: TextStyle(color: Colors.white),
+                                                // ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                ),
+                                )
                               ],
                             ),
                           ),
@@ -160,18 +210,16 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                   } else {
                     return Center(
                       child: Text('No Data'),
-                    );}
+                    );
+                  }
                 }
 
-                return Center(child: CircularProgressIndicator(),);
-
-
-
-              }
-          ),
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }),
         ),
       ],
     );
-
   }
 }

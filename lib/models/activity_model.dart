@@ -4,6 +4,7 @@ class Activity with ChangeNotifier {
   final String id;
   String imageUrl;
   String name;
+  String city;
   String type;
   List<String> startTimes;
   int rating;
@@ -14,6 +15,7 @@ class Activity with ChangeNotifier {
     @required this.id,
     this.imageUrl,
     this.name,
+    this.city,
     this.type,
     this.startTimes,
     this.rating,
