@@ -81,6 +81,7 @@ class Authentication with ChangeNotifier {
       /// For debugging
       print('Authentication: **********************************************');
       print('/////Testing: Username is $_username');
+      print('user id $_userID');
       if (_userID == null) {
         throw HttpException('Null ID');
       }
