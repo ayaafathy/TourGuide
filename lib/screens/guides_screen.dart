@@ -24,6 +24,7 @@ class _GuideScreenState extends State<GuideScreen> {
   @override
   Widget build(BuildContext context) {
     final guidesList = Provider.of<Guides>(context);
+
     return Scaffold(
         appBar: buildAppBar(Icons.arrow_back_rounded, () {
           Navigator.pop(context);
@@ -141,13 +142,15 @@ class _GuideScreenState extends State<GuideScreen> {
                               borderRadius: BorderRadius.circular(20.0),
 
                               /// Guide Image
-                              /*
+                              ///  await ref.getDownloadURL();
+/*
                               child: Image.network(
                                 guidesList.guides[index].imageUrl,
                                 fit: BoxFit.cover,
                                 width: 110.0,
                               ),
-                              */
+*/
+
                               child: Image(
                                 width: 110.0,
                                 image: AssetImage(
