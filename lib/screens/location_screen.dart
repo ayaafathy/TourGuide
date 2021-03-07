@@ -39,7 +39,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(30.0),
                     child: Image(
-                      image: AssetImage(widget.location.imageUrl),
+                      image: NetworkImage(widget.location.imageUrl),
                       fit: BoxFit.cover,
                     ),
                   ),
