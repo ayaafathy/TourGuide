@@ -143,14 +143,14 @@ class _GuideScreenState extends State<GuideScreen> {
 
                               /// Guide Image
                               ///  await ref.getDownloadURL();
-/*
+
                               child: Image.network(
                                 guidesList.guides[index].imageUrl,
                                 fit: BoxFit.cover,
                                 width: 110.0,
                               ),
-*/
 
+                              /*
                               child: Image(
                                 width: 110.0,
                                 image: AssetImage(
@@ -158,6 +158,7 @@ class _GuideScreenState extends State<GuideScreen> {
                                 ),
                                 fit: BoxFit.cover,
                               ),
+                              */
                             ),
                           ),
                         ],
