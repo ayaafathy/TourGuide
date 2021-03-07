@@ -59,7 +59,7 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
               itemBuilder: (BuildContext context, int index) {
                 var des = destination.items[index];
 
-               // print(des.id);
+                // print(des.id);
                 //print(destination.items.contains(des));
 
                 return GestureDetector(
@@ -146,19 +146,19 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                                           fontWeight: FontWeight.w600,
                                           letterSpacing: 1.2),
                                     ),
-                                    IconButton(
-                                      icon: Icon(
-                                        des.isFavorite
-                                            ? Icons.favorite
-                                            : Icons.favorite_border,
-                                      ),
-                                      color: Colors.red,
-                                      onPressed: () {
-                                        setState(() {
-                                          des.toggleFavoriteStatus();
-                                        });
-                                      },
-                                    ),
+                                    // IconButton(
+                                    //   icon: Icon(
+                                    //     des.isFavorite
+                                    //         ? Icons.favorite
+                                    //         : Icons.favorite_border,
+                                    //   ),
+                                    //   color: Colors.red,
+                                    //   onPressed: () {
+                                    //     setState(() {
+                                    //       des.toggleFavoriteStatus();
+                                    //     });
+                                    //   },
+                                    // ),
                                     Row(
                                       children: <Widget>[
                                         Icon(
@@ -168,10 +168,6 @@ class _DestinationCarouselState extends State<DestinationCarousel> {
                                         ),
                                         SizedBox(
                                           width: 5.0,
-                                        ),
-                                        Text(
-                                          des.country,
-                                          style: TextStyle(color: Colors.white),
                                         ),
                                       ],
                                     ),

@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 class Location with ChangeNotifier {
   String index;
   String imageUrl; //= 'assets/images/genericLocation.jpg';
-  String coverImageUrl;// = 'assets/images/genericLocationCover.jpg';
+  String coverImageUrl; // = 'assets/images/genericLocationCover.jpg';
   String name;
   String shortInfo;
   String bio;
@@ -16,11 +16,11 @@ class Location with ChangeNotifier {
   Location({
     this.index,
     this.imageUrl,
-     this.coverImageUrl,
-     this.name,
-     this.shortInfo,
-     this.bio,
-     this.address,
+    this.coverImageUrl,
+    this.name,
+    this.shortInfo,
+    this.bio,
+    this.address,
     this.price,
     this.rating,
     this.isFavorite = false,
@@ -28,5 +28,6 @@ class Location with ChangeNotifier {
 
   void toggleFavoriteLocationStatus() {
     isFavorite = !isFavorite;
+    notifyListeners();
   }
 }
