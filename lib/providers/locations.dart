@@ -20,6 +20,70 @@ class Locations with ChangeNotifier {
     return [..._locationsList];
   }
 
+  List<Location> get favoriteItems {
+    return _locationsList.where((prodItem) => prodItem.isFavorite).toList();
+  }
+
+  Location findById(String id) {
+    return _locationsList.firstWhere((prod) => prod.index == id);
+  }
+
+  Future<bool> fetchAndSetLocations() async
+  {
+
+    _locationsList =[];
+    await database.child("location").orderByKey().once().then((data) {Map<dynamic,dynamic> values= data.value;
+    // print(data.value['loc104']);
+    values.forEach((key, value) {
+      _locationsList.add(Location(
+        //index: values[key]["address"],
+          imageUrl: values[key]["imageURL"],
+          coverImageUrl: values[key]["coverURL"],
+          name: values[key]["name"],
+          shortInfo:
+          values[key]["info"],
+          bio:
+          values[key]["bio"],
+          address: values[key]["address"],
+          price: values[key]["price"],
+          rating: values[key]["rating"]
+      ),
+      );
+
+    });});
+    // print(_locationsList[0].name);
+    notifyListeners();
+    return true;
+    //var url = '$baseurl/locations.json/?auth=$authToken&$';
+    //  const baseurl = "https://tourguide-422-default-rtdb.firebaseio.com/location.json";
+    //  try{
+    //       final response = await http.get(baseurl);
+    //  }
+    // catch(error)
+    // {
+    //   throw(error);
+    // }
+  }
+/*
+ List<Location> get locationsList {
+    // if (_showFavoritesOnly) {
+    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
+    // }
+    return _locationsList;
+  }
+  */
+
+void receiveToken(Authentication auth, List<Location> _locationsList)
+{
+  authToken = auth.token;
+  userID = auth.userID;
+  print('locations recieveToken, userID: $userID');
+  _locationsList= _locationsList;
+
+}
+  
+  
+
 /*
   List<Location> _locationsList = [
     // Location(
@@ -160,68 +224,6 @@ class Locations with ChangeNotifier {
   ];
 
 */
-
-
-  List<Location> get favoriteItems {
-    return _locationsList.where((prodItem) => prodItem.isFavorite).toList();
-  }
-
-  Location findById(String id) {
-    return _locationsList.firstWhere((prod) => prod.index == id);
-  }
-
-  Future<bool> fetchAndSetLocations() async
-  {
-    _locationsList =[];
-    await database.child("location").orderByKey().once().then((data) {Map<dynamic,dynamic> values= data.value;
-    // print(data.value['loc104']);
-    values.forEach((key, value) {
-      _locationsList.add(Location(
-        //index: values[key]["address"],
-          imageUrl: values[key]["imageURL"],
-          coverImageUrl: values[key]["coverURL"],
-          name: values[key]["name"],
-          shortInfo:
-          values[key]["info"],
-          bio:
-          values[key]["bio"],
-          address: values[key]["address"],
-          price: values[key]["price"],
-          rating: values[key]["rating"]
-      ),
-      );
-
-    });});
-    // print(_locationsList[0].name);
-    notifyListeners();
-    return true;
-    //var url = '$baseurl/locations.json/?auth=$authToken&$';
-    //  const baseurl = "https://tourguide-422-default-rtdb.firebaseio.com/location.json";
-    //  try{
-    //       final response = await http.get(baseurl);
-    //  }
-    // catch(error)
-    // {
-    //   throw(error);
-    // }
-  }
-/*
-  List<Location> get locationsList {
-    // if (_showFavoritesOnly) {
-    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
-    // }
-    return _locationsList;
-  }
-  */
-
-void receiveToken(Authentication auth, List<Location> _locationsList)
-{
-  authToken = auth.token;
-  userID = auth.userID;
-  print('locations recieveToken, userID: $userID');
-  _locationsList= _locationsList;
-
-}
 
 
 }

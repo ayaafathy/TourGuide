@@ -11,7 +11,7 @@ class Guides with ChangeNotifier {
   String authToken;
   String userID;
 
-  Guides(this._guides, this.authToken);
+  Guides(this._guides, this.authToken, this.userID);
   //Guides();
 
   List<Guide> get guides {
@@ -19,8 +19,8 @@ class Guides with ChangeNotifier {
   }
 
   Future<void> fetchAndSetGuides() async {
-    var url =
-        'https://tourguide-422-default-rtdb.firebaseio.com/tourguide.json';
+    var url = '$baseUrl/tourguide.json';
+
     try {
       final response = await http.get(url);
       final resData = json.decode(response.body) as Map<dynamic, dynamic>;
@@ -42,16 +42,6 @@ class Guides with ChangeNotifier {
 
       _guides = tgData;
       notifyListeners();
-
-      /// For debugging
-      /*
-      print('Tour Guides: **********************************************');
-      print('/////Testing Tour Guides: ');
-      print('Response statusCode: ');
-      print(response.statusCode);
-      print('Response Body: ');
-      print(response.body);
-      */
     } on Exception catch (e) {
       print(e.toString());
       throw (e);
@@ -62,6 +52,7 @@ class Guides with ChangeNotifier {
     authToken = auth.token;
     userID = auth.userID;
     print('Guides receiveToken, userId: $userID');
+    print('Guides receiveToken, token: $authToken');
     _guides = guides;
   }
 }

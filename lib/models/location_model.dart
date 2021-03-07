@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
+
 class Location with ChangeNotifier {
   static const baseUrl = 'https://tourguide-422-default-rtdb.firebaseio.com';
+
 
   String index;
   String imageUrl; //= 'assets/images/genericLocation.jpg';

@@ -77,6 +77,7 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                               MaterialPageRoute(
                                   builder: (_) => ChangeNotifierProvider<Locations>(
                                     create: (_) => Locations.fromLoc(),
+
                                     child: LocationScreen(
                                       location: location.locationsList[index],
                                     ),
@@ -145,6 +146,7 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                   child: Stack(
                                       children: <Widget>[
                                         ClipRRect(
+
                                     borderRadius: BorderRadius.circular(20.0),
                                     child: Image(
                                       height: 180.0,
@@ -152,6 +154,7 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                       image: NetworkImage(location.locationsList[index].imageUrl),
                                       fit: BoxFit.cover,
                                     ),
+
 
                                   ),
 
@@ -199,6 +202,7 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
 
                                 ),
                                 )
+
                               ],
                             ),
                           ),
