@@ -30,7 +30,34 @@ class MyHomePage extends StatelessWidget {
     final location = Provider.of<Locations>(context);
 
     return new Scaffold(
-      body: ListView.builder(
+      body: FutureBuilder<Object>(
+        future: location.fetchAndSetLocations(),
+    builder: (context, snapshot) {
+    /// Circular Indicator if loading
+    return
+    /*
+            snapshot.connectionState == ConnectionState.waiting
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : */
+    Column(
+    children: <Widget>[
+    Stack(
+    children: <Widget>[
+    Padding(
+    padding: EdgeInsets.symmetric(
+    horizontal: 10.0,
+    ),
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[],
+    ),
+    ),
+    ],
+    ),
+    Expanded(
+    child: ListView.builder(
         itemCount: location.locationsList.length,
         itemBuilder: (context, index) {
           final Location loc = location.locationsList[index];
@@ -45,7 +72,7 @@ class MyHomePage extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         tooltip: 'Search Locations',
         onPressed: () => showSearch(
           context: context,
@@ -72,8 +99,12 @@ class MyHomePage extends StatelessWidget {
                 trailing: Text('${locations.rating} stars')),
           ),
         ),
-        child: Icon(Icons.search),
+        child: Icon(Icons.search),*/
       ),
+    ),
+    ],
     );
-  }
+  },
+    ));
+}
 }
