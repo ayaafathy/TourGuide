@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tour_guide/providers/locations.dart';
 import 'package:tour_guide/widgets/fav_widget.dart';
 import 'package:tour_guide/providers/destinations.dart';
 import 'package:tour_guide/widgets/appBar.dart';
@@ -18,6 +19,8 @@ class _MySavedListState extends State<MySavedList> {
   @override
   Widget build(BuildContext context) {
     final destinations = Provider.of<Destinations>(context).favoriteItems;
+    final locations = Provider.of<Locations>(context).favoriteItems;
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Favourite Screen'),
@@ -27,9 +30,11 @@ class _MySavedListState extends State<MySavedList> {
             SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
-                itemCount: destinations.length,
+                itemCount: locations.length,
                 itemBuilder: (ctx, i) => FavWidget(
-                  destination: destinations[i],
+                  //destination: destinations[i],
+                  location: locations[i],
+
                 ),
               ),
             )

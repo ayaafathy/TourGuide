@@ -9,12 +9,18 @@ import 'package:tour_guide/NotUsed/services/flutterfire.dart';
 
 class Locations with ChangeNotifier {
   static const baseurl = "https://tourguide-422-default-rtdb.firebaseio.com/";
-
+  List<Location> _locationsList = [];
   String authToken;
   String userID;
 
-  //Locations(this.authToken, this.userID, this._locationsList);
+  Locations(this.authToken, this.userID, this._locationsList);
+  Locations.fromLoc();
 
+  List<Location> get locationsList {
+    return [..._locationsList];
+  }
+
+/*
   List<Location> _locationsList = [
     // Location(
     //     index: '0',
@@ -153,6 +159,7 @@ class Locations with ChangeNotifier {
     //     rating: 4.0),
   ];
 
+*/
 
 
   List<Location> get favoriteItems {
@@ -165,7 +172,6 @@ class Locations with ChangeNotifier {
 
   Future<bool> fetchAndSetLocations() async
   {
-
     _locationsList =[];
     await database.child("location").orderByKey().once().then((data) {Map<dynamic,dynamic> values= data.value;
     // print(data.value['loc104']);
@@ -199,18 +205,23 @@ class Locations with ChangeNotifier {
     //   throw(error);
     // }
   }
-
+/*
   List<Location> get locationsList {
     // if (_showFavoritesOnly) {
     //   return _items.where((prodItem) => prodItem.isFavorite).toList();
     // }
     return _locationsList;
   }
-// void receiveToken(Authentication auth, List<Locations> items)
-// {
-//   authToken = auth.token;
-//   userID = auth.userID;
-//   print('locations recieveToken, userID: $userID');
-//   _locationsList= locationsList;
-// }
+  */
+
+void receiveToken(Authentication auth, List<Location> _locationsList)
+{
+  authToken = auth.token;
+  userID = auth.userID;
+  print('locations recieveToken, userID: $userID');
+  _locationsList= _locationsList;
+
+}
+
+
 }
