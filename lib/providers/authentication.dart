@@ -60,12 +60,13 @@ class Authentication with ChangeNotifier {
       );
 
       /// For debugging ///*****
+      /*
       print('Authentication: **********************************************');
       print('Response statusCode: ');
       print(response.statusCode);
       print('Response Body: ');
       print(response.body);
-
+     */
       final responseData = json.decode(response.body);
 
       /// Error response payload(REST API)
@@ -78,16 +79,16 @@ class Authentication with ChangeNotifier {
       _username = _email.substring(0, _email.indexOf('@'));
       _token = responseData['idToken'];
 
-      /// For debugging
-      print('Authentication: **********************************************');
+      /// For debugging ///*****
+      print(
+          'Authentication: Testing Parsed response Data **********************************************');
       print('/////Testing: Username is $_username');
-      print('user id $_userID');
+      print('Saved User ID  is $_userID');
       if (_userID == null) {
         throw HttpException('Null ID');
       }
+      print('User ID : $_userID');
 
-      /// For debugging ///*****
-      print('Authentication: **********************************************');
       _expiryDate = DateTime.now().add(
         Duration(
           seconds: int.parse(
@@ -95,10 +96,8 @@ class Authentication with ChangeNotifier {
           ),
         ),
       );
-      print('User ID : $_userID');
-      //print('Token : $_token');
       print('Token expiry date : $_expiryDate');
-
+      //print('Token : $_token');
       /// End of for debugging ///*****
 
       //await _autoSignOut();
@@ -110,8 +109,8 @@ class Authentication with ChangeNotifier {
       /// Shared Preferences, save data for auto sign in
       final prefs = await SharedPreferences.getInstance();
       final userData = json.encode({
-        'userID': _userID,
         'token': _token,
+        'userID': _userID,
         'expiryDate': _expiryDate.toIso8601String(),
 
         /// Standard format: toIso8601String()
@@ -165,15 +164,14 @@ class Authentication with ChangeNotifier {
 
     /// For debugging ///*****
 
-    print('Auto Signin: **********************************************');
     if (_expiryDate.isBefore(DateTime.now())) {
       print('Auto Signin: Token Expired');
       return false;
     }
-    /*
+
     print('Saved User Data: **********************************************');
     print(savedUserData);
-    */
+
     /// End of for debugging ///*****
 
     try {
@@ -188,6 +186,8 @@ class Authentication with ChangeNotifier {
     print('Auto Signin: **********************************************');
     print('Token: $_token');
     print('_expiryDate: $_expiryDate');
+
+    print('User ID recieved from shared preferences $_userID');
 
     /// End of for debugging ///*****
     return true;

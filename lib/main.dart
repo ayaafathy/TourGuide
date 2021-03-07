@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
           create: (_) => Guides(
             [],
             Provider.of<Authentication>(context, listen: true).token,
+            Provider.of<Authentication>(context, listen: true).userID,
           ),
           update: (ctx, auth, guidesList) =>
               guidesList..receiveToken(auth, guidesList.guides),
