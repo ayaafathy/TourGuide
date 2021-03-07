@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:tour_guide/providers/locations.dart';
 import 'package:tour_guide/screens/location_profile.dart';
@@ -73,7 +74,7 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                               MaterialPageRoute(
                                   builder: (_) =>
                                       ChangeNotifierProvider<Locations>(
-                                        create: (_) => Locations(),
+                                        create: (_) => Locations.fromLoc(),
                                         child: LocationScreen(
                                           location:
                                               location.locationsList[index],
@@ -142,17 +143,64 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                                       ),
                                     ],
                                   ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    child: Image(
-                                      height: 180.0,
-                                      width: 220.0,
-                                      image: NetworkImage(location
-                                          .locationsList[index].imageUrl),
-                                      fit: BoxFit.cover,
-                                    ),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        child: Image(
+                                          height: 180.0,
+                                          width: 220.0,
+                                          image: NetworkImage(location
+                                              .locationsList[index].imageUrl),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        left: 10.0,
+                                        bottom: 10.0,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            IconButton(
+                                              icon: Icon(
+                                                location.locationsList[index]
+                                                        .isFavorite
+                                                    ? Icons.favorite
+                                                    : Icons.favorite_border,
+                                              ),
+                                              color: Colors.red,
+                                              onPressed: () {
+                                                setState(() {
+                                                  location.locationsList[index]
+                                                      .toggleFavoriteLocationStatus();
+                                                });
+                                              },
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Icon(
+                                                  FontAwesomeIcons
+                                                      .locationArrow,
+                                                  size: 10.0,
+                                                  color: Colors.white,
+                                                ),
+                                                SizedBox(
+                                                  width: 5.0,
+                                                ),
+                                                // Text(
+                                                //   des.country,
+                                                //   style: TextStyle(color: Colors.white),
+                                                // ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                ),
+                                )
                               ],
                             ),
                           ),

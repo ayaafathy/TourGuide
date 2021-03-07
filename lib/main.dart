@@ -45,10 +45,20 @@ class MyApp extends StatelessWidget {
           update: (ctx, auth, guidesList) =>
               guidesList..receiveToken(auth, guidesList.guides),
         ),
+        ChangeNotifierProxyProvider<Authentication, Locations>(
+          create: (_) => Locations(Provider.of<Authentication>(context, listen: true).token,
+            Provider.of<Authentication>(context, listen: true).userID,
+            [],
+
+          ),
+          update: (ctx, auth, locList) =>
+          locList..receiveToken(auth, locList.locationsList),
+        ),
+
 
         //ChangeNotifierProvider(create: (context) => Authentication()),
         //ChangeNotifierProvider(create: (context) => Guides()),
-        ChangeNotifierProvider(create: (context) => Locations()),
+        //ChangeNotifierProvider(create: (context) => Locations()),
         ChangeNotifierProvider(create: (context) => Destinations()),
         ChangeNotifierProvider(create: (context) => Activities()),
       ],
