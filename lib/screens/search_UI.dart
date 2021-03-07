@@ -17,6 +17,7 @@ extension IndexedIterable<E> on Iterable<E> {
 void main() => runApp(SearchApp());
 
 class SearchApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     /// Removed excess MaterialApp
@@ -27,11 +28,11 @@ class SearchApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final location = Provider.of<Locations>(context);
+    final locationlist = Provider.of<Locations>(context);
 
-    return new Scaffold(
+    return Scaffold(
       body: FutureBuilder<Object>(
-        future: location.fetchAndSetLocations(),
+        future: locationlist.fetchAndSetLocations(),
     builder: (context, snapshot) {
     /// Circular Indicator if loading
     return
@@ -58,9 +59,9 @@ class MyHomePage extends StatelessWidget {
     ),
     Expanded(
     child: ListView.builder(
-        itemCount: location.locationsList.length,
+        itemCount: locationlist.locationsList.length,
         itemBuilder: (context, index) {
-          final Location loc = location.locationsList[index];
+          final Location loc = locationlist.locationsList[index];
           return ListTile(
             title: Text(loc.name),
             subtitle: Text(loc.shortInfo),
@@ -99,8 +100,8 @@ class MyHomePage extends StatelessWidget {
                 trailing: Text('${locations.rating} stars')),
           ),
         ),
-        child: Icon(Icons.search),*/
-      ),
+        child: Icon(Icons.search),
+      ),*/
     ),
     ],
     );

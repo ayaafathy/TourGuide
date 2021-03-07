@@ -16,13 +16,13 @@ class Destinations with ChangeNotifier {
         id: '1',
         imageUrl: 'assets/images/Cairo.jpg',
         city: 'Cairo',
-        description: 'Visit Venice for an amazing and unforgettable adventure.',
+        description: 'Visit Cairo for an amazing and unforgettable adventure.',
         activities: []),
     Destination(
       id: '2',
       imageUrl: 'assets/images/Alexandria.jpg',
       city: 'Alexandria',
-      description: 'Visit Paris for an amazing and unforgettable adventure.',
+      description: 'Visit Alexandria for an amazing and unforgettable adventure.',
       activities: [],
     ),
     Destination(
@@ -30,7 +30,7 @@ class Destinations with ChangeNotifier {
       imageUrl: 'assets/images/Luxor.jpg',
       city: 'Luxor',
       description:
-          'Visit New Delhi for an amazing and unforgettable adventure.',
+          'Visit Luxor for an amazing and unforgettable adventure.',
       activities: [],
     ),
     Destination(
@@ -38,7 +38,7 @@ class Destinations with ChangeNotifier {
       imageUrl: 'assets/images/Aswan.jpg',
       city: 'Aswan',
       description:
-          'Visit Sao Paulo for an amazing and unforgettable adventure.',
+          'Visit Aswan for an amazing and unforgettable adventure.',
       activities: [],
     ),
   ];
